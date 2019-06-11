@@ -1,0 +1,128 @@
+<div class="xg-form-panel">
+        <p-toast key="orderMsg"></p-toast>
+    <div class="ui-g">
+        <div class="ui-g-12 xg-header-div">
+            <h3 class="xg-main-header">New Order</h3>
+        </div>
+    </div>
+    <form #orderForm="ngForm">
+        <div class="ui-g">
+            <h3 class="xg-sub-header">Header</h3>
+            <div class="ui-g-12 xg-form-bg xg-m-b-10">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <!-- <label class="xg-custom-blue-label">Order Id:</label> {{orderHeader.orderId}}
+                     -->
+                    <label class="xg-custom-blue-label">Order Id:</label>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <label class="xg-custom-blue-label">Created By:</label>{{orderHeader.createdBy}}
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <label class="xg-custom-blue-label">Last Modified By:</label>{{orderHeader.modifiedBy}}
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <label class="xg-custom-blue-label">Revision:</label> {{orderHeader.revision}}
+                </div>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-12 xg-form-bg xg-m-b-10">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                        <xg-typeahead required placeholder="Advertiser" labelName="Advertiser" name="dropdown"
+                            displayValue="customerName" keyValue="customerName" [suggestions]="advertiserList"
+                           (ngModelChange)="onadvertiserModelChange($event)" (onValueChange)="onAdvertiserChange($event)" (onBlur)="advertiserInputValue($event)" [(ngModel)]="orderModel.advertiserCustomerName">
+                        </xg-typeahead>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" required="true" labelName="Title" [(ngModel)]="orderModel.orderTitle"
+                            name="orderModel.orderTitle"></xg-input>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-typeahead placeholder="Agency" labelName="Agency" name="dropdown" displayValue="customerName"
+                            keyValue="customerName" [suggestions]="agencyList" (onValueChange)="onAgencyChange($event)" [(ngModel)]="orderAgency.agencyName">
+                        </xg-typeahead>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="decimal" [precision]="2" [min]="0" placeholder="0.00" [max]="100"
+                            [required]="lcRequired" labelName="Linear Commission (%)"
+                            [(ngModel)]="orderAgency.linearCommissionPercent"
+                            name="linearCommissionPercent"></xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="decimal" [precision]="2" placeholder="0.00" [min]="0" [max]="100"
+                            [required]="dcRequired" labelName="Digital Commission (%)"
+                            [(ngModel)]="orderAgency.digitalCommissionPercent"
+                            name="digitalCommission"></xg-input>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 xg-form-bg xg-m-b-10">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="Client Code" [(ngModel)]="orderAgency.clientCode"
+                        alphaNumeric="true" name="orderAgency.clientCode"></xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="Product Code" [(ngModel)]="orderAgency.productCode"
+                        alphaNumeric ="true" name="orderAgency.productCode"></xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="Estimate Number" [(ngModel)]="orderAgency.estimateNumber"
+                        alphaNumeric="true"  name="orderAgency.estimateNumber"></xg-input>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 xg-form-bg xg-m-b-10">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="PO Number" [(ngModel)]="orderModel.purchaseOrder"
+                            name="orderModel.purchaseOrder"></xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="number" [maxlength]="25" labelName="DUNS Number" [(ngModel)]="orderModel.duns"
+                            name="orderModel.duns"></xg-input>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-dropdown [autoWidth]="false" label="Buyer Contact" name="Buyer Contact"
+                            [options]="contactList" (onValueChange)="onContactChange($event)"
+                            [(ngModel)]="orderModel.contactId" displayValue="firstName" keyValue="contactId"
+                            name="orderModel.contactId">
+                        </xg-dropdown>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="Full Name" [disabled]="true"
+                            [(ngModel)]="contactInfoModel.name" name="contactInfoModel.name"></xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="Phone Number" [disabled]="true"
+                            [(ngModel)]="contactInfoModel.phoneNumber" name="contactInfoModel.phoneNumber">
+                        </xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <xg-input type="text" labelName="Email" [disabled]="true"
+                            [(ngModel)]="contactInfoModel.emailAddress" name="contactInfoModel.emailAddress">
+                        </xg-input>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g xg-pull-right">
+                    <xg-button class="xg-sec-btn" icon="false" type="save" label="Save" (click)="submitForm(orderForm)">
+                    </xg-button>
+                    <xg-button class="xg-sec-btn" icon="false" type="clear" label="Cancel" (onClick)="CancelOrder(orderForm)">
+                    </xg-button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+<ng-container [ngSwitch]="column.dataType">
+  <ng-container *ngSwitchCase="'number'">
+    <input pInputText type="number" [(ngModel)]="value" (focus)="onFocused($event)" (change)="onValueChange($event)" (keydown.enter)="onEnterKey($event)">
+    <!-- <mat-form-field>
+        <input matInput [(ngModel)]="value" type="number">
+    </mat-form-field> -->
+  </ng-container>
+  <ng-container *ngSwitchCase="'date'">
+    <!-- ! Need the date component here. -->
+  </ng-container>
+  <ng-container *ngSwitchCase="'string'">
+    <input pInputText type="text" [(ngModel)]="value" (focus)="onFocused($event)" (change)="onValueChange($event)" (keydown.enter)="onEnterKey($event)">
+    <!-- <mat-form-field>
+        <input matInput [(ngModel)]="value" type="text">
+    </mat-form-field> -->
+  </ng-container>
+  <ng-container *ngSwitchCase="'boolean'">
+    <input type="checkbox" [(ngModel)]="value">
+  </ng-container>
+  <ng-container *ngSwitchDefault>Something Else</ng-container>
+</ng-container>

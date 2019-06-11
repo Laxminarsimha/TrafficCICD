@@ -1,0 +1,902 @@
+[
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":39328,
+      "Org_ID":39328,
+      "Org_Name":"!!!!SWEEPS EXTRA PROMOTIONS!!!!",
+      "Id":39328,
+      "text":"!!!!SWEEPS EXTRA PROMOTIONS!!!!"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":25475,
+      "Org_ID":25475,
+      "Org_Name":"*EBFF Sales Promotion",
+      "Id":25475,
+      "text":"*EBFF Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":80541,
+      "Org_ID":80541,
+      "Org_Name":"*EBUI Promotions",
+      "Id":80541,
+      "text":"*EBUI Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":80542,
+      "Org_ID":80542,
+      "Org_Name":"*EBUI Sales Promotions",
+      "Id":80542,
+      "text":"*EBUI Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98726,
+      "Org_ID":98726,
+      "Org_Name":"*ECIV Sales Promotion",
+      "Id":98726,
+      "text":"*ECIV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68793,
+      "Org_ID":68793,
+      "Org_Name":"*ECWN Sales Promotion",
+      "Id":68793,
+      "text":"*ECWN Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":119010,
+      "Org_ID":119010,
+      "Org_Name":"*ECYB Promotions",
+      "Id":119010,
+      "text":"*ECYB Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120372,
+      "Org_ID":120372,
+      "Org_Name":"*ECYB Sales Promotion",
+      "Id":120372,
+      "text":"*ECYB Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":90405,
+      "Org_ID":90405,
+      "Org_Name":"*EEYI Sales Promotion",
+      "Id":90405,
+      "text":"*EEYI Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":108669,
+      "Org_ID":108669,
+      "Org_Name":"*EFLI Promotions",
+      "Id":108669,
+      "text":"*EFLI Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":121861,
+      "Org_ID":121861,
+      "Org_Name":"*EFLI Sales Promotion",
+      "Id":121861,
+      "text":"*EFLI Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98828,
+      "Org_ID":98828,
+      "Org_Name":"*EGXA Sales Promotion",
+      "Id":98828,
+      "text":"*EGXA Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78785,
+      "Org_ID":78785,
+      "Org_Name":"*EHAM Sales Promotion",
+      "Id":78785,
+      "text":"*EHAM Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78793,
+      "Org_ID":78793,
+      "Org_Name":"*EHP Sales Promotion",
+      "Id":78793,
+      "text":"*EHP Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84278,
+      "Org_ID":84278,
+      "Org_Name":"*EJAC Promotions",
+      "Id":84278,
+      "text":"*EJAC Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84279,
+      "Org_ID":84279,
+      "Org_Name":"*EJAC Sales Promotions",
+      "Id":84279,
+      "text":"*EJAC Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":99996,
+      "Org_ID":99996,
+      "Org_Name":"*EJAR Sales Promotion",
+      "Id":99996,
+      "text":"*EJAR Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78798,
+      "Org_ID":78798,
+      "Org_Name":"*EKRC Sales Promotion",
+      "Id":78798,
+      "text":"*EKRC Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68783,
+      "Org_ID":68783,
+      "Org_Name":"*ELAJ Sales Promotion",
+      "Id":68783,
+      "text":"*ELAJ Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":106791,
+      "Org_ID":106791,
+      "Org_Name":"*ELFI Sales Promotions",
+      "Id":106791,
+      "text":"*ELFI Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78781,
+      "Org_ID":78781,
+      "Org_Name":"*EOAI Sales Promotion",
+      "Id":78781,
+      "text":"*EOAI Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68789,
+      "Org_ID":68789,
+      "Org_Name":"*ERGB Sales Promotion",
+      "Id":68789,
+      "text":"*ERGB Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":89955,
+      "Org_ID":89955,
+      "Org_Name":"*ERGT Sales Promotion",
+      "Id":89955,
+      "text":"*ERGT Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":80539,
+      "Org_ID":80539,
+      "Org_Name":"*ERSP Promotions",
+      "Id":80539,
+      "text":"*ERSP Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":80540,
+      "Org_ID":80540,
+      "Org_Name":"*ERSP Sales  Promotions",
+      "Id":80540,
+      "text":"*ERSP Sales  Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84527,
+      "Org_ID":84527,
+      "Org_Name":"*ETOV Promotions",
+      "Id":84527,
+      "text":"*ETOV Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84528,
+      "Org_ID":84528,
+      "Org_Name":"*ETOV Sales Promotions",
+      "Id":84528,
+      "text":"*ETOV Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68797,
+      "Org_ID":68797,
+      "Org_Name":"*ETVC Sales Promotion",
+      "Id":68797,
+      "text":"*ETVC Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68779,
+      "Org_ID":68779,
+      "Org_Name":"*EWMT Sales Promotion",
+      "Id":68779,
+      "text":"*EWMT Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":99997,
+      "Org_ID":99997,
+      "Org_Name":"*FJAR Sales Promotion",
+      "Id":99997,
+      "text":"*FJAR Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":100728,
+      "Org_ID":100728,
+      "Org_Name":"*GBFF Sales Promotion",
+      "Id":100728,
+      "text":"*GBFF Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98723,
+      "Org_ID":98723,
+      "Org_Name":"*GCIV Sales Promotion",
+      "Id":98723,
+      "text":"*GCIV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":106754,
+      "Org_ID":106754,
+      "Org_Name":"*GFLI Promotions",
+      "Id":106754,
+      "text":"*GFLI Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":121862,
+      "Org_ID":121862,
+      "Org_Name":"*GFLI Sales Promotion",
+      "Id":121862,
+      "text":"*GFLI Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":106759,
+      "Org_ID":106759,
+      "Org_Name":"*GLFI Sales Promotions",
+      "Id":106759,
+      "text":"*GLFI Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78594,
+      "Org_ID":78594,
+      "Org_Name":"*KAAS Promotion",
+      "Id":78594,
+      "text":"*KAAS Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78595,
+      "Org_ID":78595,
+      "Org_Name":"*KAAS Sales Promotion",
+      "Id":78595,
+      "text":"*KAAS Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9362,
+      "Org_ID":9362,
+      "Org_Name":"*KABB Sales Promotion",
+      "Id":9362,
+      "text":"*KABB Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":122059,
+      "Org_ID":122059,
+      "Org_Name":"*KAEF Sales Promotion",
+      "Id":122059,
+      "text":"*KAEF Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84416,
+      "Org_ID":84416,
+      "Org_Name":"*KAME Promotions",
+      "Id":84416,
+      "text":"*KAME Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84415,
+      "Org_ID":84415,
+      "Org_Name":"*KAME Sales Promotions",
+      "Id":84415,
+      "text":"*KAME Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":3047,
+      "Org_ID":3047,
+      "Org_Name":"*KBSI Promotion",
+      "Id":3047,
+      "text":"*KBSI Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9363,
+      "Org_ID":9363,
+      "Org_Name":"*KBSI Sales Promotion",
+      "Id":9363,
+      "text":"*KBSI Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78485,
+      "Org_ID":78485,
+      "Org_Name":"*KBTV Sales Promotion",
+      "Id":78485,
+      "text":"*KBTV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":122106,
+      "Org_ID":122106,
+      "Org_Name":"*KBVU Sales Promotion",
+      "Id":122106,
+      "text":"*KBVU Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":122111,
+      "Org_ID":122111,
+      "Org_Name":"*KCVU Sales Promotion",
+      "Id":122111,
+      "text":"*KCVU Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9364,
+      "Org_ID":9364,
+      "Org_Name":"*KDNL Sales Promotion",
+      "Id":9364,
+      "text":"*KDNL Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":3059,
+      "Org_ID":3059,
+      "Org_Name":"*KDSM Promotions",
+      "Id":3059,
+      "text":"*KDSM Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9366,
+      "Org_ID":9366,
+      "Org_Name":"*KDSM Sales Promotions",
+      "Id":9366,
+      "text":"*KDSM Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":66012,
+      "Org_ID":66012,
+      "Org_Name":"*KEYE Sales Promotion",
+      "Id":66012,
+      "text":"*KEYE Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68803,
+      "Org_ID":68803,
+      "Org_Name":"*KFDM Sales Promotion",
+      "Id":68803,
+      "text":"*KFDM Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84273,
+      "Org_ID":84273,
+      "Org_Name":"*KFOX Promotions",
+      "Id":84273,
+      "text":"*KFOX Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84275,
+      "Org_ID":84275,
+      "Org_Name":"*KFOX Sales Promotion",
+      "Id":84275,
+      "text":"*KFOX Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":29908,
+      "Org_ID":29908,
+      "Org_Name":"*KFXA Sales Promotion",
+      "Id":29908,
+      "text":"*KFXA Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":29910,
+      "Org_ID":29910,
+      "Org_Name":"*KGAN Sales Promotion",
+      "Id":29910,
+      "text":"*KGAN Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":111918,
+      "Org_ID":111918,
+      "Org_Name":"*KJZZ Promotions",
+      "Id":111918,
+      "text":"*KJZZ Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":111919,
+      "Org_ID":111919,
+      "Org_Name":"*KJZZ Sales Promotions",
+      "Id":111919,
+      "text":"*KJZZ Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78590,
+      "Org_ID":78590,
+      "Org_Name":"*KMTW Sales Promotion",
+      "Id":78590,
+      "text":"*KMTW Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":3132,
+      "Org_ID":3132,
+      "Org_Name":"*KMYS Promotions",
+      "Id":3132,
+      "text":"*KMYS Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9370,
+      "Org_ID":9370,
+      "Org_Name":"*KMYS Sales Promotions",
+      "Id":9370,
+      "text":"*KMYS Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":66118,
+      "Org_ID":66118,
+      "Org_Name":"*KMYU Sales Promotion",
+      "Id":66118,
+      "text":"*KMYU Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":3118,
+      "Org_ID":3118,
+      "Org_Name":"*KOCB Promotions",
+      "Id":3118,
+      "text":"*KOCB Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9368,
+      "Org_ID":9368,
+      "Org_Name":"*KOCB Sales Promotions",
+      "Id":9368,
+      "text":"*KOCB Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":3119,
+      "Org_ID":3119,
+      "Org_Name":"*KOKH Promotions",
+      "Id":3119,
+      "text":"*KOKH Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9369,
+      "Org_ID":9369,
+      "Org_Name":"*KOKH Sales Promotions",
+      "Id":9369,
+      "text":"*KOKH Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":122058,
+      "Org_ID":122058,
+      "Org_Name":"*KRCR Sales Promotion",
+      "Id":122058,
+      "text":"*KRCR Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84412,
+      "Org_ID":84412,
+      "Org_Name":"*KRXI Promotions",
+      "Id":84412,
+      "text":"*KRXI Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84408,
+      "Org_ID":84408,
+      "Org_Name":"*KRXI Sales Promotions",
+      "Id":84408,
+      "text":"*KRXI Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":77100,
+      "Org_ID":77100,
+      "Org_Name":"*KSAS Promotions",
+      "Id":77100,
+      "text":"*KSAS Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78593,
+      "Org_ID":78593,
+      "Org_Name":"*KSAS Sales Promotion",
+      "Id":78593,
+      "text":"*KSAS Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98829,
+      "Org_ID":98829,
+      "Org_Name":"*KSNV Promotion",
+      "Id":98829,
+      "text":"*KSNV Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98830,
+      "Org_ID":98830,
+      "Org_Name":"*KSNV Sales Promotion",
+      "Id":98830,
+      "text":"*KSNV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68799,
+      "Org_ID":68799,
+      "Org_Name":"*KTVL Sales Promotion",
+      "Id":68799,
+      "text":"*KTVL Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120600,
+      "Org_ID":120600,
+      "Org_Name":"*KTXE Sales Promotion",
+      "Id":120600,
+      "text":"*KTXE Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120594,
+      "Org_ID":120594,
+      "Org_Name":"*KTXS Promotions",
+      "Id":120594,
+      "text":"*KTXS Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120591,
+      "Org_ID":120591,
+      "Org_Name":"*KTXS Sales Promotion",
+      "Id":120591,
+      "text":"*KTXS Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":66115,
+      "Org_ID":66115,
+      "Org_Name":"*KUTV Sales Promotion",
+      "Id":66115,
+      "text":"*KUTV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":3065,
+      "Org_ID":3065,
+      "Org_Name":"*KVCW Promotions",
+      "Id":3065,
+      "text":"*KVCW Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9367,
+      "Org_ID":9367,
+      "Org_Name":"*KVCW Sales Promotions",
+      "Id":9367,
+      "text":"*KVCW Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":9304,
+      "Org_ID":9304,
+      "Org_Name":"*KVMY Sales Promotion",
+      "Id":9304,
+      "text":"*KVMY Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":66111,
+      "Org_ID":66111,
+      "Org_Name":"*LLWC Sales Promotion",
+      "Id":66111,
+      "text":"*LLWC Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":66130,
+      "Org_ID":66130,
+      "Org_Name":"*LTVX Sales Promotion",
+      "Id":66130,
+      "text":"*LTVX Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":66106,
+      "Org_ID":66106,
+      "Org_Name":"*MEYE Sales Promotion",
+      "Id":66106,
+      "text":"*MEYE Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84418,
+      "Org_ID":84418,
+      "Org_Name":"*NAME Promotions",
+      "Id":84418,
+      "text":"*NAME Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84417,
+      "Org_ID":84417,
+      "Org_Name":"*NAME Sales Promotions",
+      "Id":84417,
+      "text":"*NAME Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":78592,
+      "Org_ID":78592,
+      "Org_Name":"*NBTV Sales Promotion",
+      "Id":78592,
+      "text":"*NBTV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":101553,
+      "Org_ID":101553,
+      "Org_Name":"*NC8 Sales Promotion",
+      "Id":101553,
+      "text":"*NC8 Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68805,
+      "Org_ID":68805,
+      "Org_Name":"*NFDM Sales Promotion",
+      "Id":68805,
+      "text":"*NFDM Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84274,
+      "Org_ID":84274,
+      "Org_Name":"*NFOX Promotions",
+      "Id":84274,
+      "text":"*NFOX Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84276,
+      "Org_ID":84276,
+      "Org_Name":"*NFOX Sales Promotions",
+      "Id":84276,
+      "text":"*NFOX Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84414,
+      "Org_ID":84414,
+      "Org_Name":"*NRXI Promotions",
+      "Id":84414,
+      "text":"*NRXI Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":84413,
+      "Org_ID":84413,
+      "Org_Name":"*NRXI Sales Promotions",
+      "Id":84413,
+      "text":"*NRXI Sales Promotions"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98833,
+      "Org_ID":98833,
+      "Org_Name":"*NSNV Promotion",
+      "Id":98833,
+      "text":"*NSNV Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":98834,
+      "Org_ID":98834,
+      "Org_Name":"*NSNV Sales Promotion",
+      "Id":98834,
+      "text":"*NSNV Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":68801,
+      "Org_ID":68801,
+      "Org_Name":"*NTVL Sales Promotion",
+      "Id":68801,
+      "text":"*NTVL Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120592,
+      "Org_ID":120592,
+      "Org_Name":"*NTXE Sales Promotion",
+      "Id":120592,
+      "text":"*NTXE Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120596,
+      "Org_ID":120596,
+      "Org_Name":"*NTXS Promotion",
+      "Id":120596,
+      "text":"*NTXS Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":120597,
+      "Org_ID":120597,
+      "Org_Name":"*NTXS Sales Promotion",
+      "Id":120597,
+      "text":"*NTXS Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":41009,
+      "Org_ID":41009,
+      "Org_Name":"*NVCW Sales Promotion",
+      "Id":41009,
+      "text":"*NVCW Sales Promotion"
+   },
+   {
+      "AdvertiserKey":0,
+      "AdvertiserName":null,
+      "Source_Item_ID":41011,
+      "Org_ID":41011,
+      "Org_Name":"*NVMY Sales Promotion",
+      "Id":41011,
+      "text":"*NVMY Sales Promotion"
+   }
+]

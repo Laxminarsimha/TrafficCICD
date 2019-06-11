@@ -1,0 +1,362 @@
+@import '../../../variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700,800,900');
+@import '~bootstrap/dist/css/bootstrap.css';
+
+body, .ui-widget{
+    font-family: "Fira Sans", sans-serif !important;
+}
+  
+ /* 11-03-19 jagan */
+  .container{
+      padding: 0 !important;
+  }
+  .xg-form-bg{
+      background-color: $smokeWhite;
+      border-radius: 5px;
+      padding: 10px;
+      .ui-dropdown{
+          width: 100% !important;
+      }
+  }
+  .radio_btn .xg-radio.xg-label-left input[type=radio] + label span::after{
+      right: -19px !important;
+      top: 0px !important;
+  }
+  /* 11-03-19 jagan */
+  
+  /* 19-03-19 jagan */
+  .xg-form-panel{
+      background-color: $white;
+      border-radius: 5px;
+      padding: 15px;
+      border: 1px solid $gray;
+      margin: 10px;
+  }
+  .xg-header-div{
+    border-bottom: 1px solid $gray;
+    margin-bottom: 10px;
+    .xg-main-header{
+        font-size: $font-20;
+        margin: 10px 0 0;
+    }
+    .xg-text-group{
+        margin-bottom: 0;
+    }
+  }
+  
+  .xg-sub-header{
+      font-size: $font-16;
+      margin-top: 0;
+      padding-bottom: 10px;
+  }
+  .right-nav {
+      float: right;
+      label {
+          display: block;
+          font-weight: 500;
+      }
+  }
+  
+  /* Inventory local program Styles  jagan 25-03-19*/
+  .xg-selected-list{
+      border: 1px solid $gray;
+      background-color: $white;
+      width: 100%;
+      border-radius: 5px;
+      padding: 10px!important;
+      position: relative;
+  }
+  .xg-selected-inner{
+      min-height: 100px;
+      max-height: 100px;
+      overflow: auto;
+  }
+  .xg-selected-items{
+      background-color: $gray;
+      border-radius: 20px;
+      padding: 5px 10px;
+      display: inline-block;
+      margin: 3px;
+  }
+  .xg-selected-items i{
+      color: $white;
+      background-color: $darkGray;
+      border-radius: 50%;
+      font-size: 10px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      margin-left: 4px;
+      vertical-align: middle;
+      cursor: pointer;
+  }
+  .xg-remove-pos {
+        position: relative;
+        .xg-remove-all {
+            position: absolute;
+            right: 15px;
+            top: 5px;
+            z-index: 99;
+            a{
+                cursor: pointer;
+            }
+        }
+    }
+  .xg-remove-all{
+      width: 100%;
+      text-align: right;
+      a{
+          color: $darkRed;
+          font-size: $font-13;
+          cursor: pointer;
+          &:hover{
+              color: $maroon;
+          }
+      }
+  }
+  .xg-m-t-20{
+      margin-top: 20px;
+  }
+  .xg-m-t-30{
+      margin-top: 30px;
+  }
+  /* Inventory local program Styles  jagan 25-03-19*/
+
+
+/* Material theame color changes 27-03-18 */
+.mat-slide-toggle.mat-checked .mat-ripple-element, .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+    background-color: #4169e1 !important;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+    background-color: rgba(65,105,225,0.54) !important;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+    background-color: #4169e1 !important;
+}
+.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element{
+    background-color: #4169e1 !important;
+}
+/* Material theame color changes 27-03-18 */
+
+/* dayspicker styles*/
+.daysPicker .xg-dayPicker-header label{
+    padding: 0 10px;
+}
+.daysPicker .xg-dayPicker-header label:after {
+    content: '*';
+    color: red;
+    margin-left: 5px;
+}
+
+/* Local Orbit Styles */
+.xg-primary-panel{
+    border: 1px solid $gray;
+    border-radius: 3px;
+    background-color: $white;
+    margin-bottom: 10px; 
+}
+.xg-primary-panel-header{
+    background-color: $royalBlue;
+    padding: 12px 10px;
+    color: $white;
+    font-weight: 500;
+    font-size: $font-16;
+    overflow: hidden;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.xg-primary-panel-body{
+    background-color: $smokeWhite;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+}
+/* Local Orbit Styles */
+
+/* Local Programs Rating Tracks */
+.xg-panel-strip {
+    padding: 10px;
+    background-color: $smokeWhite;
+    margin-bottom: 10px;
+    border-radius: 3px; 
+    text-align: center;
+    font-size: $font-16;
+    b{
+        padding-right: 10px; 
+    }
+}
+.xg-programs-list{
+    max-height: 100vh;
+    height: 100%;
+    overflow: auto;
+    li{
+        padding: 0;
+        .xg-programs-item{
+            cursor: pointer;
+            padding: 10px;
+            overflow: hidden;
+            border-left: 4px solid transparent;
+            .xg-program-title{
+                font-size: $font-18;
+                color: $mediumBlack;
+                font-weight: 600;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+                overflow: hidden;
+                
+            }
+            &:hover{
+                border-left-color: $royalBlue;
+            }
+        }    
+        &:last-child{
+            border-bottom: 0;
+        }
+    }
+}
+/* Local Programs Rating Tracks */
+
+/* jagan 22-04-19 */
+.xg-user-details{
+    float: right;
+}
+.xg-chips{
+    border-radius: 3px;
+    padding: 2px 6px;
+    color: $mediumBlack;
+    background-color: $gray;
+    font-size: $font-11;
+}
+.xg-bg-green{
+    color: $white;
+    background-color: $green;
+}
+.xg-bg-purple{
+    color: $white;
+    background-color: $purple;
+}
+.xg-bg-red{
+    color: $white;
+    background-color: $red;
+}
+.xg-bg-blue{
+    color: $white;
+    background-color: $royalBlue;
+}
+.xg-bg-orange{
+    color: $white;
+    background-color: $orangeRed;
+}
+.xg-pull-right{
+    float: right;
+}
+/* Responsive Styles */
+@media (max-width: 1024px){
+    .xg-programs-list{
+        max-height: 200px;
+    }
+}
+@media (max-width: 640px){
+    .xg-resp-m-t-0{
+        margin-top: 0;
+    }
+}
+/* Responsive Styles */
+
+
+/* jagan 22-04-19 */
+.xg-user-details{
+    float: right;
+}
+
+.xg-cursor {
+    cursor: pointer;
+}
+
+
+/* Traffic */
+.xg-pull-left{
+    float: left;
+}
+.xg-pull-right{
+    float: right;
+}
+::ng-deep.xg-search-box{
+    background-color: $white;
+    .xg-typehead-multi .xg-text-box{
+        padding: 7px 30px 7px 10px !important;
+        border-radius: 10px !important; 
+        border: 0 !important;
+        background-color: $smokeWhite !important;
+    }
+} 
+::ng-deep.xg-sec-btn .xg-button{
+    min-width: 70px !important;
+    padding: 6px 11px !important;
+    border-radius: 10px !important;
+}
+::ng-deep.xg-tab-label{
+    border-bottom: 2px solid $lightGray;
+}
+::ng-deep.tab-content{
+    border: 0 !important;
+}
+::ng-deep.xg-tabs{
+    ul{
+        li {
+            a{
+                &:before {
+                    bottom: -1px !important;
+                }
+            }
+            &:first-child a{
+                margin-left: 0 !important;
+            }
+        }
+    } 
+}
+::ng-deep.xg-cus-popup {
+    .ui-dialog {
+        .ui-dialog-titlebar{
+            background-color: $royalBlue;
+            border: 0;
+            color: $white;
+            font-weight: 600;
+        }
+        .ui-dialog-titlebar-icon{
+            span{
+                color: $white;
+            }   
+        } 
+    }
+}
+.xg-cust-count{
+    font-size: $font-14;font-weight: 100;
+}
+::ng-deep.xg-inner-secondary-form{
+    .xg-inner-sec-head{
+        background-color: $gray;
+        padding: 10px 12px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px; 
+        color: $royalBlue;
+        font-weight: 600;
+        i{
+            padding-right: 5px;
+        }
+    }
+    .xg-inner-sec-body{
+        background-color: $light-blue-bg-color;
+        padding: 10px;
+        .xg-inner-sec-form-bg{
+            background-color: $white;
+        }
+    }
+}
+
+
+::ng-deep.xg-typehead-multi .ui-autocomplete-token-icon {
+    display:none;    
+}

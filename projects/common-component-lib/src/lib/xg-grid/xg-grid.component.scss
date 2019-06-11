@@ -1,0 +1,307 @@
+// .ui-datatable-tablewrapper {
+//   overflow-x: auto;
+// }
+// .noTopBottomBorder {
+//   border-top: none !important;
+//   border-bottom: none !important;
+// }
+
+// .ellipsisOverFlow {
+//   text-overflow: ellipsis;
+// }
+
+// .container {
+//   padding: 20px;
+//   flex: 100%;
+// }
+// .tabContent {
+//   padding: 20px;
+// }
+
+// .gridContainer {
+//   display: flex;
+//   flex-flow: row;
+//   background: #ccc;
+//   overflow: scroll;
+// }
+// .grid1Container {
+//   flex: 50%;
+// }
+// .grid2Container {
+//   flex: 50%;
+// }
+
+// .gridAvatar {
+//   background-image: url("https://cdn3.volusion.com/ahrek.bsjlt/v/vspfiles/photos/KT-22b-2.jpg");
+//   background-repeat: no-repeat;
+//   background-size: 228px;
+// }
+
+// // SCROLLBAR STYLES
+// // ============================
+// /* width */
+// /deep/::-webkit-scrollbar {
+//   width: 10px;
+//   height: 5px;
+// }
+
+// /* Track */
+// /deep/::-webkit-scrollbar-track {
+//   background: #f1f1f1;
+//   border-radius: 3px;
+// }
+
+// /* Handle */
+// /deep/::-webkit-scrollbar-thumb {
+//   background: #888;
+//   border-radius: 3px;
+// }
+
+// /* Handle on hover */
+// /deep/::-webkit-scrollbar-thumb:hover {
+//   background: #555;
+// }
+// //  END  - SCROLLBAR STYLES
+// // ============================
+
+// // .headcol {
+// //   position: absolute;
+// //   width: 230px;
+// //   right: 0;
+// //   top: auto;
+// // }
+
+// .rowWrapper {
+//   width: auto;
+//   overflow-x: scroll;
+//   margin-right: 5em;
+//   overflow-y: visible;
+//   padding-bottom: 1px;
+// }
+
+// // :host .ui-table-wrapper {
+// //   margin-right: 228px;
+// // }
+
+// .xg-grid-column-drag,
+// .xg-grid-column-select-checkbox {
+//   text-align: center;
+// }
+
+// .detailsToggle{
+//   border:0px;
+//   color:#000;
+//   background:none;
+// }
+
+// ::ng-deep .ui-table .ui-table-tbody>tr>td.ui-editing-cell{
+//   padding:0.571em 0.857em !important;
+// }
+
+//sticky headers -- not working in iframe/storybook
+// :host ::ng-deep .ui-table .ui-table-thead > tr > th {
+//   position: -webkit-sticky;
+//   position: sticky;
+//   top: 0px;
+// }
+
+
+@import '../../../../../src/styles.scss';
+/* XG Grid Styles Start */
+body, .ui-widget{
+  font-family: "Fira Sans", sans-serif !important;
+}
+.xg-cust-picker-width{
+    min-width: 120px;
+  }
+.xg-grid {
+  font-size: $font-13;
+  .ui-table {
+      .ui-table-caption {
+          background-color: $white;
+          border: 0;
+      }
+      .ui-table-wrapper {
+          .ui-table-thead > tr > th {
+              border-color: $gray;
+              background-color: $white !important;
+              color: $mediumBlack !important;
+              font-weight: normal;
+              font-size: $font-13;
+              padding: 7px;
+              color: #959595!important;
+              &:focus {
+                  outline: none;
+              }
+              &:first-child {
+                  border-left: 0;
+              }
+              &:last-child {
+                  border-right: 0;
+              }
+              p-sorticon {
+                  vertical-align: top;
+              }
+              .ui-sortable-column-icon.pi-sort {
+                  font-size: $font-11;
+                  -webkit-transform: rotate(90deg);
+                  transform: rotate(90deg);
+                  color: $darkGray;
+                  opacity: 0;
+                  &::before {
+                      content: "\f0ec" !important;
+                      font-family: FontAwesome !important;
+                  }
+              }
+              .ui-sortable-column-icon.pi-sort-up {
+                  font-size: $font-12;
+                  color: $darkGray;
+                  &::before {
+                      content: "\f176" !important;
+                      font-family: FontAwesome !important;
+                      font-size: $font-12;
+                      color: $darkGray;
+                  }
+              }
+              .ui-sortable-column-icon.pi-sort-down {
+                  font-size: $font-12;
+                  
+                  &::before {
+                      content: "\f175" !important;
+                      font-family: FontAwesome !important;
+                      color: $darkGray;
+                      font-size: $font-12;
+                  }
+              }
+              &:hover .ui-sortable-column-icon.pi-sort{
+                opacity: 1;
+            }
+            xg-grid-column-filter {
+                .ui-inputtext{
+                    border-width: 0 0 1px;
+                    border-radius: 0;
+                    margin-right: 0px;
+                    padding: 0;
+                    text-align: left !important;
+                    // width: 100%;
+                }
+                .ui-dropdown{
+                    border-width: 0 0 1px;
+                    border-radius: 0;
+                    .ui-dropdown-trigger{
+                        display: none;
+                    }
+                }
+            }
+            
+            
+          }
+        .ui-table-tbody {
+              tr {
+                  td{
+                      border-color: $gray;
+                      padding: 7px;
+                      font-size: $font-13;
+                      &:first-child {
+                          border-left: 4px solid transparent;
+                      }
+                      &:last-child {
+                          border-right: 0;
+                      }
+                  }
+                  &:hover td:first-child {
+                      border-left-color: $royalBlue;
+                  }
+              } 
+              tr:nth-child(even).ui-state-highlight, tr.ui-state-highlight {
+                  background-color: $ghostWhite;
+                  color: $black;
+              }
+        } 
+      }
+      .ui-paginator {
+          background: $white;
+          padding: 5px 0;
+          text-align: right;
+          .ui-paginator-pages .ui-paginator-page, .ui-paginator-next, .ui-paginator-last {
+              border-radius: 50%; 
+              margin: 0 5px;
+              outline: none;
+          }
+          .ui-paginator-pages .ui-paginator-page.ui-state-active {
+              background-color: $royalBlue;
+          }
+      }
+      .ui-paginator-bottom {
+          border-top: 1px solid $gray !important;
+          border-width: 1px 0 0 !important;
+      }
+      .ui-table-summary{
+          border: 0;
+          text-align: right;
+          font-weight: normal;
+          color: $mediumBlack;
+          background-color: $white;
+          padding: 0 10px;
+      }
+  }
+}
+
+.xg-search-box{
+  position: relative;
+  i{
+      margin: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 20px;
+      background-color: $royalBlue;
+      width: 38px;
+      height: 38px;
+      text-align: center;
+      color: #fff;
+      line-height: 38px;
+  }
+  input{
+      width: 100% !important;
+      padding: 10px 8px 10px 40px;
+      border-radius: 20px;
+  }
+}
+
+/* XG Grid Styles End */
+
+.xg-dynamic-form {
+    .mat-form-field{
+        display: block !important;
+        padding-left: 0 !important;
+    }
+}
+.xg-cus-col-4{
+    .xg-text-group{
+        .xg-text-label{
+            color: rgba(0,0,0,.54) !important;
+            font-size: $font-11 !important;
+            font-weight: normal !important;
+        }
+        .xg-text-box{
+            min-height: 26px!important;
+            line-height: 12px !important;
+            padding: 4px 6px!important;
+        }
+        .xg-append-right{
+            top: 20px !important;
+        }
+    }
+}
+
+@media (max-width: 767px){
+    .xg-cus-col-4{
+        display: block;
+        .xg-text-group{
+            .xg-text-box{
+                width: 100% !important;
+            }
+        }
+    }
+}

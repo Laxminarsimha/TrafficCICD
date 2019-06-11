@@ -1,0 +1,61 @@
+<div class="xg-text-group xg-typehead-multi" [ngClass]="{'xg-required' : required}">
+  <label *ngIf="!!labelName" class="xg-text-label" for="inputControl">{{labelName}}</label>
+  <div [ngClass]="{'ui-autocomplete ui-widget':true,'ui-autocomplete-dd':dropdown,'ui-autocomplete-multiple':multiple}" style="display: block">
+    <div *ngIf="!multiple">
+      <input #xgTypeaheadInput type="text" [attr.id]="id" autocomplete="off" [required]="required" class="ui-inputtext ui-widget ui-state-default ui-corner-all ui-autocomplete-input xg-text-box"
+        [(ngModel)]="typeaheadModelValue" (input)="searchTerm$.next($event.target.value)" [autofocus]="autofocus" [maxlength]="maxlength || null"
+        (focus)="onFocusIn($event)" (paste)="searchTerm$.next($event.target.value)" (blur)="onFocusOut($event)" (keyup)="onKeyup($event)"
+        (keydown)="onKeydown($event)" [placeholder]="placeholder" [tabindex]="tabindex" [disabled]="disabled" #xgTypeaheadModel="ngModel">
+      <span class="ui-autocomplete-token-icon single pi pi-fw pi-times" (click)="typeaheadModelValue=''" *ngIf="!!typeaheadModelValue && !disabled"></span>
+      <div *ngIf="xgTypeaheadModel.invalid && (xgTypeaheadModel.dirty || xgTypeaheadModel.touched)" class="xg-alert xg-alert-danger">
+        <div *ngIf="xgTypeaheadModel.errors.required">
+          {{labelName || 'This field'}} is
+          <span class="xg-font-bold">required.</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="multiple">
+      <ul #multiContainer class="ui-autocomplete-multiple-container ui-widget ui-inputtext ui-state-default
+      ui-corner-all" [ngClass]="{ 'ui-state-disabled':disabled}" (click)="xgTypeaheadMultiple.focus()">
+        <li [attr.value]="selectedSuggestion.value" *ngFor="let selectedSuggestion of aSelectedSuggestions" class="ui-autocomplete-token ui-state-highlight ui-corner-all ">
+          <span class="ui-autocomplete-token-icon pi pi-fw pi-times" (click)="removeSelectedSuggtions(selectedSuggestion)" *ngIf="!disabled"></span>
+          <span class="ui-autocomplete-token-label">{{selectedSuggestion.label}}</span>
+          <!-- <ng-container *ngTemplateOutlet="selectedItemTemplate; context: {$implicit: val} "></ng-container> -->
+        </li>
+        <li class="ui-autocomplete-input-token" [ngClass]="{'xg-full-width': disabled}">
+          <input #xgTypeaheadMultiple type="text" [attr.id]="id" [disabled]="disabled" [placeholder]="(aSelectedSuggestions && aSelectedSuggestions.length ? '' : placeholder)"
+            [tabindex]="tabindex" [(ngModel)]="xgTypeAheadmultiValue" class="xg-text-box" (input)="searchTerm$.next($event.target.value)"
+            (paste)="searchTerm$.next($event.target.value)" [autofocus]="autofocus" [maxlength]="maxlength || null" (keyup)="onKeyup($event)" (keydown)="onKeydown($event)"
+            #xgTypeaheadModel="ngModel" (focus)="onFocusIn($event)" (blur)="onFocusOut($event) " autocomplete="off" [xgMultiRequired]="(required && !(aSelectedSuggestions && aSelectedSuggestions.length))">
+        </li>
+      </ul>
+      <div *ngIf="xgTypeaheadModel.invalid && (xgTypeaheadModel.dirty || xgTypeaheadModel.touched)" class="xg-alert xg-alert-danger">
+        <div *ngIf="xgTypeaheadModel.errors.invalid">
+          {{labelName || 'This field'}} is
+          <span class="xg-font-bold">required.</span>
+        </div>
+      </div>
+    </div>
+    <i *ngIf="bLoading" class="ui-autocomplete-loader pi pi-spinner pi-spin "></i>
+    <button #ddBtn type="button " pButton icon="pi pi-fw pi-caret-down " class="ui-autocomplete-dropdown " [disabled]="disabled"
+      (click)="handleDropdownClick($event)" *ngIf="dropdown"></button>
+    <div #panel *ngIf="bSuggestionOverlayVisible" class="full-width ui-autocomplete-panel ui-widget ui-widget-content ui-corner-all ui-shadow"
+      [style.max-height]="suggestionMaxHeight">
+      <ul *ngIf="!xgAdversiorTemplate" class="ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset ">
+        <li *ngFor="let suggestion of xgSuggestions; let sIndex=index" [ngClass]="{ 'ui-autocomplete-list-item ui-corner-all':true,
+      'ui-state-highlight':(sHighlightSuggestion === suggestion.value)}" (mouseenter)="sHighlightSuggestion=suggestion.value"
+          (mouseleave)="sHighlightSuggestion=''" (click)="selectSuggestion(suggestion) ">
+          <span *ngIf="!xgCustomTemplate ">{{suggestion.label}}</span>
+          <ng-container *ngTemplateOutlet="xgCustomTemplate; context: {$implicit: suggestion, index: sIndex} ">
+          </ng-container>
+        </li>
+        <li *ngIf="!xgSuggestions.length" style="color:red" class="ui-autocomplete-list-item ui-corner-all">No suggestions available</li>
+      </ul>
+      <div *ngIf="xgAdversiorTemplate">
+        <ng-container *ngTemplateOutlet="xgAdversiorTemplate; context: {$implicit: xgSuggestions} ">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</div>

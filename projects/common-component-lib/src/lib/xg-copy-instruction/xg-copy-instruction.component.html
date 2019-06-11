@@ -1,0 +1,25 @@
+<div class="xg-form-panel">
+  <form [formGroup]="createHeaderForm">
+    <div class="example-container">
+      <div class="ui-g-12 ui-md-6 ui-lg-12">
+        <xg-multi-select [filter]="true" [showHeader]="true" filterPlaceHolder="Search Advertisers" label="Advertisers" [options]="advertisers" keyValue="customerId"
+          displayValue="customerName" formControlName="advertisers">
+        </xg-multi-select>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-12">
+        <xg-input type="text" labelName="Title" formControlName="title" [required]="true" [maxlength]="80" [alphaNumeric]="true"></xg-input>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-12">
+        <xg-input type="text" labelName="Estimate Number" formControlName="estimate" [maxlength]="25" [alphaNumeric]="true"></xg-input>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-12">
+        <label class="xg-text-label" for="unitType">Unit Type</label>
+        <xg-radio-group [radioOptions]="unitTypes" [(ngModel)]="defaultUnitType" formControlName="unitType">
+        </xg-radio-group>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-12">
+        <xg-duration type="number" labelName="Creative Length" timeFrame="false" name="time" formControlName="creativeLength"></xg-duration>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,51 @@
+<div class="xg-time-picker">
+  <div class="xg-text-group" [ngClass]="{'xg-required' : required, 'adjust-with-label': !!label}">
+    <label *ngIf="label" class="xg-text-label" for="inputControl">{{label}}</label>
+    <input #inputElement type="text" name="timeInput" autocomplete="off" [ngModelOptions]="{updateOn: validateOn}" class="xg-text-box" [ngClass]="{'xg-required-message' : xgTimePickerModel.invalid && (xgTimePickerModel.dirty || xgTimePickerModel.touched) && required && xgTimePickerModel.errors.required}"
+      [required]="required" (ngModelChange)="onChange($event)" [(ngModel)]="timePickerModelValue" (focus)="onFocusIn($event)"
+      (blur)="onFocusOut($event)" [disabled]="disabled" [placeholder]="placeholder" #xgTimePickerModel="ngModel" [xgValidationOptions]="hourFormat"
+      xgValidateTime/>
+    <!-- <xg-input type="text" [placeholder]="placeholder" [required]="required" [disabled]="disabled"
+      [(ngModel)]="timePickerModelValue" (onValueChange)="onChange($event)" [ngModelOptions]="{updateOn: validateOn}"
+      (onFocus)="onFocusIn($event)" (onBlur)="onFocusOut($event)" #xgTimePickerModel="ngModel" [xgValidationOptions]="hourFormat" xgValidateTime>
+    </xg-input> -->
+    <div class="xg-append-right" [ngClass]="{'adjust-with-label': !!label,'disabled':disabled}">
+      <i class="fa fa-clock" (click)="togglePicker()" [class.xg-fa-disabled]="disabled"></i>
+    </div>
+    <div class="xg-focus-border"></div>
+    <!-- <i (click)="togglePicker()" class="fa fa-clock" [class.xg-fa-disabled]="disabled"></i> -->
+    <div *ngIf="xgTimePickerModel.invalid && (xgTimePickerModel.dirty || xgTimePickerModel.touched)">
+      <div *ngIf="xgTimePickerModel.errors.invalid" class="xg-error">
+        Invalid time format
+      </div>
+      <div *ngIf="required && xgTimePickerModel.errors.required">
+        {{label || 'TIme Field'}} is
+        <span class="xg-font-bold">required.</span>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'xg-time-overlay':!!appendTo}" (@overlayAnimation.start)="onOverlayAnimationStart($event)"
+  [@overlayAnimation]="{value: 'visible', params: {showTransitionParams: showTransitionOptions, hideTransitionParams: hideTransitionOptions}}" *ngIf="showHours || showMinutes" class="xg-time-list">
+    <div *ngIf="showHours">
+      <table class="xg-hours-table">
+        <tbody>
+          <tr *ngFor="let hour of hours">
+            <td *ngFor="let h of hour" (click)="onSelectedHour(h)" [class.xg-active]="this.hourValue == h ? true : false">
+              {{h}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="showMinutes">
+      <table class="xg-hours-table">
+        <tbody *ngFor="let min of minutes">
+          <tr *ngFor="let min of min.minutes">
+            <td *ngFor="let m of min" (click)="onSelectedMinute(m)" [class.xg-active]="this.minValue == m ? true : false">
+              {{m}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

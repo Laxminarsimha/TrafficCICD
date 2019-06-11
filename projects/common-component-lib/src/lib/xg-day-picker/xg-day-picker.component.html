@@ -1,0 +1,19 @@
+<div class="xg-dayPicker">
+  <section>
+    <div class="xg-daypicker-section">
+      <div class="xg-dayPicker-header" [ngClass]="{'xg-required': required}">
+        <label class="xg-text-label xg-p-0-10">Day(s)</label>
+        <span>
+          <a href='javascript:void(0)' title="All" [ngClass]="{'active': getDayCodeN() === 127}" (click)="checkAllDays()">All</a> |
+          <a href='javascript:void(0)' title="Monday - Friday" [ngClass]="{'active': getDayCodeN() === 124}" (click)="checkWeekdays()">M-F</a> |
+          <a href='javascript:void(0)' title="Saturday - Sunday" [ngClass]="{'active': getDayCodeN() === 3}" (click)="checkWeekends()">Sa-Su</a>
+        </span>
+      </div>
+      <div class="xg-dayPicker-items">
+        <ng-container *ngFor="let day of aDays; let sIndex = index;">
+          <xg-checkbox layout="horizontal" [labelName]="day.label" [(ngModel)]="day.isSelected" (ngModelChange)="onModelChange($event,day)"></xg-checkbox>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,168 @@
+<div class="xg-form-panel">
+  <p-toast key="MainpageMsg"></p-toast>
+  <div class="ui-g">
+    <div class="ui-g-12 xg-header-div">
+      <h3 class="xg-main-header">Customer</h3>
+    </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-12 xg-form-bg">
+      <div class="ui-g-12">
+        <xg-tab class="xg-tab" [activeTab]="Agency" [tabs]="tabs" (onTabChange)="onTabChange($event.key)">
+          <ng-template xgTabContent="Agency">
+            <form [formGroup]="agencyForm">
+              <div class="ui-g-12 ui-md-6 ui-lg-6 xg-search-box"
+                *ngIf="!bShowPopup && customerModel.CustomerTypeId == 2">
+                <xg-advertise class="xg-pull-left" [label]="customerTypeModel.CustomerTypeName" name="CustomerName"
+                  required [(ngModel)]="customerModel.CustomerName" (input)="onChange($event)" [columns]="columns"
+                  formControlName="CustomerName" [maxlength]="50"
+                  placeholder="{{ customerTypeModel.CustomerTypeName }} Name" [dataSource]="dataCustomer"
+                  (ngModelChange)="customerModelChanged($event)">
+                </xg-advertise>
+                <!--  -->
+                <div class="xg-sec-btn xg-pull-right xg-m-t-30" *ngIf="bShowAdd">
+                  <xg-button icon="false" type="save" label="Add" (click)="addCustomer()"
+                    [disabled]="!agencyForm.valid"></xg-button>
+                </div>
+              </div>
+            </form>
+          </ng-template>
+          <ng-template xgTabContent="Advertiser">
+            <form [formGroup]="advertiserForm">
+              <div class="ui-g-12 ui-md-6 ui-lg-6 xg-search-box"
+                *ngIf="!bShowPopup && customerModel.CustomerTypeId ==1">
+                <xg-advertise class="xg-pull-left" [label]="customerTypeModel.CustomerTypeName" name="CustomerName"
+                  required [(ngModel)]="customerModel.CustomerName" (input)="onChange($event)" [columns]="columns"
+                  formControlName="CustomerName" [maxlength]="50"
+                  placeholder="{{ customerTypeModel.CustomerTypeName }} Name" [dataSource]="dataCustomer"
+                  (ngModelChange)="customerModelChanged($event)">
+                </xg-advertise>
+                <!--  -->
+                <div class="xg-sec-btn xg-pull-right xg-m-t-30" *ngIf="bShowAdd">
+                  <xg-button icon="false" type="save" label="Add" (click)="addCustomer()"
+                    [disabled]="!advertiserForm.valid"></xg-button>
+                </div>
+              </div>
+            </form>
+          </ng-template>
+          <ng-template xgTabContent="Rep Firm">
+          </ng-template>
+        </xg-tab>
+      </div>
+    </div>
+  </div>
+
+  <xg-popup class="xg-cus-popup" header="Add {{ customerTypeModel.CustomerTypeName }}" [visible]="bShowPopup" modal
+    responsive draggable maximizable resizable (onHide)="cancelCustomer()">
+
+    <div class="body">
+      <p-toast key="CreatePopMsg"></p-toast>
+      <form [formGroup]="nestedForm">
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+            <xg-typeahead required placeholder="{{ customerTypeModel.CustomerTypeName }} Name"
+              [labelName]="customerTypeModel.CustomerTypeName" name="dropdown" displayValue="customerName"
+              keyValue="customerName" formControlName="CustomerNameNew" [maxlength]="50"
+              [(ngModel)]="customerModel.CustomerNameNew" [suggestions]="dataCustomer">
+            </xg-typeahead>
+          </div>
+
+
+          <div class="ui-g-12 ui-md-6 ui-lg-4" *ngIf="customerIdentityNumber!=0">
+            <label class="ui-g-12 xg-cust-count"> ID:
+              {{customerIdentityNumber}}
+            </label>
+          </div>
+          <!--<div class="ui-g-12 ui-md-6 ui-lg-4">
+            <xg-input labelName="{{ customerTypeModel.CustomerTypeName }} Name" placeholder="{{ customerTypeModel.CustomerTypeName }} Name" [maxlength]="50" name="CustomerNameNew"
+              [(ngModel)]="CustomerModel.CustomerNameNew">
+            </xg-input>
+          </div>-->
+        </div>
+
+
+        <div class="ui-g-12 xg-inner-secondary-form" *ngIf="customerTypeModel.CustomerTypeId === 1 && bShowPopup">
+          <div class="xg-inner-sec-head">
+            <i class="fas fa-dollar-sign"></i> Details
+          </div>
+          <div class="ui-g xg-inner-sec-body">
+            <div class="ui-g-12 xg-inner-sec-form-bg">
+              <div class="ui-g-6 ui-md-6 ui-lg-4">
+                <xg-dropdown [autoWidth]="false" label="Revenue Type " name="Revenue Type" required="true"
+                  [options]="dataRevenueType" [(ngModel)]="RevenueTypeModel" displayValue="revenueTypeName"
+                  keyValue="revenueTypeId" formControlName="RevenueType">
+                </xg-dropdown>
+              </div>
+              <div class="ui-g-6 ui-md-6 ui-lg-4">
+                <xg-dropdown [autoWidth]="false" label="Revenue Assignment " name="Revenue Assignment" required="true"
+                  [options]="dataRevenueAssignment" [(ngModel)]="RevenueAssignmentModel"
+                  displayValue="revenueAssignmentName" keyValue="revenueAssignmentId"
+                  formControlName="RevenueAssignment">
+                </xg-dropdown>
+              </div>
+              <!-- <div class="ui-g-6 ui-md-6 ui-lg-4">              
+                <xg-dropdown [autoWidth]="false" label="Billing Period" name="Billing Period" required="true"
+                  formControlName="RevenueAssignment" 
+                  [options]="billingPeriodOptions"  [(ngModel)]="billingCategorySelectedItem"
+                  displayValue="codeValueName" keyValue="codeValueId">
+                </xg-dropdown>
+              </div> -->
+              <div class="ui-g-6 ui-md-6 ui-lg-4">
+                  <xg-dropdown [autoWidth]="false" label="Billing Period" name="Billing Period" required="true"
+                    formControlName="billingPeriodAssignments" 
+                    [options]="billingPeriodOptions"  [(ngModel)]="billingPeriodSelectedItem"
+                    displayValue="codeValueName" keyValue="codeValueId">
+                  </xg-dropdown>
+                </div>
+              <div class="ui-g-6 ui-md-6 ui-lg-4">
+                <xg-dropdown [autoWidth]="false" label="Invoice Terms" name="Invoice Terms" required="true"
+                  formControlName="invoiceTermsAssignments"
+                  [options]="invoiceTermsOptions" [(ngModel)]="invoiceTermsSelectedItem"
+                  displayValue="codeValueName" keyValue="codeValueId">
+                  
+                </xg-dropdown>
+              </div>
+              <div class="ui-g-6 ui-md-6 ui-lg-4">
+                <xg-dropdown [autoWidth]="false" label="Billing Category" name="Billing Category"
+                  formControlName="billingCategoryAssignments"
+                  [options]="billingCategoryOptions"
+                  displayValue="codeValueName" keyValue="codeValueId">
+                </xg-dropdown>
+                
+              </div>
+              <div class="ui-g-6 ui-md-6 ui-lg-4">
+                <xg-dropdown [autoWidth]="false" label="Invoice Handling Type" name="Invoice Handling Type"
+                  formControlName="invoiceHandlingAssignments"
+                  [options]="invoiceHandlingOptions"
+                  displayValue="codeValueName" keyValue="codeValueId">
+                </xg-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g-12" *ngIf="bShowPopup">
+          <xg-address formControlName="address"></xg-address>
+        </div>
+        <div class="ui-g-12" *ngIf="bShowPopup">
+          <xg-contact-component formControlName="contact"></xg-contact-component>
+        </div>
+
+        <div class="ui-g-12">
+          <div class="ui-g xg-pull-right">
+            <xg-button class="xg-sec-btn" icon="false" type="save" label="Save" (click)="submitForm(nestedForm.value)">
+            </xg-button>
+            <xg-button class="xg-sec-btn" icon="false" type="clear" label="Cancel" (onClick)="cancelCustomer()">
+            </xg-button>
+
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </xg-popup>
+
+</div>
+<!-- -->

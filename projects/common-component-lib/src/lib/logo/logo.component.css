@@ -1,0 +1,17 @@
+:host{
+    display: block;
+    height: 100%;
+}
+
+.logo-item-link{
+    display: inline-block;
+    height: 100%;
+    cursor: pointer;
+}
+
+.logo-item-link_img{
+    max-height: 100%;
+    position: relative;
+    margin: 0 10px;
+}
+

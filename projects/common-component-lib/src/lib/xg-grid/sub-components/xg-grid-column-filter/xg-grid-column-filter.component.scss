@@ -1,0 +1,41 @@
+.centerContent {
+  display: flex;
+  justify-content: center;
+}
+.filterLabel {
+  font-size: 12px;
+  float: right;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+// Prime Style Overrides
+.ui-inputtext {
+  font-size: 12px !important;
+  padding: 5px;
+}
+.ui-inputgroup-addon {
+  min-width: 5em !important;
+}
+.betweenFilterPanel::ng-deep .ui-overlaypanel-content{
+  padding: 0;
+}
+.betweenFilterPanel::ng-deep .ui-overlaypanel::before{
+  border-bottom-color: #ffffff;
+}
+.booleanOptions span{
+  margin-left: 0 !important;
+  float: none !important;
+}
+
+.xg-custom-picker::ng-deep .xg-text-group{
+  margin: 0 !important;
+  input{
+    min-height: auto !important;
+    line-height: 0 !important;
+    padding: 0px 6px !important;
+  }
+ .xg-append-right{
+   top: -7px !important;
+ }
+}

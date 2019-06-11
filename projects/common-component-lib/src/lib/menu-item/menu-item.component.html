@@ -1,0 +1,41 @@
+<div
+    class="menu-item"
+    *ngIf="menuItem"
+    [ngClass]="menuItemClasses()"
+>
+    <span
+        class="navigation-item-link"
+        *ngIf="!menuItem.externalRedirect"
+        (click)="expand($event, menuItem)" >
+        <span class="pi pi-caret-right icon-helper" *ngIf="!menuItem.icon"></span>
+        <span class="pi" [ngClass]="menuItem.icon"></span>
+        <span class="text">{{ menuItem.name }}</span>
+        <span class="pi pi-angle-right icon-helper" *ngIf="hasSubItems()"></span>
+    </span>
+
+    <!-- externalRedirect -->
+    <a
+        class="navigation-item-link"
+        *ngIf="menuItem.externalRedirect"
+        href="{{menuItem.url}}"
+        target="{{menuItem.target}}">
+        <span class="pi pi-caret-right icon-helper" *ngIf="!menuItem.icon"></span>
+        <span class="pi" [ngClass]="menuItem.icon"></span>
+        <span class="text">{{ menuItem.name }}</span>
+        <span class="pi pi-angle-right icon-helper" *ngIf="hasSubItems()"></span>
+    </a>
+
+    <!-- <div class="slide" *ngIf="hasSubItems() && expanded">
+        <ul class="sub-list">
+            <li *ngFor="let subItem of subItems">
+                <img-lib-menu-item *ngIf="subItem && !subItem.isHidden"
+                                   [menuItem]="subItem"
+                                   [showSubLevels]="showSubLevels - 1"
+                                   [activeItems]="activeItems"
+                                   [collapseOnSelect]="collapseOnSelect"
+                                   (selectedItem)='selectedListItem($event)'>
+                </img-lib-menu-item>
+            </li>
+        </ul>
+    </div> -->
+</div>

@@ -1,0 +1,19 @@
+<ng-container [ngSwitch]="column.outputMode.readonlyMode">
+  <ng-container *ngSwitchCase="'String'">{{value}}</ng-container>
+  <ng-container *ngSwitchCase="'ToggleButton'">
+    <mat-slide-toggle (change)="inputupdate(this, rowData)" [(ngModel)]="value" [checked]="value" [disabled]="column.outputMode.accessMode == 'readonly'">
+    </mat-slide-toggle>
+  </ng-container>
+  <ng-container *ngSwitchCase="'Checkbox'">
+    <mat-checkbox (change)="inputupdate(this, rowData)" [checked]="value" [(ngModel)]="value" [disabled]="column.outputMode.accessMode == 'readonly'">
+    </mat-checkbox>
+  </ng-container>
+  <ng-container *ngSwitchCase="'Button'">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="bold">Bold</mat-button-toggle>
+      <mat-button-toggle value="italic">Italic</mat-button-toggle>
+      <mat-button-toggle value="underline">Underline</mat-button-toggle>
+    </mat-button-toggle-group>
+  </ng-container>
+  <ng-container *ngSwitchDefault>{{value}}</ng-container>
+</ng-container>

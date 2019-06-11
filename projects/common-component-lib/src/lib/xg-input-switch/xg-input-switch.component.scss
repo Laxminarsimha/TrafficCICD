@@ -1,0 +1,8 @@
+.fullWidth {
+    display: block;
+}
+@import '../../../../../src/styles.scss';
+.xg-disabled, p-inputswitch.xg-disabled .ui-inputswitch-slider{
+    cursor: not-allowed !important;
+}
+// @import '../../../../../src/styles.scss';

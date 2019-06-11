@@ -1,0 +1,16 @@
+:host(){
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .actions { 
+      align-self: flex-start;
+    }
+  
+  .toolbar { 
+    align-self: flex-end;
+  }
+
+    .toolbarButtons, .globalFilter{
+      float: right;
+    }

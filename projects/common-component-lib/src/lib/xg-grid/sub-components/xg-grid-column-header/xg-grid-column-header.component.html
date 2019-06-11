@@ -1,0 +1,27 @@
+<tr>
+
+  <th class="xg-grid-column-drag" *ngIf="allowRowReordering"></th>
+  <th class="xg-grid-column-select-checkbox" *ngIf="allowRowSelection && useCheckBoxSelection">
+    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+  </th>
+  <th class="xg-grid-column-details-toggle" *ngIf="showDetailsRow"></th>
+  <th *ngFor="let col of columns" [pSortableColumn]="col.field" pReorderableColumn pResizableColumn [ngStyle]="{'display': col.display}">
+    {{col.header}}
+    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+      ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+  </th>
+  <th *ngIf="enableActionsColumn" style="min-width:230px; width:230px;text-align: center" class="headcol">Action(s)</th>
+
+</tr>
+
+<tr *ngIf="showColumnFilterRow">
+
+  <th class="xg-grid-column-drag" *ngIf="allowRowReordering"></th>
+  <th class="xg-grid-column-select-checkbox " *ngIf="allowRowSelection && useCheckBoxSelection"></th>
+  <th *ngIf="showDetailsRow"></th>
+  <th *ngFor="let col of columns" [ngStyle]="{'display': col.display, 'overflow-x': 'scroll'}">
+    <xg-grid-column-filter [column]="col" [showLabel]="showFilterLabels" [dataTableRef]="dataTableRef" (onFilterChanged)="filterChanged($event)"></xg-grid-column-filter>
+  </th>
+  <th *ngIf="enableActionsColumn" style="width:230px;height:55px;z-index: 1;" [ngClass]="enableActionsColumn ? 'headcol' : ''"></th>
+
+</tr>

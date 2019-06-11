@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>{{header}}</h1>
+<div mat-dialog-content class="contentContainer">
+  <div class="column-options-section-all-fields">
+
+    <div class="column-options-section-title">
+      <i class="material-icons">view_column</i> Columns
+    </div>
+
+    <div class="options-select-all-section">
+      <mat-checkbox [checked]="true" (change)="checkAll($event)">Select All</mat-checkbox>
+    </div>
+
+    <div id="sourceFields" class="column-options-section">
+      <mat-list [sortablejs]="colConfig">
+        <mat-list-item *ngFor="let col of colConfig">
+          <span class="material-icons dragIcon">drag_indicator</span>
+          <mat-checkbox [checked]="showChecked(col)" (change)="onCheckChange($event, col)">{{col.header}}</mat-checkbox>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+  </div>
+
+  <div class="column-options-section-all-fields">
+    <div class="column-options-section-title">
+      <i class="material-icons">cloud_download</i> File Options
+    </div>
+    <div class="column-options-section-advanced">
+      <mat-form-field>
+        <input id="fileName" matInput type="text" maxlength="32" placeholder="File Name" [(ngModel)]="exportFileName"
+          required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-select placeholder="Export Format" [(value)]="selectedExportFormats">
+          <mat-option *ngFor="let format of formatOutputOptions" [value]="format">
+            {{selectedExportFormat[format]}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
+
+<div mat-dialog-actions class="footerContainer">
+
+  <div class="actionButtons">
+    <button mat-raised-button color="primary" (click)="Export(true)" [disabled]="exportFileName.length == 0">Export All Records</button>
+    <ng-container *ngIf="selectedData.length !== 0">
+      <span class="orSelected">or</span>
+      <button mat-raised-button color="primary" (click)="Export(false)" [disabled]="exportFileName.length == 0">Only Selected Records
+        <i>({{selectedData.length}})</i></button>
+    </ng-container>
+  </div>
+
+  <div class="cancelContainer">
+    <button mat-raised-button mat-dialog-close>Close</button>
+  </div>
+
+</div>

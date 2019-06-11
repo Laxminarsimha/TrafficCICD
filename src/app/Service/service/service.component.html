@@ -1,0 +1,69 @@
+<div class="xg-form-panel">
+  <p-toast key="serviceMsg" (onClose)="onToastDone($event)"></p-toast>
+  <p-toast key="serviceErrMsg"></p-toast>
+  <div class="ui-g">
+    <div class="ui-g-12 xg-header-div">
+      <h3 class="xg-main-header">Add Service</h3>
+    </div>
+  </div>
+  <form [formGroup]="nestedForm">
+    <div class="ui-g">
+      <div class="ui-g-12 xg-form-bg">
+        <div class="xg-inner-secondary-form" [ngClass]="{'xg-accordion-icon': toggle}">
+          <div class="xg-inner-sec-head">
+            Service Detail
+          </div>
+          <div class="xg-inner-sec-body">
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <div class="xg-inner-sec-form-bg">
+                  <div class="ui-g">
+                    <div class="ui-g-12 ui-md-3 ui-lg-3">
+                      <xg-dropdown required class="xg-dropdown" [autoWidth]="false" [options]="serviceTypeList"
+                        keyValue="id" displayValue="serviceTypeName" label="Type" filter="true" name="Type"
+                        formControlName="ServiceType">
+                      </xg-dropdown>
+                    </div>
+                    <div class="ui-g-12 ui-md-3 ui-lg-3">
+                      <xg-input required [(ngModel)]="serviceName" labelName="Name"
+                        formControlName="ServiceName">
+                      </xg-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-3 ui-lg-3">
+                      <xg-date-picker required label="Activation Date" formatter="MM/dd/yyyy"
+                        [(ngModel)]="serviceActivationDate" [minDate]="todayDate" (ngModelChange)="validateDate('Service Activation')"
+                        formControlName="ServiceActivationDate">
+                      </xg-date-picker>
+                    </div>
+                    <div class="ui-g-12 ui-md-3 ui-lg-3">
+                      <xg-date-picker required label="Go Live Date" formatter="MM/dd/yyyy"
+                        [(ngModel)]="goLiveDate" (ngModelChange)="validateDate('Go Live')"
+                        [minDate]="serviceActivationDate"   formControlName="serevcieGoLiveDate">
+                      </xg-date-picker>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-12 xg-form-bg">
+        <xg-rating-component (onValueChange)="ratingValueChange($event)" [source]="sourceList" [markets]="marketList" [callLetters]="callLettersTags"></xg-rating-component>
+      </div>
+      <div class="ui-g-12 xg-form-bg">
+        <xg-address formControlName="Address"></xg-address>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g xg-pull-right">
+          <xg-button class="xg-sec-btn" icon="false" type="save" label="Save" (click)="submitForm(nestedForm.value)">
+          </xg-button>
+          <xg-button class="xg-sec-btn" icon="false" type="clear" label="Cancel" (onClick)="CancelService()">
+          </xg-button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- -->

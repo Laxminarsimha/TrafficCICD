@@ -1,0 +1,23 @@
+<div class="xg-text-group" [ngClass]="{'xg-required' : required}">
+  <label class="xg-text-label" for="dropdownControl" *ngIf="label">{{label}}</label>
+  <p-dropdown class="xg-dropdown" [options]="options" name="xgDropdown" [scrollHeight]="scrollHeight" [style]="style"
+    [placeholder]="placeholder" [required]="required" [readonly]="readOnly" [filter]="filter"
+    [filterPlaceholder]="filterPlaceholder" [autoWidth]="autoWidth" [disabled]="disabled" [autofocus]="autofocus"
+    [resetFilterOnHide]="resetFilterOnHide" [emptyFilterMessage]="emptyFilterMessage"
+    [showClear]="(dropdownModelValue && showClear)" [showTransitionOptions]="showTransitionOptions"
+    [hideTransitionOptions]="hideTransitionOptions" (onClick)="onClickEvent($event)" (onFocus)="onFocusEvent($event)"
+    (onBlur)="onBlurEvent($event)" (onShow)="onShowEvent($event)" (onHide)="onHideEvent($event)"
+    [(ngModel)]="dropdownModelValue" #xgDropdownModel="ngModel">
+
+    <ng-template *ngIf="xgCustomTemplate" let-data pTemplate="item">
+      <ng-container *ngTemplateOutlet="xgCustomTemplate; context: {$implicit: data} "></ng-container>
+    </ng-template>
+  </p-dropdown>
+  <div *ngIf="xgDropdownModel.invalid && (xgDropdownModel.dirty || xgDropdownModel.touched)"
+    class="xg-alert xg-alert-danger">
+    <div *ngIf="xgDropdownModel.errors.required">
+      {{name || 'This field'}} is
+      <span class="xg-font-bold">required.</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+.headerText{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    font-size: 1.125rem;
+    font-family: "72",Arial,Helvetica,sans-serif;
+    color: #333333;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    background-color: transparent;
+    border-bottom: 1px solid #cccccc;
+}
+.list-item{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 1rem 0 1rem;
+    .item-checkbox > div{
+    margin: 0 !important
+    }
+}
+.list-item:not(.all-checkbox-list):not(.selected):hover{
+    background: #f0f0f0;
+}
+.list-item.all-checkbox-list{
+    justify-content: space-between;
+}
+.list-item.selected{
+    background: #e8eff6;
+}
+.list-item.disabled{
+    cursor: not-allowed;
+    * {
+        pointer-events: none;
+    }
+}
+.delete-icon{
+    cursor: pointer;
+}
+.list-container{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+cdk-virtual-scroll-viewport{
+    display: block;
+    position: relative;
+    overflow: auto;
+    contain: strict;
+    transform: translateZ(0);
+    will-change: scroll-position;
+    -webkit-overflow-scrolling: touch;
+}
+

@@ -1,0 +1,524 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- FOR DEVMODE PRE-STORYBOOK IMPLEMENTATION-->
+<div class="container">
+  <p-overlayPanel #op [dismissable]="true" [showCloseIcon]="true">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="gridAvatar"></div>
+        <mat-card-title>Grid Demo Controls</mat-card-title>
+        <mat-card-subtitle>These controls will apply and show off the vairous control aspects of the "xgGrid".
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Visual">
+            <div style="display:flex; padding: 20px">
+              <mat-form-field style="width: 100%;">
+                <input matInput placeholder="Grid Caption" [(ngModel)]="captionLabel" type="text" name="captionLabel" value="captionLabel">
+              </mat-form-field>
+              <mat-list style="flex: 33%">
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="showCalculationsRow">Show Footer Row</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="showSummaryRow">Show Summary Row</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="allowColumnResize">Allow Column Resizing</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="showRowHover">Show row hover effect</mat-checkbox>
+                </mat-list-item>
+              </mat-list>
+              <mat-list style="flex: 33%;">
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="showTotalRecordCount">Show Total Record Count</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="showSelectedRecordCount">Show Selected Record Count</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-slide-toggle [(ngModel)]="enableScrolling">Enable Scrolling</mat-slide-toggle>
+                </mat-list-item>allowColumnSorting
+                <mat-list-item>
+                  <mat-form-field style="width: 100%;" *ngIf="enableScrolling">
+                    <input matInput placeholder="Scroll Height" [(ngModel)]="scrollHeight" type="number" name="scrollHeight" value="scrollHeight">
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+              <mat-list style="flex: 33%">
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="useAutoLayout">Use Auto Layout Columns</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="loading">Tooggle Loading State</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="logEventsToConsole">Log Events To The Console</mat-checkbox>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="allowColumnSorting">Allow Column Sorting</mat-checkbox>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Interactions">
+            <div style="padding: 20px">
+              <mat-card>
+                <mat-card-header>Column Options</mat-card-header>
+                <mat-card-content>
+                  <mat-checkbox [(ngModel)]="allowColumnReordering">Allow Column Reordering</mat-checkbox>
+                </mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-header>Row Options</mat-card-header>
+                <mat-card-content>
+                  <mat-checkbox [(ngModel)]="allowRowReordering">Allow Row Reordering</mat-checkbox>
+                </mat-card-content>
+              </mat-card>
+
+              <mat-card>
+                <mat-card-header>Row Selection Options</mat-card-header>
+                <br>
+                <mat-card-content>
+                  <mat-checkbox [(ngModel)]="allowRowSelection">Allow Row Selection</mat-checkbox>
+                  <mat-checkbox [(ngModel)]="useCheckBoxSelection">Use Check Box Selection</mat-checkbox>
+                  <br>
+                  <!-- <mat-form-field>
+                    <mat-select placeholder="Selection Mode" [(ngModel)]="currentSelectionMode" (selectionChange)="handleSelectionModeChange($event)">
+                      <mat-option *ngFor="let mode of selectionModes" [value]="mode">
+                        {{mode.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+                </mat-card-content>
+              </mat-card>
+
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Master/Details">
+            <div style="padding: 20px">
+              <mat-checkbox [(ngModel)]="showDetailsRow">Enable Master/Details</mat-checkbox>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Editing">
+            <div style="padding: 20px">
+              <mat-checkbox [(ngModel)]="enableGridEdit">Enable Editing</mat-checkbox>
+              <mat-checkbox [(ngModel)]="enableActionsColumn">Enable Actions Column</mat-checkbox>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Search/Filtering">
+            <div style="padding: 20px">
+              <mat-checkbox [(ngModel)]="enableGlobalFilter">Global Search</mat-checkbox>
+              <mat-checkbox [(ngModel)]="showColumnFilterRow">Show Column Filter</mat-checkbox>
+              <mat-checkbox [(ngModel)]="showFilterLabels" [disabled]="!showColumnFilterRow">Show Filter Labels
+              </mat-checkbox>
+              <mat-checkbox [(ngModel)]="showFilterColumnHighlighting" [disabled]="!showColumnFilterRow">Show Filter Search Highlighting</mat-checkbox>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Paging">
+            <div style="padding: 20px">
+              <mat-list>
+                <mat-list-item>
+                  <mat-form-field>
+                    <input matInput placeholder="Page Row Count" [(ngModel)]="pageRowCount" type="number" name="pageRowCount" value="pageRowCount">
+                  </mat-form-field>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-checkbox [(ngModel)]="usePagination">Use Pagination</mat-checkbox>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-tab>
+
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </p-overlayPanel>
+</div>
+
+<div class="xg-grid">
+  <p-table #dt [columns]="gridConfig.columns" [columnResizeMode]="'expand'" [value]="lazyLoading ? lazyLoadData : data" [paginator]="usePagination"
+    [sortMode]="sortMode" [multiSortMeta]="multiSortMeta" [rows]="pageRowCount" [reorderableColumns]="allowColumnReordering"
+    [resizableColumns]="allowColumnResize" [(selection)]="selectedRecords" [scrollable]="enableScrolling" [scrollHeight]="scrollHeight + 'px'"
+    [dataKey]="gridConfig.uniqueIdName" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [rowHover]="showRowHover"
+    [(autoLayout)]="useAutoLayout" (onRowReorder)="onRowReorder($event)" [responsive]="responsive" (onFilter)="handleGridOnFilter($event)"
+    [loading]="loading" [frozenColumns]="frozenColumns" frozenWidth="0px" (onPage)="onGridPage($event)" (onEditInit)="onGridEditInit($event)"
+    (onEditComplete)="onGridEditComplete($event)" [selectionMode]="selectionMode" [lazy]="lazyLoading" (onLazyLoad)="onLazyLoad($event)"
+    [totalRecords]="data.length" [virtualRowHeight]="35" [virtualScroll]="virtualScroll" [rowsPerPageOptions]="[5,10,20]" (onSort)="onSort($event)">
+
+    <ng-template *ngIf="enableScrolling" pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col *ngFor="let col of columns" style="width: 200px">
+      </colgroup>
+    </ng-template>
+
+    <ng-template *ngIf="!enableScrolling" pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col *ngFor="let col of columns" [style.width]="col.width">
+      </colgroup>
+    </ng-template>
+
+
+    <!-- AREA == Grid 'Caption' Template -->
+    <ng-template pTemplate="caption">
+      <xg-grid-section-caption [caption]="captionLabel"></xg-grid-section-caption>
+      <xg-grid-toolbar [(showActions)]="showActionsToolbar" [(actionData)]="selectedRecords" [showToolbar]="showToolbarSection"
+        [gridConfig]="gridConfig" [devMode]="devMode" [devOptions]="devOptions" [enableGlobalFilter]="enableGlobalFilter" [xgGrid]="dt"
+        [allowReordering]="allowColumnReordering" [showExport]="allowExport" [allData]="data" [gridTitle]="captionLabel" (onDeleteBtnClick)="onActionsEvent($event)"
+        (onSaveBtnClick)="onActionsEvent($event)" (onCancelBtnClick)="onActionsEvent($event)" [customIconsConfig]="defaultActionConfiguration"></xg-grid-toolbar>
+    </ng-template>
+
+    <!-- AREA == Grid Header Template -->
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th class="xg-grid-column-drag" *ngIf="allowRowReordering"></th>
+        <th class="xg-grid-column-select-checkbox " *ngIf="allowRowSelection && useCheckBoxSelection">
+          <p-tableHeaderCheckbox (click)="checkAll()"></p-tableHeaderCheckbox>
+        </th>
+        <th class="xg-grid-column-details-toggle" *ngIf="showDetailsRow"></th>
+        <ng-container *ngIf="allowColumnSorting">
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field" pReorderableColumn pResizableColumn [ngStyle]="col.width ? {'display': col.display, 'width': col.width + 'px'} : {'display': col.display} ">
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+            </p-sortIcon>
+          </th>
+        </ng-container>
+        <ng-container *ngIf="!allowColumnSorting">
+          <th *ngFor="let col of columns" pReorderableColumn pResizableColumn [ngStyle]="col.width ? {'display': col.display, 'width': col.width + 'px'} : {'display': col.display} ">
+            {{col.header}}
+          </th>
+        </ng-container>
+      </tr>
+
+      <tr *ngIf="showColumnFilterRow">
+        <th class="xg-grid-column-drag" *ngIf="allowRowReordering"></th>
+        <th class="xg-grid-column-select-checkbox " *ngIf="allowRowSelection && useCheckBoxSelection"></th>
+        <th *ngIf="showDetailsRow"></th>
+        <th *ngFor="let col of columns"
+          [ngStyle]="{'display': col.display, 'overflow-x': 'scroll'}">
+          <xg-grid-column-filter [column]="col" [showLabel]="showFilterLabels" [dataTableRef]="xgGrid" (onFilterChanged)="filterChanged($event)"></xg-grid-column-filter>
+        </th>
+      </tr>
+    </ng-template>
+
+    <!-- <ng-template pTemplate="frozenheader">
+    <tr>
+      <th style="width:230px;">Action</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="frozenbody" let-data let-index="rowIndex">
+    <tr style="min-height:52px;">
+      <td>
+        
+      </td>
+    </tr>
+  </ng-template> -->
+
+    <!-- AREA == Grid Cell/Data Template -->
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-index="rowIndex" let-expanded="expanded">
+
+      <ng-container [ngSwitch]="selectionMode">
+        <!-- SELECTION MODE SINGLE -->
+        <ng-container *ngSwitchCase="'single'">
+          <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.DefaultSalesOffice].index === rowIndex">
+            <td [attr.colspan]="calculateVisibleColumnCount()">
+              <span style="font-weight:bold">{{rowData.DefaultSalesOffice}}</span>
+            </td>
+          </tr>
+          <tr [pReorderableRow]="index" [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex" (mouseenter)="onRowEnter($event, index)"
+            (mouseleave)="onRowLeave($event, index)" class="noTopBottomBorder" style="height:34px;">
+            <td *ngIf="allowRowReordering" class="ui-resizable-column noTopBottomBorder xg-grid-column-drag">
+              <i class="material-icons" pReorderableRowHandle pDraggable="records" (onDragStart)="dragStart($event,rowData)" (drop)="drop($event)" (onDragEnd)="dragEnd($event)"
+                style="cursor:move;">drag_indicator</i>
+            </td>
+            <td *ngIf="allowRowSelection && useCheckBoxSelection" class="ui-resizable-column noTopBottomBorder xg-grid-column-select-checkbox">
+              <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+            </td>
+            <td *ngIf="showDetailsRow" class="ui-resizable-column xg-grid-column-details-toggle noTopBottomBorder">
+              <button [pRowToggler]="rowData" class="detailsToggle">
+                <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+              </button>
+            </td>
+
+            <ng-container [ngSwitch]="enableGridEdit">
+              <ng-container *ngSwitchCase="true">
+                <!-- TODO: Determine edit mode here? -->
+                <td *ngFor="let col of columns" class="ui-resizable-column noTopBottomBorder" [ngStyle]="{'display': col.display}" [pEditableColumn]="rowData"
+                  [pEditableColumnField]="col">
+                  <xg-grid-data-cell [col]="col" [rowData]="rowData" [isEditable]="enableGridEdit && col.canEdit" [editMode]="editMode" [currentFilterColumnData]="currentFilterColumnData"
+                    [showFilterColumnHighlighting]="showFilterColumnHighlighting" (onCellEdited)="onCellEdited($event)" [cellTemplateArray]="cellTemplateArray" [xgCustomCellTemplate]="xgCustomCellTemplate">
+                  </xg-grid-data-cell>
+                </td>
+
+              </ng-container>
+              <ng-container *ngSwitchCase="false">
+                <td *ngFor="let col of columns" class="ui-resizable-column noTopBottomBorder" [ngStyle]="{'display': col.display}">
+                  <xg-grid-data-cell [col]="col" [rowData]="rowData" [isEditable]="enableGridEdit && col.canEdit" [editMode]="editMode" [currentFilterColumnData]="currentFilterColumnData"
+                    [showFilterColumnHighlighting]="showFilterColumnHighlighting" (onCellEdited)="onCellEdited($event)" [cellTemplateArray]="cellTemplateArray" [xgCustomCellTemplate]="xgCustomCellTemplate">
+                  </xg-grid-data-cell>
+                </td>
+              </ng-container>
+            </ng-container>
+          </tr>
+        </ng-container>
+        <!-- SELECTION MODE MULTIPLE -->
+        <ng-container *ngSwitchCase="'multiple'">
+          <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.DefaultSalesOffice].index === rowIndex">
+            <td [attr.colspan]="calculateVisibleColumnCount()">
+              <span style="font-weight:bold">{{rowData.DefaultSalesOffice}}</span>
+            </td>
+          </tr>
+          <tr [pReorderableRow]="index" [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex" (mouseenter)="onRowEnter($event, index)"
+            (mouseleave)="onRowLeave($event, index)" class="noTopBottomBorder" style="height:34px;">
+            <td *ngIf="allowRowReordering" class="ui-resizable-column noTopBottomBorder xg-grid-column-drag">
+              <i class="material-icons" pReorderableRowHandle pDraggable="records" (onDragStart)="dragStart($event,rowData)" (onDragEnd)="dragEnd($event)"
+                style="cursor:move;">drag_indicator</i>
+            </td>
+            <td *ngIf="allowRowSelection && useCheckBoxSelection" class="ui-resizable-column noTopBottomBorder xg-grid-column-select-checkbox">
+              <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+            </td>
+            <td *ngIf="showDetailsRow" class="ui-resizable-column xg-grid-column-details-toggle noTopBottomBorder">
+              <button [pRowToggler]="rowData" class="detailsToggle">
+                <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+              </button>
+            </td>
+
+            <ng-container [ngSwitch]="enableGridEdit">
+              <ng-container *ngSwitchCase="true">
+                <td *ngFor="let col of columns" class="ui-resizable-column noTopBottomBorder" [ngStyle]="{'display': col.display}" [pEditableColumn]="rowData"
+                  [pEditableColumnField]="col">
+                  <xg-grid-data-cell [col]="col" [rowData]="rowData" [isEditable]="enableGridEdit && col.canEdit" [editMode]="editMode" [currentFilterColumnData]="currentFilterColumnData"
+                    [showFilterColumnHighlighting]="showFilterColumnHighlighting" (onCellEdited)="onCellEdited($event)" [cellTemplateArray]="cellTemplateArray" [xgCustomCellTemplate]="xgCustomCellTemplate">
+                  </xg-grid-data-cell>
+                </td>
+                <ng-container *ngIf="enableFloatingActions">
+                  <!--  * FLOATING ACTION -->
+                  <div *ngIf="isRowHoveredOrSelected && hoverIndex == index" style="position: absolute;right:0px;vertical-align: middle;">
+                    <xg-grid-actions [dataItems]="rowData" [visible]="true"></xg-grid-actions>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="false">
+                <td *ngFor="let col of columns" class="ui-resizable-column noTopBottomBorder" [ngStyle]="{'display': col.display}">
+                  <xg-grid-data-cell [col]="col" [rowData]="rowData" [isEditable]="enableGridEdit && col.canEdit" [editMode]="editMode" [currentFilterColumnData]="currentFilterColumnData"
+                    [showFilterColumnHighlighting]="showFilterColumnHighlighting" (onCellEdited)="onCellEdited($event)" [cellTemplateArray]="cellTemplateArray" [xgCustomCellTemplate]="xgCustomCellTemplate">
+                  </xg-grid-data-cell>
+                </td>
+              </ng-container>
+            </ng-container>
+
+          </tr>
+        </ng-container>
+        <!-- SELECTION ACTIONS -->
+        <ng-container *ngSwitchCase="'allowActions'">
+          <tr class="ui-widget-header">
+            <td *ngFor="let col of columns">
+              <span>
+                <i class="fa fa-plus"></i>
+              </span>
+              <span>
+                <i class="fa fa-pencil-square-o"></i>
+              </span>
+              <span>
+                <i class="fa fa-trash"></i>
+              </span>
+            </td>
+          </tr>
+        </ng-container>
+        <!-- SELECTION MODE OFF-->
+        <ng-container *ngSwitchCase="''">
+          <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.DefaultSalesOffice].index === rowIndex">
+            <td [attr.colspan]="calculateVisibleColumnCount()">
+              <span style="font-weight:bold">{{rowData.DefaultSalesOffice}}</span>
+            </td>
+          </tr>
+          <tr [pReorderableRow]="index" (mouseenter)="onRowEnter($event, index)" (mouseleave)="onRowLeave($event, index)" class="noTopBottomBorder"
+            style="height:34px;">
+            <td *ngIf="allowRowReordering" class="ui-resizable-column noTopBottomBorder xg-grid-column-drag">
+              <i class="material-icons" pReorderableRowHandle pDraggable="records" (onDragStart)="dragStart($event,rowData)" (onDragEnd)="dragEnd($event)"
+                style="cursor:move;">drag_indicator</i>
+            </td>
+            <td *ngIf="allowRowSelection && useCheckBoxSelection" class="ui-resizable-column noTopBottomBorder xg-grid-column-select-checkbox">
+              <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+            </td>
+            <td *ngIf="showDetailsRow" class="ui-resizable-column xg-grid-column-details-toggle noTopBottomBorder">
+              <button [pRowToggler]="rowData" class="detailsToggle">
+                <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+              </button>
+            </td>
+
+            <ng-container [ngSwitch]="enableGridEdit">
+              <ng-container *ngSwitchCase="true">
+                <td *ngFor="let col of columns" class="ui-resizable-column noTopBottomBorder" [ngStyle]="{'display': col.display}" [pEditableColumn]="rowData"
+                  [pEditableColumnField]="col">
+                  <xg-grid-data-cell [col]="col" [rowData]="rowData" [isEditable]="enableGridEdit && col.canEdit" [editMode]="editMode" [currentFilterColumnData]="currentFilterColumnData"
+                    [showFilterColumnHighlighting]="showFilterColumnHighlighting" (onCellEdited)="onCellEdited($event)" [cellTemplateArray]="cellTemplateArray" [xgCustomCellTemplate]="xgCustomCellTemplate">
+                  </xg-grid-data-cell>
+                </td>
+              </ng-container>
+              <ng-container *ngSwitchCase="false">
+                <td *ngFor="let col of columns" class="ui-resizable-column noTopBottomBorder" [ngStyle]="{'display': col.display}">
+                  <xg-grid-data-cell [col]="col" [rowData]="rowData" [isEditable]="enableGridEdit && col.canEdit" [editMode]="editMode" [currentFilterColumnData]="currentFilterColumnData"
+                    [showFilterColumnHighlighting]="showFilterColumnHighlighting" (onCellEdited)="onCellEdited($event)" [cellTemplateArray]="cellTemplateArray" [xgCustomCellTemplate]="xgCustomCellTemplate">
+                  </xg-grid-data-cell>
+                </td>
+              </ng-container>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+
+
+    <!-- Details Section for Master -->
+    <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+      <tr>
+        <td [attr.colspan]="calculateVisibleColumnCount() + calculateDynamicColsCount()">
+          <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+            <div class="ui-g-12 ui-md-3" style="text-align:center">
+              <img [attr.alt]="rowData.LingedChannelsCount" src="https://www.imaginecommunications.com/sites/default/files/logo.png">
+            </div>
+            <div class="ui-g-12 ui-md-9">
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <mat-form-field>
+                    <input matInput placeholder="Email Address" type="text" name="emailAddress" value="{{rowData.SalesPersonEmail}}">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Phone Number" type="tel" name="SalesPersonPhone" value="{{rowData.SalesPersonPhone}}">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- AREA == Grid Footer Row Template -->
+    <ng-template pTemplate="footer" let-columns *ngIf="showCalculationsRow">
+      <tr>
+        <td *ngIf="allowRowReordering" class="xg-grid-column-drag"></td>
+        <td *ngIf="allowRowSelection && useCheckBoxSelection" class="xg-grid-column-select-checkbox "></td>
+        <td *ngIf="showDetailsRow" class="xg-grid-column-details-toggle"></td>
+        <td *ngFor=" let col of columns" [ngStyle]="{'display': col.display, 'width': col.width, 'min-height': '36px', 'vertical-align': 'top'}">
+          <xg-grid-column-calculations [column]="col" [dataTableRef]="xgGrid" [data]="data">
+          </xg-grid-column-calculations>
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- AREA == Grid Summary Row Template -->
+    <ng-template pTemplate="summary" *ngIf="showSummaryRow">
+
+      <div *ngIf="showTotalRecordCount">
+        There are {{data?.length}} records in this dataset.
+      </div>
+      <div *ngIf="showSelectedRecordCount && testSelectedRecords.length > 0">
+        <i>{{selectedRecords?.length}} records selected</i>
+      </div>
+      <div *ngIf="filteredRecordCount > 0 && filterCount !=0">
+        <i>{{filteredRecordCount}} records filtered from {{data?.length}} records</i>
+      </div>
+      <div *ngIf="filteredRecordCount == 0 && filterCount > 0" class="text-danger">
+        <i>No records match filter criteria!</i>
+      </div>
+
+    </ng-template>
+
+    <!-- AREA == Empty Message Content -->
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td [attr.colspan]="calculateVisibleColumnCount() + calculateDynamicColsCount()" style="text-align:center;">
+          No records found
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>
+
+<!-- <div class="gridContainer">
+  <div class="grid1Container">
+
+  </div>
+
+  <div class="grid2Container">
+    <p-table #dt2 [columns]="gridConfig.columns" [value]="selectedTargetRecords" [paginator]="usePagination" [rows]="pageRowCount"
+      [reorderableColumns]="allowColumnReordering" [resizableColumns]="allowColumnResize" [rowHover]="showRowHover"
+      selectionMode="currentSelectionMode.value" pDroppable="record" (drop)="drop($event)">
+
+      <ng-template pTemplate="caption">
+        <div *ngIf="captionLabel.length > 0">{{captionLabel}}</div>
+        <div style="text-align: right" *ngIf="enableGlobalFilter">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt2.filterGlobal($event.target.value, 'contains')"
+            style="width:auto">
+        </div>
+
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th class="xg-grid-column-drag" *ngIf="allowRowReordering"><i class="fa fa-arrows-alt"></i></th>
+          <th class="xg-grid-column-select-checkbox " *ngIf="allowRowSelection && useCheckBoxSelection">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field" pReorderableColumn pResizableColumn>
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+              ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+          </th>
+        </tr>
+        <tr *ngIf="showColumnFilterRow">
+          <th class="xg-grid-column-drag" *ngIf="allowRowReordering"></th>
+          <th class="xg-grid-column-select-checkbox " *ngIf="allowRowSelection && useCheckBoxSelection"></th>
+          <th *ngFor="let col of columns" [ngSwitch]="col.field">
+            <input *ngSwitchCase="'FirstName'" pInputText type="text" (input)="dt2.filter($event.target.value, col.field, col.filterMatchMode)">
+          </th>
+        </tr>
+      </ng-template>
+
+
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-index="rowIndex">
+        <tr [pReorderableRow]="index" [pSelectableRow]="rowData">
+          <td *ngIf="allowRowReordering">
+            <i class="fa fa-bars" pReorderableRowHandle></i>
+          </td>
+          <td *ngIf="allowRowSelection && useCheckBoxSelection">
+            <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+          </td>
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="footer" let-columns>
+        <tr *ngIf="showCalculationsRow">
+          <td *ngIf="allowRowReordering" class="xg-grid-column-drag"></td>
+          <td *ngIf="allowRowSelection && useCheckBoxSelection" class="xg-grid-column-select-checkbox "></td>
+          <td *ngIf="showDetailsRow" class="xg-grid-column-details-toggle"></td>
+          <td *ngFor="let col of columns">
+            {{col.header}}
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="summary">
+        <div *ngIf="showSummaryRow">
+          There are {{accountExecutiveListDataSource?.length}} records
+        </div>
+      </ng-template>
+
+    </p-table>
+  </div>
+</div> -->

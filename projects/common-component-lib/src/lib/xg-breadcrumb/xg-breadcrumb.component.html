@@ -1,0 +1,8 @@
+<ol *ngIf="!!(breadcrumbs && breadcrumbs.length)" class="xg-breadcrumb">
+  <li *ngFor="let breadcrumb of breadcrumbs; let sIndex=index" [ngClass]="{'active': sIndex + 1 === breadcrumbs.length, 'disable':breadcrumb.disabled}"
+    class="xg-breadcrumb-item">
+    <a (click)="onLinkClick(breadcrumb)">
+      {{ breadcrumb.label }}
+    </a>
+  </li>
+</ol>

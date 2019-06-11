@@ -1,0 +1,33 @@
+<div [ngClass]="">
+  <header *ngIf="headerText" class="headerText">{{headerText}}</header>
+  <div class="headerText" *ngIf="xgHeader">
+    <ng-content select="xg-header"></ng-content>
+  </div>
+  <div #content>
+    <ul class="list-container">
+      <li *ngIf="multiple" class="list-item all-checkbox-list">
+        <xg-checkbox class="item-checkbox mg-15-0" name="itemCheckboxAll" *ngIf="multiple" [(ngModel)]="bCheckedAll" (ngModelChange)="onCheckboxAllChange($event)"></xg-checkbox>
+        <xg-button *ngIf="delete" type="delete" [disabled]="!(aSelectedList && aSelectedList.length)" (onClick)="onDelete()"></xg-button>
+      </li>
+      <cdk-virtual-scroll-viewport *ngIf="growing" #viewport [itemSize]="sListElementHeight" (scrolledIndexChange)="onScrollIndexChange($event)">
+        <ng-container *cdkVirtualFor="let listItem of listData; let sIndex = index; let sCount = count; let sFirst = first; let sLast = last; let sEven = even; let sOdd = odd; ">
+          <li class="list-item" (click)="onListClick($event,listItem,sIndex)" [ngClass]="{'disabled': listItem.disabled,'selected': listItem.selected}">
+            <xg-checkbox class="item-checkbox" name="itemCheckbox_{{sIndex}}" *ngIf="multiple" [(ngModel)]="listItem.selected" (ngModelChange)="onSelect($event,listItem)"></xg-checkbox>
+            <ng-container *ngTemplateOutlet="xgCustomTemplate; context: {$implicit: listItem, index: sIndex, count: sCount, first: sFirst, last: sLast, even: sEven, odd: sOdd}"></ng-container>
+            <i *ngIf="!multiple && delete" title="Delete" (click)="onListItemDelete($event,listItem,sIndex)" class="delete-icon fa fa-times-circle-o"></i>
+          </li>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+      <ng-template [ngIf]="!growing">
+        <li *ngFor="let listItem of listData; let sIndex=index" class="list-item" (click)="onListClick($event,listItem,sIndex)" [ngClass]="{'disabled': listItem.disabled,'selected': listItem.selected}">
+          <xg-checkbox class="item-checkbox" name="itemCheckbox_{{sIndex}}" *ngIf="multiple" [(ngModel)]="listItem.selected" (ngModelChange)="onSelect($event,listItem)"></xg-checkbox>
+          <ng-container *ngTemplateOutlet="xgCustomTemplate; context: {$implicit: listItem, index: sIndex}"></ng-container>
+          <i *ngIf="!multiple && delete" title="Delete" (click)="onListItemDelete($event,listItem,sIndex)" class="delete-icon fa fa-times-circle-o"></i>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+  <div class="ui-virtualscroller-footer ui-widget-header ui-corner-bottom" *ngIf="xgFooter">
+    <ng-content select="xg-footer"></ng-content>
+  </div>
+</div>

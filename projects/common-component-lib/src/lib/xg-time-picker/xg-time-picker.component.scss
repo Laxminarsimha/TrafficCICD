@@ -1,0 +1,126 @@
+@import '../../../../../src/styles.scss';
+
+.xg-time-picker{
+    position: relative;
+}
+.xg-time-picker::ng-deep div.xg-text-group{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.xg-time-list {
+    width: 320px;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background-color: $white;
+    border: 1px solid $gray;
+    border-radius: 4px;
+    z-index: 99;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    -ms-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    -moz-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    outline: none;
+    &::before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        // border: 1px solid $gray;
+        // background-color: $white;
+        top: -7px;
+        right: 10px;
+        transform: rotate(225deg);
+        // border-width: 0 1px 1px 0px;
+    }
+    table{
+        width: 100%;
+        padding: 10px;
+    }
+    table.xg-hours-table tr>td {
+        padding: 5px 10px;
+        border-radius: 3px;
+        text-align: center;
+        &:hover {
+            background-color: $gray;
+            cursor: pointer;
+        }
+    }
+}
+.xg-append-left {
+    position: relative;
+    input{
+        padding: 6px 6px 6px 36px;
+    }
+    i {
+        color: $mediumBlack;
+        font-size: 14px;
+        height: 30px;
+        right: 2px;
+        line-height: 30px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 30px;
+        cursor: pointer;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        &:focus, &:hover{
+            background-color: $royalBlue;
+            color: $white;
+            outline: none;
+        }
+    }
+}
+.xg-error{
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: $red;
+}
+.xg-fa-disabled {
+    pointer-events: none;
+}
+.xg-active {
+    background-color: $royalBlue;
+    color: $white;
+}
+.xg-append-right{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    i{
+      height: 28px;
+      width: 28px;
+      text-align: center;
+      line-height: 28px;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      &:hover{
+        background-color: $royalBlue;
+        color: $white;
+      }
+    }
+  }
+  .adjust-with-label{
+  .xg-append-right{
+    top: 30px;
+
+  }
+  
+  }
+  .adjust-with-label+.xg-time-list{
+    top: 65px;
+}

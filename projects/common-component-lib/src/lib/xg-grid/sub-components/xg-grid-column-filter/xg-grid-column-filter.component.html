@@ -1,0 +1,147 @@
+<!-- Overlay For -->
+<p-overlayPanel #filterPanel class="betweenFilterPanel" (onHide)="onHidePanel()"  [appendTo]="'body'">
+  <div [ngSwitch]="column.dataType">
+    <div *ngSwitchCase="'number'">
+      <xg-input type="number" placeholder="start" [(ngModel)]="startValue"></xg-input>
+      <xg-input type="number" placeholder="end" [(ngModel)]="endValue"></xg-input>
+    </div>
+    <div *ngSwitchCase="'date'">
+      <xg-date-picker [(ngModel)]="startValue"></xg-date-picker>
+      <xg-date-picker [(ngModel)]="endValue"></xg-date-picker>
+    </div>
+    <div *ngSwitchCase="'time'">
+      <xg-time-picker [(ngModel)]="startValue"></xg-time-picker>
+      <xg-time-picker [(ngModel)]="endValue"></xg-time-picker>
+    </div>
+  </div>
+</p-overlayPanel>
+<div [ngSwitch]="column.dataType">
+
+  <!-- Number -->
+  <div *ngSwitchCase="'number'">
+    <div class="ui-inputgroup" class="centerContent">
+
+      <p-dropdown [options]="NumberOptions" [(ngModel)]="selectedNumber" [appendTo]="'body'" [autoWidth]="false" (onChange)="refreshGridFilters('dropDown')">
+        <ng-template let-item pTemplate="selectedItem">
+          <div [title]="item.label">
+            <i [ngClass]="item.value.iconClass"></i>
+            <span *ngIf="showLabel" style="padding-left:10px;">{{item.label}}</span>
+          </div>
+        </ng-template>
+        <ng-template let-option pTemplate="item">
+          <div [title]="option.label">
+            <i [ngClass]="option.value.iconClass"></i>
+            <span *ngIf="showLabel" class="filterLabel">{{option.label}}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <input type="number" *ngIf="selectedNumber.value !== 'btw'" pInputText style="text-align: right;" (input)="refreshGridFilters('input')"
+        [(ngModel)]="currentFilterValue">
+      <input type="text" [readOnly]="true" *ngIf="selectedNumber.value === 'btw'" pInputText style="text-align: right;" (click)="showPanel($event,filterPanel);"
+        [(ngModel)]="currentOverlayValue">
+    </div>
+  </div>
+
+
+  <!-- Date -->
+  <div *ngSwitchCase="'date'">
+    <div class="ui-inputgroup" class="centerContent xg-custom-picker">
+      <!-- <p-calendar *ngIf="selectedNumber.value !== 'btw'" [(ngModel)]="currentFilterValue" [appendTo]="'body'" [showIcon]="false"
+        [showTime]="false" (onSelect)="refreshGridFilters('input')" showButtonBar="true" (onClearClick)="refreshGridFilters()" (onInput)="dateEntryChanged($event)"></p-calendar> -->
+
+      <p-dropdown [options]="NumberOptions" [(ngModel)]="selectedNumber" [appendTo]="'body'" [autoWidth]="false" (onChange)="refreshGridFilters('dropDown')">
+        <ng-template let-item pTemplate="selectedItem">
+          <div [title]="item.label">
+            <i [ngClass]="item.value.iconClass"></i>
+            <span *ngIf="showLabel" style="padding-left:10px;">{{item.label}}</span>
+          </div>
+        </ng-template>
+        <ng-template let-option pTemplate="item">
+          <div [title]="option.label">
+            <i [ngClass]="option.value.iconClass"></i>
+            <span *ngIf="showLabel" class="filterLabel">{{option.label}}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <input type="text" [readOnly]="true" *ngIf="selectedNumber.value === 'btw'" pInputText style="text-align: right;" (click)="showPanel($event,filterPanel);"
+        [(ngModel)]="currentOverlayValue">
+      <!-- <p-calendar *ngIf="selectedNumber.value !== 'btw'" [(ngModel)]="currentFilterValue" [appendTo]="'body'" [showIcon]="false"
+        [showTime]="false" (onSelect)="refreshGridFilters('input')" showButtonBar="true" (onClearClick)="refreshGridFilters()"
+        (onInput)="dateEntryChanged($event)"></p-calendar> -->
+      <xg-date-picker *ngIf="selectedNumber.value !== 'btw'" [appendTo]="'body'" [(ngModel)]="currentFilterValue" (ngModelChange)="refreshGridFilters('input')"></xg-date-picker>
+    </div>
+  </div>
+  <!-- Time -->
+  <div *ngSwitchCase="'time'">
+    <div class="ui-inputgroup" class="centerContent xg-custom-picker">
+
+      <p-dropdown [options]="NumberOptions" [(ngModel)]="selectedNumber" [appendTo]="'body'" [autoWidth]="false" (onChange)="refreshGridFilters('dropDown')">
+        <ng-template let-item pTemplate="selectedItem">
+          <div [title]="item.label">
+            <i [ngClass]="item.value.iconClass"></i>
+            <span *ngIf="showLabel" style="padding-left:10px;">{{item.label}}</span>
+          </div>
+        </ng-template>
+        <ng-template let-option pTemplate="item">
+          <div [title]="option.label">
+            <i [ngClass]="option.value.iconClass"></i>
+            <span *ngIf="showLabel" class="filterLabel">{{option.label}}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <input type="text" [readOnly]="true" *ngIf="selectedNumber.value === 'btw'" pInputText style="text-align: right;" (click)="showPanel($event,filterPanel);"
+        [(ngModel)]="currentOverlayValue">
+      <xg-time-picker *ngIf="selectedNumber.value !== 'btw'" [appendTo]="'body'" [(ngModel)]="currentFilterValue" (ngModelChange)="refreshGridFilters('input')"></xg-time-picker>
+
+    </div>
+  </div>
+
+
+  <!-- String -->
+  <div *ngSwitchCase="'string'">
+    <div class="ui-inputgroup" class="centerContent">
+
+      <!-- <div class="ui-inputgroup-addon"> -->
+      <p-dropdown [options]="StringOptions" [(ngModel)]="selectedString" [appendTo]="'body'" [autoWidth]="false" (onChange)="refreshGridFilters('dropDown')">
+        <ng-template let-item pTemplate="selectedItem">
+          <div [title]="item.label">
+            <i *ngIf="!item.value.isImage" [ngClass]="item.value.iconClass"></i>
+            <img *ngIf="item.value.isImage" src={{item.value.imageUrl}}/>
+            <span *ngIf="showLabel" style="padding-left:10px;">{{item.label}}</span>
+          </div>
+        </ng-template>
+        <ng-template let-option pTemplate="item">
+          <div [title]="option.label">
+            <img *ngIf="option.value.isImage" src={{option.value.imageUrl}}/>
+            <i *ngIf="!option.value.isImage" [ngClass]="option.value.iconClass"></i>
+            <!-- <span *ngIf="showLabel" style="padding-left:10px;">{{item.label}}</span> -->
+            <span *ngIf="showLabel" class="filterLabel">{{option.label}}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <input type="text" pInputText (input)="refreshGridFilters('input')" [(ngModel)]="currentFilterValue" style="text-align: right;">
+      <!-- </div> -->
+    </div>
+  </div>
+  <!-- Boolean -->
+  <div *ngSwitchCase="'boolean'">
+    <div class="ui-inputgroup" class="centerContent">
+      <!-- <input type="text" pInputText (input)="refreshGridFilters()" [(ngModel)]="currentFilterValue" style="text-align: right;"> -->
+      <!-- <div class="ui-inputgroup-addon"> -->
+      <p-dropdown [options]="BooleanOptions" [(ngModel)]="selectedBoolean" [appendTo]="'body'" [autoWidth]="false" (onChange)="refreshGridFilters('dropDown')">
+        <ng-template let-item pTemplate="selectedItem">
+          <div [title]="item.label">
+            <!-- <i  [ngClass]="item.value.iconClass"></i> -->
+            <span style="padding-left:10px;">{{item.label}}</span>
+          </div>
+        </ng-template>
+        <ng-template let-option pTemplate="item">
+          <div class="booleanOptions" [title]="option.label">
+            <span class="filterLabel">{{option.label}}</span>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

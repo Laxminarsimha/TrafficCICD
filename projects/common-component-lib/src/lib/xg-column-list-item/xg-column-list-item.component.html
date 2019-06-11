@@ -1,0 +1,18 @@
+<div class="xg-drop-table">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let col of columnMeta">
+          {{col.label}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tableItem of columnData; let sIndex = index" (click)="selectedRow(tableItem)">
+        <td *ngFor="let col of columnMeta">
+          {{tableItem[col.field]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

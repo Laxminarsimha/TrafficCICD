@@ -1,0 +1,14 @@
+<p-dialog [header]="header" [draggable]="draggable" [resizable]="resizable" [(visible)]="visible" [modal]="modal"
+  [blockScroll]="blockScroll" [closeOnEscape]="closeOnEscape" [dismissableMask]="dismissableMask" [closable]="closable"
+  [responsive]="responsive" [style]="style" [minY]="minY" [minX]="minX" [maximizable]="maximizable"
+  [baseZIndex]="baseZIndex" [autoZIndex]="autoZIndex" [showHeader]="showHeader" (onShow)="onShowEvent($event)"
+  (onHide)="onHideEvent($event)">
+  {{content}}
+  <p-header>
+    <ng-content select=".header"></ng-content>
+  </p-header>
+  <ng-content select=".body"></ng-content>
+  <p-footer>
+    <ng-content select=".footer"></ng-content>
+  </p-footer>
+</p-dialog>

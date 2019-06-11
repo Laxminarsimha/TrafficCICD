@@ -1,0 +1,16 @@
+::ng-deep.text-nowrap {
+    white-space: nowrap;
+}
+::ng-deep.cus-grid {
+    .ui-table-thead{
+        .xg-grid-topHead{
+            th:nth-child(8) {
+                text-align: left !important;
+            }
+        }
+        
+    }
+
+    
+    
+}

@@ -1,0 +1,44 @@
+@import '../../../../../src/styles.scss';
+:host ::ng-deep .ui-multiselected-item-token,
+:host ::ng-deep .ui-multiselected-empty-token {
+    padding: 2px 4px;
+    margin: 0 0.286em 0 0;
+    display: inline-block;
+    vertical-align:middle;
+    height: 1.857em;
+}
+:host ::ng-deep .ui-multiselected-item-token {
+    background: #007ad9;
+    color: #ffffff;
+}
+:host ::ng-deep .ui-multiselected-empty-token {
+    background: #d95f00;
+    color: #ffffff;
+}
+.xg-multi-select {
+    p-multiselect {
+        display: block;
+        width: 100%;
+        .ui-multiselect{
+            border-width: 0 0 1px;
+            border-radius: 0;
+            display: block;
+            .ng-invalid{
+                border-width: 0 0 1px !important;
+            }
+        }
+        .ui-multiselect-panel {
+            width: 100%;
+            .ui-multiselect-filter-container{
+                width: calc(100% - 40px);
+            }
+        }
+        label.ui-multiselect-label{
+            min-height: 33px;
+            margin-bottom: 0 !important;
+        }
+        .ui-state-disabled label.ui-multiselect-label{
+            cursor: not-allowed !important;
+        }
+    }
+}

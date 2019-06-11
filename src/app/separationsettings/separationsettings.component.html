@@ -1,0 +1,31 @@
+<p-toast></p-toast>
+<div class="xg-form-panel">
+  <div class="ui-g">
+    <div class="ui-g-12 xg-header-div">
+      <h3 class="xg-main-header"><b>System Settings</b></h3>
+    </div>
+  </div>
+  <div class="ui-g">
+      <div class="ui-g-12 xg-header-div">
+          <h3 class="xg-main-header">Global Default Separation Values</h3>
+      </div>
+    <div class="ui-g-12 xg-form-bg">
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <xg-duration [(ngModel)]="advertiserSystemSettingValue" labelName="Advertiser" timeFrame="false" name= "time"
+        (ngModelChange)= "time= $event"></xg-duration>     
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+          <xg-duration [(ngModel)]="productSystemSettingValue" labelName="Product" timeFrame="false" name= "time"
+          (ngModelChange)= "time= $event"></xg-duration>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+          <xg-duration [(ngModel)]="brandSystemSettingValue" labelName="Brand" timeFrame="false" name= "time"
+          (ngModelChange)= "time= $event"></xg-duration>      
+      </div>
+    </div>
+  </div>
+  <div class="ui-g" style="float:right; margin-top:2%">
+          <xg-button (onClick)="saveSettings($event)" type="save"></xg-button>
+          <xg-button type="clear" label="Cancel" (onClick)="clearSettings($event)"></xg-button>
+    </div>
+</div>

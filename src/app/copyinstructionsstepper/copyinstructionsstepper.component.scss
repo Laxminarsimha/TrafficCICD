@@ -1,0 +1,174 @@
+@import '/src/variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700,800,900');
+@import '~bootstrap/dist/css/bootstrap.css';
+
+    .xg-bg-sec {
+        background-color: $smokeWhite;
+        border-left: 3px solid $royalBlue;
+    }
+
+    ::ng-deep.xg-mt-5 {
+        margin-top: 5px;
+    }
+    ::ng-deep.xg-mt-10 {
+        margin-top: 10px;
+    }
+   
+    ::ng-deep.xg-segmented-button {
+        overflow: hidden;
+        border-radius: 3px;
+        margin: 10px 0;
+        display: inline-block;
+        width: 92px;
+        xg-button{
+            float: left;
+            .xg-button{
+                margin: 2px 0 !important;
+                border-radius: 0 !important;
+                border-color: #ddd !important;
+                background-color: #fff;
+                color: #333;
+                min-width: 92px !important;
+                &:before{
+                    display: none;
+                }
+                &:hover{
+                    background-color: #7a95e4;
+                    color: #fff;
+                    border-color: #7a95e4 !important;
+                }
+            }
+            
+            &.active .xg-button{
+                background-color: #4169E1;
+                color: #fff;
+                border-color: #4169E1 !important;
+                border-right: 1px solid !important;
+            }
+        }
+        // &:first-child xg-button .xg-button{
+        //     border-left-width: 1px !important;
+        //     border-top-left-radius: 3px !important;
+        //     border-bottom-left-radius: 3px !important;
+        // }
+        &:last-child xg-button .xg-button{
+            border-right-width: 1px !important;
+            border-top-right-radius: 3px !important;
+            border-bottom-right-radius: 3px !important;
+        }
+    }
+
+    ::ng-deep.xg-cus-senc-segmented-button {
+        label {
+            display: inline-block;
+            margin: 20px 10px 0 0;
+        }
+        .xg-segmented-button{
+            display: inline-block;
+            width: auto !important;
+            .xg-sec-btn:first-of-type button {
+                border-top-left-radius: 10px !important;
+                border-bottom-left-radius: 10px !important;
+                border-right: 0px solid $black;
+            }
+            .xg-sec-btn:last-of-type button {
+                border-top-right-radius: 10px !important;
+                border-bottom-right-radius: 10px !important;
+            }
+            .xg-button{
+                margin: 0 !important;
+                min-width: auto !important;
+                width: auto !important;
+                padding: 8px !important;
+            }
+        }
+    }
+
+    ::ng-deep.xg-cus-sec-rotate-btns {
+        .xg-button{
+            padding: 8px !important;
+        }
+    }
+    .xg-m-t-20{
+        margin-top: 20px;
+    }
+
+    @media (max-width:767px){
+        .xg-resp-m-t-0{
+            margin-top: 0px;
+        }
+    }
+    .xg-card.xg-cs-card {
+        text-align: left;
+        // width: 400px;
+        padding: 0;
+        .cs-mat-head {
+            display: block !important;
+            background-color: $smokeWhite;
+            padding: 10px;
+            border-bottom: 2px solid $darkGray;
+        }
+        .xg-space-between {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .fa {
+                cursor: pointer;
+            }
+        }
+        .xg-cus-card-list {
+            display: block;
+            width: 100%;
+        }
+        .xg-cs-mat-card-content {
+            padding: 10px;
+            .ui-g {
+                width: 100%;
+                .ui-g-4 {
+                    width: 33.33%;
+                }
+            }
+            ul.xg-week-list {
+                list-style-type: none;
+                display: inline-block;
+
+                li {
+                    float: left;
+                    padding: 5px 11px;
+                    font-weight: normal;
+                    color: $lightGray;
+                    cursor: pointer;
+                    &.active {
+                        font-weight: bold;
+                        color: $black;
+                    }
+                }
+            }
+            .xg-limit {
+                display: inline-block;
+                width: 100%;
+                .fa {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    ::ng-deep.mat-horizontal-stepper-header{
+        height: 40px !important;
+        margin: 0 10px 10px !important;
+        border-bottom: 1px solid $gray !important;
+        padding: 0 5px !important;
+    }
+    ::ng-deep.mat-stepper-horizontal-line{
+        display: none !important;
+    }
+    ::ng-deep.mat-step-icon-selected{
+        background-color: $royalBlue !important;
+    }
+    ::ng-deep.mat-horizontal-stepper-header[aria-selected="true"]{
+       border-color: $royalBlue !important;
+       .mat-step-label-selected{
+           color: $royalBlue !important;
+       }
+    }

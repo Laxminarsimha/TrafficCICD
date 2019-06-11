@@ -1,0 +1,112 @@
+<p-toast>
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <p *ngIf="!message.detail" innerHtml="{{ detailMessage }}"></p>
+            <p *ngIf="message.detail" innerHtml="{{ message.detail }}"></p>
+            <p
+                *ngIf="message.validation"
+                innerHtml="{{ message.validation }}"
+            ></p>
+        </div>
+    </ng-template>
+</p-toast>
+
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-12 ui-lg-4">
+        <div class="ui-g-12 xg-bg-sec">
+            <div class="ui-g">
+                <div class="ui-md-6">
+                    <label>Title: </label>
+                    <span> {{ copyHeaderModel.Title }}</span>
+                </div>
+                <div class="ui-md-6">
+                    <label>Advertiser: </label>
+                    <span> {{ copyHeaderModel.Advertiser }}</span>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-md-6">
+                    <label>Unit Type:</label>
+                    <span> {{ copyHeaderModel.UnitType }}</span>
+                </div>
+                <div class="ui-md-6">
+                    <label>Length: </label>
+                    <span> {{ copyHeaderModel.Length }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-3 xg-m-t-20 xg-resp-m-t-0">
+        <div class="ui-g xg-cus-senc-segmented-button">
+            <label>Rotation</label>
+            <div class="xg-segmented-button">
+                <div class="ui-g">
+                    <xg-button-toggle
+                        [toggleOptions]="selectionOptions"
+                        displayValue="key"
+                        keyValue="key"
+                        [selected]="copyHeaderModel.RotationID.toString()"
+                    >
+                    </xg-button-toggle>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-5 xg-m-t-20 xg-resp-m-t-0">
+        <div class="ui-g-12 ui-md-12 ui-lg-4">
+            <xg-input
+                labelName="Filter"
+                placeholder="Expired"
+                name="Filter"
+            ></xg-input>
+        </div>
+        <div class="ui-g-12 ui-md-12 ui-lg-8 xg-cus-sec-rotate-btns">
+            <div class="ui-g xg-pull-right">
+                <xg-button
+                    class="xg-sec-btn"
+                    icon="fa fa-plus"
+                    type="submit"
+                    label="ADD"
+                    (click)="addCopyCards()"
+                >
+                </xg-button>
+                <xg-button
+                    class="xg-sec-btn"
+                    icon="fa fa-minus"
+                    type="submit"
+                    label="Remove"
+                >
+                </xg-button>
+                <xg-button
+                    class="xg-sec-btn"
+                    icon="fa fa-edit"
+                    type="submit"
+                    label="MassEdit"
+                >
+                </xg-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="xg-display-date-range">
+    06/03/2109 06:00:00 - 06/03/2019 06:15:00
+</div>
+<div class="ui-g">
+    <div *ngFor="let oCard of cards; let i = index" class="ui-g-12 ui-md-6 ui-lg-4">
+        <xg-card [(cards)]="cards[i]" startEndDateDisabled="false"> </xg-card>
+    </div>
+</div>
+<div class="ui-g">
+    <div class="ui-g-12">
+        <div class="ui-g xg-pull-right">
+            <xg-button
+                class="xg-sec-btn"
+                icon="false"
+                type="save"
+                label="Save"
+                (click)="submitForm($event)"
+            >
+            </xg-button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+// @import '../../../../../src/styles.scss';
+@import '../../../../../src/styles.scss';
+.xg-left{
+    float: left;
+}
+.xg-right{
+    float: right;
+}
+.xg-button{
+    border: 1px solid $gray;
+    color: $white;
+    margin: 0 5px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $font-14;
+    line-height: 18px;
+    min-width: 80px;
+    font-weight: 600;
+    padding: 8px 20px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    span {
+        i{
+            padding-right: 5px;
+            font-size: $font-12;
+        }
+        i.pi-caret-down{
+            padding-right: 0;
+            float: right;
+            line-height: 18px;
+            padding-left: 4px;
+        }
+        i.xg-icon-none{
+            padding: 0px;
+        }
+    }
+    span.xg-right i{
+        padding-left: 5px;
+        padding-right: 0; 
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.3);
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+    &:hover::before{
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    }
+    &:focus{
+        outline: none;
+    }
+    ~.dropdown-options{
+        position: absolute;
+        z-index: 1000;
+        min-width: 140px;
+        max-width: 200px;
+        width: 140px;
+        padding: 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        li {
+            list-style: none;
+            a{
+                display: block;
+                padding: 8px 15px;
+                clear: both;
+                font-weight: 400;
+                line-height: 1.42857143;
+                color: $mediumBlack;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                cursor: pointer;
+                &:hover{
+                    background-color: $ghostWhite;
+                }
+            }
+        }
+    }
+}
+.xg-button:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+    &:hover::before{
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+    }
+}
+
+.xg-bg-primary{
+    background: $royalBlue;
+    border-color: $royalBlue;
+}
+.xg-bg-danger{
+    background: $danger;
+    border-color: $danger;
+}
+.xg-bg-success{
+    background: $green;
+    border-color: $darkGreen;
+}
+.xg-bg-warning{
+    background: $darkOrange;
+    border-color: $darkOrange;
+}
+.xg-bg-info{
+    background: $info;
+    border-color: $info;
+}
+.xg-bg-default{
+    background: $white;
+    color: $black;
+    border-color: $darkGray;
+}
+.xg-bg-basic{
+    background: $darkGray;
+    color: $black;
+    border-color: $darkGray;
+}

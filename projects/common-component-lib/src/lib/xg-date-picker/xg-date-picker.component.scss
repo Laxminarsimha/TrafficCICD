@@ -1,0 +1,199 @@
+@import '../../../../../src/styles.scss';
+
+.xg-date-picker{
+  position: relative;
+  *{
+    outline: none;
+  }
+  .xg-append-right.disabled{
+    cursor: not-allowed;
+    i{
+      pointer-events: none;
+      &:hover{
+        background-color: none;
+        color: initial;
+      }
+    }
+  }
+  .xg-append-right{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    i{
+      height: 28px;
+      width: 28px;
+      text-align: center;
+      line-height: 28px;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      &:hover{
+        background-color: $royalBlue;
+        color: $white;
+      }
+    }
+  }
+  .adjust-with-label{
+    .xg-append-right{
+      top: 30px;
+      }
+    }
+    .adjust-with-label+.xg-calender{
+      top: 65px;
+  }
+  .xg-calender{
+    position: absolute;
+    width: 320px;
+    padding: 10px;
+    right: 0;
+    top: 45px;
+    background-color: $white;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    -ms-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    -moz-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    -o-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    color: rgba(0,0,0,.87);
+    z-index: 99;
+    .xg-calenderHeader{
+      padding: 8px 8px 0 8px;
+      .xg-calenderControls{
+        .xg-headerMonthYear{
+          float: left;
+          a{
+            color: $mediumBlack;
+            font-weight: bold;
+            font-size: $font-15;
+            margin: 0 2px;
+            padding: 2px 6px;
+            cursor: pointer;
+            &:hover, &:active{
+              background-color: $royalBlue;
+              color: $white;
+              border-radius: 5px;
+            }
+          }
+        }
+        .xg-calender-arrows{
+          float: right;
+          button{
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+            border-radius: 50%;
+            margin: 0 5px;
+            width: 25px;
+            height: 25px;
+            &:hover:not(:disabled){
+              background-color: $royalBlue;
+              color: $white;
+            }
+            i{
+              font-weight: bold;
+              font-size: $font-16;
+            }
+          }
+          button:disabled{
+            cursor: not-allowed !important;
+          }
+        }
+      }
+    }
+    .xg-calenderMaintable{
+      width: 100%;
+      position: relative;
+      thead{
+        tr{
+          th{
+            font-weight: normal;
+            color: $darkGray;
+            padding: 5px;
+          }
+        }
+      }
+      tbody{
+        tr{
+          padding: 10px;
+          td{
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            &:hover:not(.disabled) {
+              background-color: $royalBlue;
+              color: $white;
+            }
+          }
+          td.selected{
+            background-color: $royalBlue;
+            color: $white;
+            border-radius: 50% !important;
+          }
+          td.selectedMonth,td.selectedYear{
+            background-color: $royalBlue;
+            color: $white;
+          }
+          td.disabled{
+            color: rgba(0,0,0,.38);
+            cursor: not-allowed;
+            .xg-datevalue{
+              pointer-events: none;
+            }
+          }
+          td.xg-dayCell{
+            .xg-datevalue{
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+              text-align: center;
+              box-sizing: unset !important;
+              -webkit-transition: all 0.1s ease;
+              -ms-transition: all 0.1s ease;
+              -moz-transition: all 0.1s ease;
+              -o-transition: all 0.1s ease;
+              transition: all 0.1s ease;
+            }
+            &:hover{
+              border-radius: 50% !important;
+            }
+          }
+          td.xg-dayCell.xg-static-month{
+            font-weight: bold;
+            pointer-events: none;            
+            &:hover{
+              background-color: transparent;
+              color: $mediumBlack;
+              border-radius: 0px;
+            }
+          }
+        }
+      }
+    }
+    &::before{
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      // background-color: $white;
+      // border: 1px solid $gray;
+      // border-width: 0 1px 1px 0px;
+      -webkit-transform: rotate(224deg);
+      -moz-transform: rotate(224deg);
+      -ms-transform: rotate(224deg);
+      -o-transform: rotate(224deg);
+      transform: rotate(224deg);
+      top: -7px;
+      right: 15px;
+      border-radius: 2px;
+    }
+  }
+}

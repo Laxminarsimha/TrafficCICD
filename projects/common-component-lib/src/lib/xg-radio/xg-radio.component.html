@@ -1,0 +1,24 @@
+<!-- Old and busted -->
+<!-- <div class="xg-text-group" [ngClass]="{'xg-required' : required,'xg-vertical':layout === 'vertical'}">
+  <div class="xg-radio" *ngFor="let option of radioOptions;let ird = index" [class.xg-label-left]="labelLeft">
+    <fieldset id="{{groupName}}{{ird}}">
+      <input type="radio" name="{{groupName}}{{ird}}" class="{{radioClass}}" [disabled]="disabled" [required]="required"
+        value="{{option.value}}" [(ngModel)]="radioModelValue" #xgRadioModel="ngModel" [checked]="checkedValue"
+        (onClick)="onClickEvent($event)" />
+        <label (click)="toggleModel(option.value); $event.stopPropagation()" for="{{groupName}}{{ird}}">
+        <span (click)="toggleModel(option.value); $event.stopPropagation()"></span>{{option.label}}</label>
+    </fieldset>
+    <div *ngIf="xgRadioTemplate">
+      <ng-container *ngTemplateOutlet="xgRadioTemplate; context: {$implicit: radioOptions}"></ng-container>
+    </div>
+  </div>
+</div> -->
+<!-- New hotness - Material IO radio buttons -->
+<mat-radio-group name="{{groupName}}" aria-labelledby="radio-group" class="xg-radio-group xg-radio-group-{{layout}}"
+  [(ngModel)]="radioModelValue">
+  <mat-radio-button *ngFor="let option of radioOptions;" class="xg-radio-button" [value]="option.value"
+    (click)="onClickEvent($event)" [checked]="checkedValue === option.value" [disabled]="disabled" [required]="required"
+    [labelPosition]="labelLeft">
+    {{ option.label }}
+  </mat-radio-button>
+</mat-radio-group>

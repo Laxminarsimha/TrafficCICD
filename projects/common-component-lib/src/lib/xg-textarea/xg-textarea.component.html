@@ -1,0 +1,24 @@
+<div class="xg-text-group" [ngClass]="{ 'xg-required': required }">
+    <div *ngIf="!labelName">
+        <label class="xg-text-label" for="inputControl" [ngClass]="{'fullWidth' : fullWidth}">{{ labelName }}</label>
+    </div>
+    <div *ngIf="!!labelName">
+        <label class="xg-text-label" for="inputControl" [ngClass]="{'fullWidth' : fullWidth}">{{ labelName }}</label>
+    </div>
+    <textarea [ngClass]="{'xg-width-auto': !!cols}" class="xg-text-box" [minlength]="minlength" [maxlength]="maxlength || null"
+        [ngModelOptions]="{ updateOn: validateOn }" name="textInput" [required]="required" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)"
+        (blur)="onFocusOut($event)" [disabled]="disabled" [placeholder]="placeholder" #xgTextareaModel="ngModel" [rows]="rows"
+        [cols]="cols"></textarea>
+    <!-- <div class="xg-focus-border" [ngClass]="{'xg-width-auto': !!cols}"></div> -->
+    <div *ngIf="xgTextareaModel.invalid && (xgTextareaModel.dirty || xgTextareaModel.touched)" class="xg-alert xg-alert-danger">
+        <div *ngIf="required && xgTextareaModel.errors.required">
+            {{ labelName || 'Textarea' }} is <span class="xg-font-bold">required.</span>
+        </div>
+        <div *ngIf="minlength && xgTextareaModel.errors.minlength">
+            {{ labelName || 'Textarea' }} should contain {{ minlength }} characters
+        </div>
+    </div>
+</div>
+<!-- <div *ngIf="xgTextareaModel.invalid && (xgTextareaModel.dirty || xgTextareaModel.touched)  && required">
+    <img-lib-error-messages [modelControl]="xgTextareaModel" [errorMessages]="errorMessages"></img-lib-error-messages>
+</div> -->

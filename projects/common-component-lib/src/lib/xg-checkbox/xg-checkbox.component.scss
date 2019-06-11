@@ -1,0 +1,147 @@
+/* .test {
+    width: 100px;
+    height: 100px;
+}
+.testing {
+    font-size:30px;
+    color: red;
+}
+.float {
+    float: left;
+}
+input[type="checkbox"][readonly] {
+    pointer-events: none;
+}
+.required label:after{
+    content: '*';
+    color:red;
+} */
+@import '../../../../../src/styles.scss';
+.xg-checkbox.xg-checkbox-group{
+    display: inline-block !important;
+}
+.xg-checkbox {
+    position: relative;
+    display: block;
+    min-height: 20px;
+    padding-left: 20px;
+    margin: 5px 10px;
+    input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        margin-left: -20px;
+    }
+    input[type="checkbox"]+label{
+        display: inline-block;
+        font-weight: normal;
+        position: relative;
+        cursor: pointer;
+    }
+    input[type="checkbox"][readonly]+label span {
+        pointer-events: none;
+    }
+    input[type="checkbox"]+label span{
+        display: inline-block;
+        padding-left: 5px;
+        font-weight: normal;
+        cursor: pointer;
+        -webkit-transition: 0.3s ease-in-out all;
+        -ms-transition: 0.3s ease-in-out all;
+        -moz-transition: 0.3s ease-in-out all;
+        -o-transition: 0.3s ease-in-out all;
+        transition: 0.3s ease-in-out all;
+        &::before{
+            position: absolute;
+            display: inline-block;
+            content: "";
+            left: -20px;
+            top: -1px;
+            height: 18px;
+            width: 18px;
+            border: 1px solid $lightGray;
+            border-radius: 2px;
+            background: $white;
+            box-sizing: unset;
+        }
+        &::after{
+            position: absolute;
+            display: inline-block;
+            content: "\f00c";
+            // content: "✔";
+            font-family: FontAwesome;
+            font-weight: normal;
+            left: -17px;
+            top: 1px;
+            font-size: $font-15;
+            line-height: 16px;
+            color: $royalBlue;
+            opacity: 0;
+            box-sizing: unset;
+            transform: scale(0);
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+        &:hover::before{
+            border-color: $royalBlue;
+        }
+    }
+    .xg-alert{
+        top: 25px;
+    }
+    input[type="checkbox"]+label:hover span::before{
+        border-color: $royalBlue;
+    }
+}
+
+.xg-checkbox.xg-label-left {
+    float: left;
+    padding-left: 0;
+    padding-right: 20px;
+    input[type="checkbox"]{
+        right: 0;
+    }
+    input[type="checkbox"] + label span::before{
+        left: auto;
+        right: -26px;
+    }
+    input[type="checkbox"] + label span::after{
+        left: auto;
+        right: -23px;
+    }
+}
+.xg-checkbox input[type="checkbox"]:checked+label span:after {
+    opacity: 1;
+    transform: scale(1);
+}
+.xg-checkbox input[type="checkbox"]:disabled+label {
+    pointer-events: none;
+}
+.xg-checkbox input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+.xg-checkbox input[type="checkbox"]:disabled+label span:before, .xg-checkbox input[type="checkbox"]:disabled+label span:after {
+    border-color: $gray;
+    opacity: 0.7;
+}
+.xg-checkbox label.label-left span{
+    padding-left: 0px;
+    padding-right: 0px;
+    float: right;
+}
+.xg-checkbox label.label-left span:before{
+    left: auto !important;
+    right: -20px;
+}
+.xg-checkbox label.label-left span:after{
+    left: auto !important;
+    right: -16px;
+}
+.label-left {
+    float: left;
+}
+.xg-readOnly{
+    pointer-events:none !important;
+} 

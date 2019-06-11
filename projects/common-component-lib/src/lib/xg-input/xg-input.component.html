@@ -1,0 +1,180 @@
+<div *ngIf="type === 'text'">
+    <div class="xg-text-group" [ngClass]="{'xg-required' : required}">
+        <label *ngIf="!!labelName" class="xg-text-label" for="inputControl">{{labelName}}</label>
+        <input type="text" [xgValidateAlphaNumeric]="alphaNumeric" autocomplete="off" [minlength]="minlength" [maxlength]="maxlength || null"
+            class="xg-text-box" [ngClass]="{'xg-required-message' : xgInputModel.invalid && (xgInputModel.dirty || xgInputModel.touched) && required && xgInputModel.errors.required}"
+            [ngModelOptions]="{updateOn: validateOn}" name="textInput" [required]="required" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)"
+            (blur)="onFocusOut($event)" [disabled]="disabled" [placeholder]="placeholder" #xgInputModel="ngModel" />
+        <div class="xg-focus-border"></div>
+        <div *ngIf="xgInputModel.invalid && (xgInputModel.dirty || xgInputModel.touched)" class="xg-alert xg-alert-danger">
+
+            <div *ngIf="required && xgInputModel.errors.required">
+                {{labelName || 'Input'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="minlength && xgInputModel.errors.minlength">
+                {{labelName || 'Input'}} should contain {{minlength}} characters
+            </div>
+            <div *ngIf="alphaNumeric && xgInputModel.errors.invalid">
+                {{labelName || 'Input'}} should contain Numbers and Alphabets
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="type === 'email'">
+    <div class="xg-text-group" [ngClass]="{'xg-required' : required}">
+        <!-- <label class="xg-text-label" for="emailControl">{{labelName}}</label> -->
+        <label *ngIf="!!labelName" class="xg-text-label" for="emailControl">{{labelName}}</label>
+        <input type="email" name="emailInput" id="emailControl" autocomplete="off" [ngModelOptions]="{updateOn: validateOn}" [email]="true"
+            class="xg-text-box" [ngClass]="{'xg-required-message' : xgEmailModel.invalid && (xgEmailModel.dirty || xgEmailModel.touched) && required && xgEmailModel.errors.required}"
+            [required]="required" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)" (blur)="onFocusOut($event)" [disabled]="disabled"
+            [placeholder]="placeholder" #xgEmailModel="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+        <div class="xg-focus-border"></div>
+        <div *ngIf="xgEmailModel.invalid && (xgEmailModel.dirty || xgEmailModel.touched)" class="xg-alert xg-alert-danger">
+            {{xgEmailModel | json}}
+            <div *ngIf="required && xgEmailModel.errors.required">
+                {{labelName || 'Email'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="xgEmailModel.errors.pattern">
+                Invalid Email format
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="type === 'password'">
+    <div class="xg-text-group xg-password" [ngClass]="{'xg-required' : required}">
+        <!-- <label class="xg-text-label" for="inputControl">{{labelName}}</label> -->
+        <label *ngIf="!!labelName" class="xg-text-label" for="passwordControl">{{labelName}}</label>
+        <input type="password" name="passwordInput" id="passwordControl" autocomplete="off" class="xg-text-box" [ngClass]="{'xg-required-message' : xgPasswordModel.invalid && (xgPasswordModel.dirty || xgPasswordModel.touched) && required && xgPasswordModel.errors.required}"
+            [ngModelOptions]="{updateOn: validateOn}" [required]="required" [xgValidatePassword]="validatePassword" [xgValidationOptions]="passwordvalidationOptions"
+            [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)" (blur)="onFocusOut($event)" [disabled]="disabled" [placeholder]="placeholder"
+            #xgPasswordModel="ngModel" />
+        <div class="xg-focus-border"></div>
+        <div *ngIf="xgPasswordModel.invalid && (xgPasswordModel.dirty || xgPasswordModel.touched)" class="xg-alert xg-alert-danger">
+
+            <div *ngIf="required && xgPasswordModel.errors.required">
+                {{labelName || 'Password'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="validatePassword && !xgPasswordModel.errors.hasNumber">
+                Number is Missing
+            </div>
+            <div *ngIf="validatePassword && !xgPasswordModel.errors.hasCapital">
+                Capital Letter is Missing
+            </div>
+            <div *ngIf="validatePassword && !xgPasswordModel.errors.hasSmall">
+                Small Letter is Missing
+            </div>
+            <div *ngIf="validatePassword && !xgPasswordModel.errors.hasMinLength">
+                Minimum length of {{passwordvalidationOptions.minlength}} characters are Missing
+            </div>
+            <div *ngIf="validatePassword && !xgPasswordModel.errors.hasSymbol">
+                Special character is Missing
+            </div>
+
+        </div>
+    </div>
+</div>
+<div *ngIf="type === 'zip'">
+    <div class="xg-text-group" [ngClass]="{'xg-required' : required}">
+        <!-- <label class="xg-text-label" for="inputControl">{{labelName}}</label> -->
+        <label *ngIf="!!labelName" class="xg-text-label" for="zipControl">{{labelName}}</label>
+        <input type="text" [textMask]="oZipMask" id="zipControl" [minlength]="minlength || 5" [maxlength]="maxlength || 5" name="zipInput"
+            autocomplete="off" [ngModelOptions]="{updateOn: validateOn}" class="xg-text-box" [ngClass]="{'xg-required-message' : xgZipModel.invalid && (xgZipModel.dirty || xgZipModel.touched) && required && xgZipModel.errors.required}"
+            [required]="required" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)" (blur)="onFocusOut($event)" [disabled]="disabled"
+            [placeholder]="placeholder" #xgZipModel="ngModel" />
+        <div class="xg-focus-border"></div>
+        <div *ngIf="xgZipModel.invalid && (xgZipModel.dirty || xgZipModel.touched)" class="xg-alert xg-alert-danger">
+
+            <div *ngIf="required && xgZipModel.errors.required">
+                {{labelName || 'ZipCode'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="xgZipModel.errors.minlength">
+                Zipcode must be 5 characters length.
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="type === 'phone'">
+    <div class="xg-text-group" [ngClass]="{'xg-required' : required}">
+        <!-- <label class="xg-text-label" for="inputControl">{{labelName}}</label> -->
+        <label *ngIf="!!labelName" class="xg-text-label" for="phoneControl">{{labelName}}</label>
+        <input type="text" id="phoneControl" [textMask]="oPhoneMask" name="phoneInput" autocomplete="off" [ngModelOptions]="{updateOn: validateOn}"
+            class="xg-text-box" [ngClass]="{'xg-required-message' : xgPhoneModel.invalid && (xgPhoneModel.dirty || xgPhoneModel.touched) && required && xgPhoneModel.errors.required}"
+            [required]="required" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)" xgValidatePhone (blur)="onFocusOut($event)"
+            [disabled]="disabled" [placeholder]="placeholder" #xgPhoneModel="ngModel" />
+        <div class="xg-focus-border"></div>
+        <div *ngIf="xgPhoneModel.invalid && (xgPhoneModel.dirty || xgPhoneModel.touched)" class="xg-alert xg-alert-danger">
+
+            <div *ngIf="required && xgPhoneModel.errors.required">
+                {{labelName || 'ZipCode'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="xgPhoneModel.errors.invalid">
+                InValid phone Number
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="type === 'number'">
+    <div class="xg-text-group xg-number" [ngClass]="{'xg-required' : required}">
+        <!-- <label class="xg-text-label" for="inputControl">{{labelName}}</label> -->
+        <label *ngIf="!!labelName" class="xg-text-label" for="numberControl">{{labelName}}</label>
+        <input type="text" [minlength]="minlength || 0" [maxlength]="maxlength || null" name="numberInput" autocomplete="off" [ngModelOptions]="{updateOn: validateOn}"
+            class="xg-text-box" [ngClass]="{'xg-required-message' : xgNumberModel.invalid && (xgNumberModel.dirty || xgNumberModel.touched) && required && xgNumberModel.errors.required}"
+            [required]="required" xgValidateMinMax [min]="min" [max]="max" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)" xgValidateNumber [xgnumerictype]="'integer'" (blur)="onFocusOut($event)"
+            [disabled]="disabled" [placeholder]="placeholder" #xgNumberModel="ngModel" />
+        <div class="xg-focus-border"></div>
+        
+        <div *ngIf="xgNumberModel.invalid && (xgNumberModel.dirty || xgNumberModel.touched)" class="xg-alert xg-alert-danger">
+            <div *ngIf="required && xgNumberModel.errors.required">
+                {{labelName || 'Number Input'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="minlength && xgNumberModel.errors.minlength">
+                {{labelName || 'Number Input'}} should contain {{minlength}}
+            </div>
+            <div *ngIf="min && !max && xgNumberModel.errors.min">
+                Minimum required number is {{min}}.
+            </div>
+            <div *ngIf="max && !min && xgNumberModel.errors.max">
+                Maximum number can be {{max}}.
+            </div>
+            <div *ngIf="max && min &&xgNumberModel.errors.minMax">
+               Number should be between {{min}} - {{max}}
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="type === 'decimal'">
+    <div class="xg-text-group xg-number" [ngClass]="{'xg-required' : required}">
+        <!-- <label class="xg-text-label" for="inputControl">{{labelName}}</label> -->
+        <label *ngIf="!!labelName" class="xg-text-label" for="numberControl">{{labelName}}</label>
+        <input type="text" [minlength]="minlength || 0" [maxlength]="maxlength || null" name="numberInput" autocomplete="off" [ngModelOptions]="{updateOn: validateOn}"
+            class="xg-text-box" [ngClass]="{'xg-required-message' : xgNumberModel.invalid && (xgNumberModel.dirty || xgNumberModel.touched) && required && xgNumberModel.errors.required}"
+            [required]="required" xgValidateMinMax [min]="min" [max]="max" [(ngModel)]="inputModelValue" (focus)="onFocusIn($event)" xgValidateNumber [xgnumerictype]="'decimal'" [precision]="precision" [inputValue]="inputModelValue"  (blur)="onFocusOut($event)"
+            [disabled]="disabled" [placeholder]="placeholder" #xgNumberModel="ngModel" />
+        <div class="xg-focus-border"></div>
+        
+        <div *ngIf="xgNumberModel.invalid && (xgNumberModel.dirty || xgNumberModel.touched)" class="xg-alert xg-alert-danger">
+            <div *ngIf="required && xgNumberModel.errors.required">
+                {{labelName || 'Number Input'}} is
+                <span class="xg-font-bold">required.</span>
+            </div>
+            <div *ngIf="minlength && xgNumberModel.errors.minlength">
+                {{labelName || 'Number Input'}} should contain {{minlength}}
+            </div>
+            <div *ngIf="min && !max && xgNumberModel.errors.min">
+                Minimum required number is {{min}}.
+            </div>
+            <div *ngIf="max && !min && xgNumberModel.errors.max">
+                Maximum number can be {{max}}.
+            </div>
+            <div *ngIf="max && min &&xgNumberModel.errors.minMax">
+               Number should be between {{min}} - {{max}}
+            </div>
+        </div>
+    </div>
+</div>

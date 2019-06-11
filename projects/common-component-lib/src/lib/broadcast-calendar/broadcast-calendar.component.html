@@ -1,0 +1,22 @@
+<!--[panelStyleClass]="panel-style-class-1"-->
+<p-calendar
+    [inputStyle]="{width:width + 'px'}"
+    [locale]="localeConfig"
+    showIcon="true"
+    showButtonBar="true"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [disabledDates]="invalidDates"
+    [disabledDays]="[]"
+    (onSelect)="onSelect($event)"
+    (onMonthChange)="onMonthChange($event)"
+    (onFocus)="onFocus($event)">
+    <ng-template pTemplate="date" let-date>
+        <!-- style a day range in the calendar -->
+        <span
+            *ngIf="true"
+            [ngStyle]="{color: (date.day > 0) ? '#23537e' : 'inherit',padding:'0px',fontWeight:'bold'}">
+            {{date.day}}
+        </span>
+    </ng-template>
+</p-calendar>

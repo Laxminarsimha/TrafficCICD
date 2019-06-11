@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <nav class="nav-list">
+        <span
+            *ngFor="let item of items"
+            class="nav-list_item"
+            (click)="selectItem($event, item)"
+            [ngClass]="navItemClasses(item)">
+            <span class="text">{{ item.name }}</span>
+        </span>
+    </nav>
+</div>

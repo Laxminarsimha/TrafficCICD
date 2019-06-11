@@ -1,0 +1,56 @@
+<ng-container *ngIf="column.calculationsEnabled">
+  <div [ngSwitch]="column.dataType">
+    <!-- Date data type -->
+    <div *ngSwitchCase="'date'" class="centerContent">
+
+      <mat-form-field *ngIf="column.calculationsEnabled && allowUserSelection">
+        <mat-select [placeholder]="'Calculations'" [formControl]="dateFunctions" multiple
+          (selectionChange)="onDateSelectionChange($event)">
+          <mat-select-trigger>
+            {{dateFunctions.value ? dateFunctions.value[0] : ''}}
+            <span *ngIf="dateFunctions.value?.length > 1" class="example-additional-selection">
+              (+{{ dateFunctions.value.length - 1}} {{ dateFunctions.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+
+          <mat-option *ngFor="let func of dateFunctionsList" [value]="func.label" checked="checked">{{func.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="functionContainer" *ngFor="let calc of selectedDateFunctions">
+        <div>
+          <label>{{ calc.label }}:</label>
+          <div class="functionOutput">{{ calc.func(data, column) | date }}</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Number data type-->
+    <div *ngSwitchCase="'number'" class="centerContent">
+
+      <mat-form-field *ngIf="column.calculationsEnabled && allowUserSelection">
+        <mat-select placeholder="Calculations" [formControl]="numberFunctions" multiple
+          (selectionChange)="onNumberSelectionChange($event)">
+          <mat-select-trigger>
+            {{numberFunctions.value ? numberFunctions.value[0] : ''}}
+            <span *ngIf="numberFunctions.value?.length > 1" class="example-additional-selection">
+              (+{{numberFunctions.value.length - 1}} {{numberFunctions.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+
+          <mat-option *ngFor="let func of numberFunctionsList" [value]="func.label">{{func.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="functionContainer" *ngFor="let calc of selectedNumberFunctions">
+        <div>
+          <label>{{ calc.label }}:</label>
+          <div class="functionOutput">{{ calc.func(data, column) | number }}</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ng-container>

@@ -1,0 +1,74 @@
+:host{
+    display: block;
+}
+
+.wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.dropdown-profile{
+    min-height: 100%;
+    width: auto;
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    .user-profile{
+        padding: 13px 33px 13px 48px;
+        &:hover{
+            background: #6ea8dc;
+            cursor: pointer;
+        }
+        .user-photo{
+            position: absolute;
+            top: 9px;
+            left: 10px;
+            width: 28px;
+            height: 28px;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .pi-angle-down{
+            position: absolute;
+            top: 14px;
+            right: 8px;
+        }
+    }
+}
+
+.active .dropdown-list{
+    display: block;
+}
+
+.dropdown-list{
+    display: none;
+    position: absolute;
+    color: #4E4E4E;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    z-index: 10;
+    .menu-dropdown-list{
+        border: 1px solid #cfcfcf;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        &_item{
+            padding: 0 5px;
+            &:hover{
+                background: #f3f3f3;
+                cursor: pointer;
+            }
+            .item-link{
+                color: inherit;
+                border-bottom: 1px solid #cfcfcf;
+                display: block;
+                padding: 5px 0;
+                text-decoration: none;
+            }
+        }
+    }
+}

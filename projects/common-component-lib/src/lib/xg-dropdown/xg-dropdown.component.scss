@@ -1,0 +1,78 @@
+@import '../../../../../src/styles.scss';
+.fullWidth {
+    display: block;
+}
+.xg-dropdown {
+    .ui-dropdown{
+        display: block;
+        // width: 100% !important;
+        min-height: 34px;
+        line-height: 20px;
+        padding: 6px;
+        font-size: $font-14;
+        border-radius: 0;
+        color: $mediumBlack;
+        background-color: $white;
+        background-image: none;
+        border-width: 0 0 1px;
+        border-bottom-color: $lightGray;
+        box-sizing: border-box;
+        -webkit-transition: 0.3s all ease-in-out;
+        -ms-transition: 0.3s all ease-in-out;
+        -moz-transition: 0.3s all ease-in-out;
+        -o-transition: 0.3s all ease-in-out;
+        transition: 0.3s all ease-in-out;
+        position: relative;
+        &:hover{
+            border-color: $royalBlue !important;
+        }
+        
+        &:disabled, &:disabled:hover{
+            cursor: not-allowed;
+            border-color: $lightGray!important;
+            background-color: $gray;
+        }
+        .ui-inputtext{
+            padding: 0 !important;
+        }
+        .ui-dropdown-trigger-icon{
+            margin-top: 5px;
+        }
+        .ui-dropdown-trigger-icon:before{
+            content: " "!important;;
+            border-top: 5px solid $black;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 0;
+        }
+    }
+    .ui-state-disabled label.ui-dropdown-label{
+        cursor: not-allowed !important;
+    }
+    + .xg-focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $royalBlue;
+        -webkit-transition: 0.4s ease-in-out all;
+        -ms-transition: 0.4s ease-in-out all;
+        -moz-transition: 0.4s ease-in-out all;
+        -o-transition: 0.4s ease-in-out all;
+        transition: 0.4s ease-in-out all;
+    }
+    &:hover ~ .xg-focus-border {
+        width: 100%;
+        -webkit-transition: 0.4s ease-in-out all;
+        -ms-transition: 0.4s ease-in-out all;
+        -moz-transition: 0.4s ease-in-out all;
+        -o-transition: 0.4s ease-in-out all;
+        transition: 0.4s ease-in-out all;
+        left: 0;
+    }
+    label{
+        width: calc(100% - 35px) !important;
+        text-overflow: ellipsis;
+    }
+}

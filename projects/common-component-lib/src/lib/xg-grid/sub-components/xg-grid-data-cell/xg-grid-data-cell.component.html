@@ -1,0 +1,49 @@
+<span *ngIf="isCellTemplatevisible">
+  <!-- step 2 with multiple templates -->
+  <span *ngFor="let cellTemplate of xgCustomCellTemplate">
+    <span *ngIf="cellTemplate.getCellContent() == col.field">
+      <ng-container
+        *ngTemplateOutlet="cellTemplate.template;  context: {$implicit: rowData[col.field], rowData: rowData,field: rowData[col.field]}">
+      </ng-container>
+    </span>
+  </span>
+</span>
+<span *ngIf="!isCellTemplatevisible">
+  <span [ngSwitch]="col.dataType">
+    <span class="xg-cust-picker-width"
+      *ngSwitchCase="'date'">{{rowData[col.field] | date:col.dateFormatter.formatter}}</span>
+    <span *ngSwitchCase="'decimal'">{{rowData[col.field] | number : col.roundOff ? col.roundOff : '1.2-2'}}</span>
+    <!-- this is temporary for the boolean component toggle concept -->
+    <span *ngSwitchCase="'boolean'">
+      <boolean-component [value]="rowData[col.field]" (CellEdited)="onCellEdited" [rowData]="rowData" [column]="col">
+      </boolean-component>
+    </span>
+    <span *ngSwitchCase="'string'">
+      <!-- {{rowData[col.field]}} -->
+      <search-text-highlighter [value]="rowData[col.field]" [column]="col" [filterColumnData]="currentFilterColumnData"
+        [showHighlighting]="showFilterColumnHighlighting">
+      </search-text-highlighter>
+    </span>
+    <span *ngSwitchCase="'time'" class="xg-cust-picker-width">{{rowData[col.field]}}</span>
+    <span *ngSwitchDefault>
+      <span [ngSwitch]="col.formatter">
+        <span *ngSwitchCase="'Phone'">{{rowData[col.field] | phoneFormatter}}</span>
+        <span *ngSwitchDefault>
+          <ng-container *ngIf="isEditable">
+            <ng-container>
+              <search-text-highlighter *ngIf="editMode == 'popup'" [value]="rowData[col.field]" [column]="col"
+                [filterColumnData]="currentFilterColumnData" [showHighlighting]="showFilterColumnHighlighting">
+              </search-text-highlighter>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngIf="!isEditable">
+            <search-text-highlighter [value]="rowData[col.field]" [column]="col"
+              [filterColumnData]="currentFilterColumnData" [showHighlighting]="showFilterColumnHighlighting">
+            </search-text-highlighter>
+          </ng-container>
+        </span>
+      </span>
+    </span>
+  </span>
+</span>

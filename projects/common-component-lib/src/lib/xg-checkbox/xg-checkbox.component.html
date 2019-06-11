@@ -1,0 +1,12 @@
+<div class="xg-checkbox" [class.xg-label-left]="labelLeft" [ngClass]="{'xg-required' : required,'xg-readOnly': readOnly,'xg-checkbox-group': layout === 'horizontal'}">
+    <input type="checkbox" #inputElement [disabled]="disabled" [readOnly]="readOnly" [required]="required"
+        [(ngModel)]="checkboxModelValue" #xgCheckboxModel="ngModel" />
+    <label (click)="toggleModel($event)" [ngClass]="{'xg-text-label':!!labelName}" class="xg-check-label">
+        <span (click)="toggleModel($event)"></span>{{labelName}}</label>
+    <div *ngIf="xgCheckboxModel.invalid && (xgCheckboxModel.dirty || xgCheckboxModel.touched)" class="xg-alert xg-alert-danger">
+        <div *ngIf="required && xgCheckboxModel.errors.required">
+            {{labelName || 'checkbox'}} is
+            <span class="xg-font-bold">required.</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+<label for="inputSwitchControl" *ngIf="label" [ngClass]="{'fullWidth' : fullWidth}">{{label}}</label>
+<p-inputSwitch [ngClass]="{'xg-disabled': disabled}" [disabled]="disabled"  [(ngModel)]="checked" (onChange)="onChange($event)">
+</p-inputSwitch>

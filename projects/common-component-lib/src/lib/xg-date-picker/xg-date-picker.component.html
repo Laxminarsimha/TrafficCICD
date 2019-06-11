@@ -1,0 +1,85 @@
+<div class="xg-date-picker" (keydown)="onKeyDown($event)">
+  <div class="xg-text-group" [ngClass]="{'xg-required' : required,'adjust-with-label': !!label}">
+    <label *ngIf="!!label" class="xg-text-label" for="dateControl">{{label}}</label>
+    <input #inputElement type="text" name="DateInput" autocomplete="off" [ngModelOptions]="{updateOn: validateOn}" class="xg-text-box"
+      [ngClass]="{'xg-required-message' : xgDatePickerModel.invalid && (xgDatePickerModel.dirty || xgDatePickerModel.touched) && required && xgDatePickerModel.errors.required}"
+      [required]="required" (ngModelChange)="onModelChange($event)" [ngModel]="datePickerModelValue" (focus)="onFocusInput($event)"
+      (blur)="onBlurInput($event)" [disabled]="disabled" [placeholder]="placeholder" xgValidateDate [xgValidationFormat]="formatter || 'mm/dd/yy'"
+      [xgMonthLabels]="monthLabels || datePickerConstants.constants['monthLabels']" #xgDatePickerModel="ngModel" />
+    <div class="xg-append-right" [ngClass]="{'adjust-with-label': !!label,'disabled':disabled}">
+      <i class="fa fa-calendar" (click)="toggleCalendar()"></i>
+    </div>
+    <div class="xg-focus-border"></div>
+    <div *ngIf="xgDatePickerModel.invalid && (xgDatePickerModel.dirty || xgDatePickerModel.touched)" class="xg-alert xg-alert-danger">
+
+      <div *ngIf="required && xgDatePickerModel.errors.required">
+        {{label || 'Date Field'}} is
+        <span class="xg-font-bold">required.</span>
+      </div>
+      <div *ngIf="xgDatePickerModel.errors.invalid">
+        Invalid Date Format
+      </div>
+    </div>
+  </div>
+  <div class="xg-calender" [ngClass]="{'xg-calender-overlay':!!appendTo}" (@overlayAnimation.start)="onOverlayAnimationStart($event)"
+    [@overlayAnimation]="{value: 'visible', params: {showTransitionParams: showTransitionOptions, hideTransitionParams: hideTransitionOptions}}"
+    *ngIf="showCalender" tabindex="0">
+    <div class="xg-calenderHeader">
+      <div class="xg-calenderControls">
+        <div class="xg-headerMonthYear">
+          <a (click)="onSelectMonthClicked($event)" tabindex="'0'">{{visibleMonth.monthTxt}}</a>
+          <a (click)="onSelectYearClicked($event)" tabindex="'0'">{{visibleMonth.year}}</a>
+        </div>
+        <div class="xg-calender-arrows">
+          <button type="button" class="headerbtn mydpicon icon-mydpleft" (click)="onPrev($event)" [disabled]="previousButtonDisable || bMonthView">
+            <i class="fa fa-angle-left"></i>
+          </button>
+          <button type="button" class="headerbtn mydpicon icon-mydpright" (click)="onNext($event)" [disabled]="nextButtonDisable || bMonthView">
+            <i class="fa fa-angle-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="xg-calenderMaintable" *ngIf="!bMonthView&&!bYearView">
+      <thead>
+        <tr>
+          <th class="weekdaytitle" scope="col" *ngFor="let d of weekHeaders">{{d}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="xg-calenderRow" *ngFor="let week of monthlyWeeks">
+          <td class="xg-dayCell" [ngClass]="{'disabled':days.disabled, 'xg-static-month': !!days.text,'selected':!days.text && selectedDate.day===days.dateObj.day && selectedDate.month===days.dateObj.month && selectedDate.year===days.dateObj.year}"
+            [colSpan]="days.colSpan" *ngFor="let days of week.week" tabindex="0" (click)="!days.disabled&&onCellClicked(days);$event.stopPropagation()">
+            <div class="xg-datevalue" (click)="!days.disabled&&onCellClicked(days);$event.stopPropagation()">
+              <span [ngClass]="{'markcurrday':days.currDay}">{{days.text || days.dateObj.day}}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="xg-calenderMaintable" *ngIf="bMonthView">
+      <tbody>
+        <tr *ngFor="let mr of aMonths">
+          <td class="monthcell tablesinglemonth" [ngClass]="{'selectedMonth': m.selected, 'disabled': m.disabled}" *ngFor="let m of mr"
+            (click)="!m.disabled && onMonthCellClicked(m);$event.stopPropagation()" tabindex="0">
+            <div class="monthvalue" [ngClass]="{'markcurrmonth':m.currMonth}">{{m.name}}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="xg-calenderMaintable" *ngIf="bYearView">
+      <tbody>
+        <tr>
+        </tr>
+        <tr *ngFor="let year of aYears">
+          <td class="yearcell tablesingleyear" [ngClass]="{'selectedYear': y.selected, 'disabled': y.disabled}" *ngFor="let y of year"
+            tabindex="0">
+            <div class="yearvalue" (click)="!y.disabled && onYearCellClicked(y);$event.stopPropagation()" [ngClass]="{'markcurryear':y.currYear}">{{y.year}}</div>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

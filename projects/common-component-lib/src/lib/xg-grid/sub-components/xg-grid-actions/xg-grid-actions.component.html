@@ -1,0 +1,41 @@
+<ng-container *ngIf="visible">
+  <div class="floatingBackground">
+    <ng-container *ngFor="let actions of customActionIcons; let sIndex=index" >
+      <button [matTooltip]="actions.actionType.charAt(0).toUpperCase() +  actions.actionType.slice(1) + thisOrThese + ' ' + recordOrRecords" [matTooltipShowDelay]="tooltipDelay"
+      [matTooltipDisabled]="disableTooltips" mat-icon-button [color]="matColor" type="button" [disabled]="actions.actionConfig?.disabled" *ngIf="actions.actionConfig?.visible && dataItems.length===1"
+      [tabIndex]="_tabIndexEditBtn" (click)="onActionClick(actions)">
+      <mat-icon [attr.aria-label]="actions.actionType.charAt(0).toUpperCase() +  actions.actionType.slice(1)">{{actions.actionConfig.iconClass}}</mat-icon>
+      <!-- <i [class]="customActionIcons['edit']['icon']"></i> -->
+    </button>
+  </ng-container>
+    <!-- <button [matTooltip]="'Edit ' + thisOrThese + ' ' + recordOrRecords" [matTooltipShowDelay]="tooltipDelay"
+      [matTooltipDisabled]="disableTooltips" mat-icon-button [color]="matColor" type="button" [disabled]="false" *ngIf="customActionIcons['edit']['visible'] && dataItems.length===1"
+      [tabIndex]="_tabIndexEditBtn" (click)="editBtnClicked()">
+      <mat-icon aria-label="edit">{{customActionIcons['edit']['icon']}}</mat-icon>
+    </button>
+
+    <button [matTooltip]="'Save ' + thisOrThese + ' ' + recordOrRecords" [matTooltipShowDelay]="tooltipDelay"
+      [matTooltipDisabled]="disableTooltips" mat-icon-button [color]="matColor" type="button" [disabled]="false" *ngIf="customActionIcons['save']['visible'] && dataItems.length===1"
+      [tabIndex]="_tabIndexSaveBtn" (click)="saveBtnClicked()">
+      <mat-icon aria-label="Save">{{customActionIcons['save']['icon']}}</mat-icon>
+    </button>
+
+    <button [matTooltip]="'Undo changes'" [matTooltipShowDelay]="tooltipDelay" [matTooltipDisabled]="disableTooltips"
+      mat-icon-button [color]="matColor" type="button" [disabled]="false" *ngIf="customActionIcons['undo']['visible'] && dataItems.length===1" [tabIndex]="_tabIndexCancelBtn"
+      (click)="cancelBtnClicked()">
+      <mat-icon aria-label="Cancel">{{customActionIcons['undo']['icon']}}</mat-icon>
+    </button>
+
+    <button [matTooltip]="'Delete ' + thisOrThese + ' ' + recordOrRecords" [matTooltipShowDelay]="tooltipDelay"
+      [matTooltipDisabled]="disableTooltips" mat-icon-button [color]="matColor" type="button" [disabled]="false" *ngIf="customActionIcons['delete']['visible']"
+      [tabIndex]="_tabIndexDeleteBtn" (click)="deleteBtnClicked()">
+      <mat-icon aria-label="Cancel">{{customActionIcons['delete']['icon']}}</mat-icon>
+    </button>
+
+    <button [matTooltip]="'Remove ' + thisOrThese + ' ' + recordOrRecords" [matTooltipShowDelay]="tooltipDelay"
+      [matTooltipDisabled]="disableTooltips" mat-icon-button [color]="matColor" type="button" [disabled]="true" *ngIf="customActionIcons['remove']['visible']"
+      [tabIndex]="_tabIndexRemoveBtn" (click)="removeBtnClicked()">
+      <mat-icon aria-label="Remove">{{customActionIcons['remove']['icon']}}</mat-icon>
+    </button> -->
+  </div>
+</ng-container>

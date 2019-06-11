@@ -1,0 +1,71 @@
+.dialogWrapper{
+    display: flex;
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.contentContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.actionButtons{
+  align-self: flex-start;
+}
+.cancelContainer {
+  align-self: flex-end;
+}
+.orSelected{
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-style: italic;
+}
+.column-options-wrapper {
+    display: grid;
+    grid-template-columns: 1;
+    grid-gap: 10px;
+  }
+
+  .column-options-section-all-fields {
+    grid-column: 1;
+    grid-row: 1;
+  }
+.column-options-section-title {
+    font-weight: bold;
+    font-size: larger;
+    text-align: left;
+    padding: 10px;
+    padding-left: 0px;
+  }
+  .column-options-section-title i {
+    float: left;
+    padding-right: 8px;
+  }
+  .column-options-section, .column-options-section-advanced {
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    min-height: 100px;
+    max-height: 250px;
+  }
+
+  .column-options-section-advanced {
+    margin-top: 29px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    margin-left: 10px;
+  }
+  .dragIcon{
+    padding: 5px;
+    margin-bottom: 6px;
+    cursor: move;
+  }
+  
+  .options-select-all-section{
+    display: flex;
+    margin-left: 15px;
+  }
+  

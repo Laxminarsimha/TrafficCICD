@@ -1,0 +1,19 @@
+.xg-dayPicker {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    .xg-daypicker-section{
+        overflow: hidden;
+        .xg-dayPicker-header{
+            padding: 5px 5px 5px 10px;
+        }
+        a.active{
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .xg-dayPicker-items{
+                display: inline-block;
+                padding: 5px 0;
+        }
+    }
+  }

@@ -1,0 +1,256 @@
+<div class="container" [ngStyle]="{width:width+'px'}">
+        <p-pickList [source]="list1" [target]="list2">
+                <ng-template let-car pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <img src="assets/showcase/images/demo/car/{{car.brand}}.png" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+                        <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{car.brand}} - {{car.year}} - {{car.color}}</div>
+                    </div>
+                </ng-template>
+            </p-pickList>
+<p-button icon="pi pi-check" iconPos="right" label="Click"></p-button>
+<div class="col s6 daterangepicker" (clickOutside)="hideCalendar()" >
+  <label>{{dateRangeLabel}}</label>
+  <input
+    [tabIndex]="tabIndex"
+    type="text"
+    [attr.maxlength]="customemaxlength"
+    [readonly]="readOnlyInput"
+    #datepickerInput
+    [disabled]="disabledInput"
+    [id]="locale.datePickerId" 
+    class="form-control"
+    [placeholder]="chosenLabel"
+    [value]="chosenLabel"
+    (click)="inputClick()"
+    [ngClass]="dateInvalid ? 'invalidDate' : ''"
+    (keyup)="checkDateFormat($event)"
+    (keydown)="allowOnlyDateTime($event)"
+    autocomplete="false"
+    (click)="showCalendar(); setSelectedDate()"
+  />
+
+  <!-- (keyup)="clearDateTimeOnKeyUp($event)" formControlName="dateName" -->
+  <!-- maxlength="10" -->
+  <!-- (keydown)="allowValidDate($event)" -->
+  <!-- [textMask]="{mask: maskDateTime, guide: false}"  -->
+  <fa-icon [icon]="faCalendarAlt" class="datepickerIcon" [class.disabled]="disabledInput" (click)="showCalendar(); setSelectedDate()">Click Me</fa-icon>
+  <span *ngIf="errorMsg" class="error">{{errorMsg}}</span>
+    <div class="md-drppicker" #pickerContainer *ngIf="CalendarStatus || flexiDateRangeStatus"
+[ngClass]="{
+    ltr: locale.direction === 'ltr',
+    rtl: this.locale.direction === 'rtl',
+    'shown': isShown || inline,
+    'hidden': !isShown && !inline,
+    'inline': inline,
+    'double': !singleDatePicker && showCalInRanges,
+    'show-ranges': rangesArray.length,
+    'from-top': '',
+    'week': showWeekNumbers || showISOWeekNumbers
+}">
+    <div class="ranges">
+        <ul>
+          <li *ngFor="let range of rangesArray">
+            <button type="button"
+                    (click)="clickRange($event, range)"
+                    [disabled]="disableRange(range)"
+                    [ngClass]="{'active': range === chosenRange}">{{range}}</button>
+          </li>
+        </ul>
+    </div>  
+    <div class="calendar" [ngClass]="{right: singleDatePicker, left: !singleDatePicker}"
+        *ngIf="showCalInRanges">
+        <div class="calendar-table">
+            <table class="table-condensed" *ngIf="calendarVariables" cellpadding="5" cellspacing="5">
+                <thead>
+                    <tr>
+                        <!-- <th *ngIf="showWeekNumbers || showISOWeekNumbers"></th> -->
+                        <ng-container *ngIf="!calendarVariables.left.minDate || calendarVariables.left.minDate.isBefore(calendarVariables.left.calendar.firstDay) && (!this.linkedCalendars || true)">
+                            <th (click)="clickPrev('left')" class="prev available" >
+                            </th>
+                        </ng-container>
+                        <ng-container *ngIf="!(!calendarVariables.left.minDate || calendarVariables.left.minDate.isBefore(calendarVariables.left.calendar.firstDay) && (!this.linkedCalendars || true))">
+                            <th></th>
+                        </ng-container>
+                        <th [attr.colspan]="(showWeekNumbers || showISOWeekNumbers) ? 6 : 5" class="month drp-animate" >
+                            <ng-container *ngIf="showDropdowns && calendarVariables.left.dropdowns">
+                                    <select class="monthselect" (change)="monthChanged($event, 'left')">
+                                            <option 
+                                            [disabled]="(calendarVariables.left.dropdowns.inMinYear && m < calendarVariables.left.minDate.month()) || (calendarVariables.left.dropdowns.inMaxYear && m > calendarVariables.left.maxDate.month())"
+                                            *ngFor="let m of calendarVariables.left.dropdowns.monthArrays" [value]="m" [selected]="calendarVariables.left.dropdowns.currentMonth == m">
+                                                {{locale.monthNames[m]}}
+                                            </option>
+                                    </select>
+                                    <select class="yearselect"  (change)="yearChanged($event, 'left')">
+                                        <option *ngFor="let y of calendarVariables.left.dropdowns.yearArrays" [selected]="y === calendarVariables.left.dropdowns.currentYear">
+                                            {{y}}
+                                        </option>
+                                    </select>
+                            </ng-container>
+                            <ng-container *ngIf="!showDropdowns || !calendarVariables.left.dropdowns">
+                                    {{this.locale.monthNames[calendarVariables?.left?.calendar[1][1].month()]}}  {{ calendarVariables?.left?.calendar[1][1].format(" YYYY")}}
+                            </ng-container>
+                        </th>
+                        <ng-container *ngIf="(!calendarVariables.left.maxDate || calendarVariables.left.maxDate.isAfter(calendarVariables.left.calendar.lastDay)) && (!linkedCalendars || singleDatePicker )">
+                            <th class="next available" (click)="clickNext('left')">
+                            </th>
+                        </ng-container>
+                        <ng-container *ngIf="!((!calendarVariables.left.maxDate || calendarVariables.left.maxDate.isAfter(calendarVariables.left.calendar.lastDay)) && (!linkedCalendars || singleDatePicker ))">
+                            <th></th>
+                        </ng-container>
+                    </tr>
+                    <tr><td colspan="8" class="spacer"></td></tr>
+                    <tr>
+                        <th *ngIf="showWeekNumbers || showISOWeekNumbers" class="week"><span>{{this.locale.weekLabel}}</span></th>
+                        <th *ngFor="let dayofweek of locale.daysOfWeek" [ngClass]="(locale.firstDay == 1) ? 'gregorian' : 'broadcast'"><span>{{dayofweek}}</span></th>
+                    </tr>
+                </thead>
+                <tbody class="drp-animate">
+                    <tr *ngFor="let row of calendarVariables.left.calRows" [class]="calendarVariables.left.classes[row].classList">
+                        <!-- add week number -->
+                        <td  class="week" *ngIf="showWeekNumbers">
+                            <span>{{calendarVariables.left.calendar[row][0].week()}}</span>
+                        </td>
+                        <td class="week" *ngIf="showISOWeekNumbers">
+                            <span>{{calendarVariables.left.calendar[row][0].isoWeek()}}</span>
+                        </td>
+                        <!-- cal -->
+                        <td *ngFor="let col of calendarVariables.left.calCols" [class]="calendarVariables.left.classes[row][col]" (click)="clickDate($event, 'left', row, col)">
+                            <span>{{calendarVariables.left.calendar[row][col].date()}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <input *ngIf="timePicker" [ngModel]="leftTime" placeholder="--:--:--" type='text' type="text" [textMask]="getMask()"
+          (keyup)="setTime($event, 'left')" [ngClass]="!valid ? 'error' : ''"> -->
+        <div class="time" *ngIf="timePicker">
+          <div class="form-group">
+            <mat-form-field [ngClass]="!valid ? 'error' : ''" >
+              <mat-label>{{startTimeLabel}}</mat-label>
+              <input class="form-control" matInput [(ngModel)]="timeLeft" placeholder="" type="text" 
+              [textMask]="getMask()" (keyup)="setTime($event, 'left')" >
+            </mat-form-field>
+          </div>
+          <div class="clear-start-end-date pull-right" *ngIf="clearStartEndDates">
+            <span (click)="clearStart()">Clear Start</span>
+          </div>
+        </div>
+    </div>
+    <div class="calendar right" *ngIf="showCalInRanges && !singleDatePicker">
+        <div class="calendar-table">
+            <table class="table-condensed" *ngIf="calendarVariables">
+                <thead>
+                    <tr>
+                        <!-- <th *ngIf="showWeekNumbers || showISOWeekNumbers"></th> -->
+                        <ng-container *ngIf="(!calendarVariables.right.minDate || calendarVariables.right.minDate.isBefore(calendarVariables.right.calendar.firstDay)) && (!this.linkedCalendars) && this.rightCalendarPrev">
+                          <th (click)="clickPrev('right')" class="prev available" >
+                          </th>
+                        </ng-container>
+                        <ng-container *ngIf="!((!calendarVariables.right.minDate || calendarVariables.right.minDate.isBefore(calendarVariables.right.calendar.firstDay)) && (!this.linkedCalendars) && this.rightCalendarPrev)">
+                            <th></th>
+                        </ng-container>
+                        <th [attr.colspan]="(showWeekNumbers || showISOWeekNumbers) ? 6 : 5" class="month">
+                            <ng-container *ngIf="showDropdowns && calendarVariables.right.dropdowns">
+                                    <select class="monthselect" (change)="monthChanged($event, 'right')">
+                                            <option 
+                                            [disabled]="(calendarVariables.right.dropdowns.inMinYear && m < calendarVariables.right.minDate.month()) || (calendarVariables.right.dropdowns.inMaxYear && m > calendarVariables.right.maxDate.month())"
+                                            *ngFor="let m of calendarVariables.right.dropdowns.monthArrays" [value]="m" [selected]="calendarVariables.right.dropdowns.currentMonth == m">
+                                                {{locale.monthNames[m]}}
+                                            </option>
+                                    </select>
+                                    <select class="yearselect" (change)="yearChanged($event, 'right')">
+                                        <option *ngFor="let y of calendarVariables.right.dropdowns.yearArrays" [selected]="y === calendarVariables.right.dropdowns.currentYear">
+                                            {{y}}
+                                        </option>
+                                    </select>
+                            </ng-container>
+                            <ng-container *ngIf="!showDropdowns || !calendarVariables.right.dropdowns">
+                                    {{this.locale.monthNames[calendarVariables?.right?.calendar[1][1].month()]}}  {{ calendarVariables?.right?.calendar[1][1].format(" YYYY")}}
+                            </ng-container>
+                        </th>
+                            <ng-container *ngIf="!calendarVariables.right.maxDate || calendarVariables.right.maxDate.isAfter(calendarVariables.right.calendar.lastDay) && (!linkedCalendars || singleDatePicker || true)">
+                                <th class="next available" (click)="clickNext('right')">
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!(!calendarVariables.right.maxDate || calendarVariables.right.maxDate.isAfter(calendarVariables.right.calendar.lastDay) && (!linkedCalendars || singleDatePicker || true))">
+                                <th></th>
+                            </ng-container>
+                    </tr>
+                    <tr><td colspan="8" class="spacer"></td></tr>
+                    <tr>
+                        <th *ngIf="showWeekNumbers || showISOWeekNumbers" class="week"><span>{{this.locale.weekLabel}}</span></th>
+                        <th *ngFor="let dayofweek of locale.daysOfWeek" [ngClass]="(locale.firstDay == 1) ? 'gregorian' : 'broadcast'"><span>{{dayofweek}}</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of calendarVariables.right.calRows" [class]="calendarVariables.right.classes[row].classList">
+                        <td class="week" *ngIf="showWeekNumbers">
+                            <span>{{calendarVariables.right.calendar[row][0].week()}}</span>
+                        </td>
+                        <td class="week" *ngIf="showISOWeekNumbers">
+                            <span>{{calendarVariables.right.calendar[row][0].isoWeek()}}</span>
+                        </td>
+                        <td *ngFor="let col of calendarVariables.right.calCols" [class]="calendarVariables.right.classes[row][col]" (click)="clickDate($event, 'right', row, col)">
+                            <span>{{calendarVariables.right.calendar[row][col].date()}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <input *ngIf="timePicker" [ngModel]="rightTime" placeholder="--:--:--" type='text' type="text" [textMask]="getMask()"
+          (keyup)="setTime($event, 'right')" [ngClass]="!valid ? 'error' : ''"> -->
+        <div class="time" *ngIf="timePicker">
+          <div class="form-group" *ngIf="!singleDatePicker">
+            <mat-form-field [ngClass]="!valid ? 'error' : ''" >
+              <mat-label>{{endTimeLabel}}</mat-label>
+              <input class="form-control" matInput [(ngModel)]="timeRight" placeholder="" type='text' 
+              [textMask]="getMask()" (keyup)="setTime($event, 'right')" >
+            </mat-form-field>
+          </div>
+          <div class="clear-start-end-date pull-right" *ngIf="clearStartEndDates">
+            <span (click)="clearEnd()">Clear End</span>
+          </div>
+        </div>
+    </div>
+    <!-- <div class="time" *ngIf="timePicker">
+      <div class="form-group">
+        <mat-form-field [ngClass]="!valid ? 'error' : ''" >
+          <mat-label>{{startTimeLabel}}</mat-label>
+          <input class="form-control" matInput [(ngModel)]="timeLeft" placeholder="" type="text" 
+          [textMask]="getMask()" (keyup)="setTime($event, 'left')" >
+        </mat-form-field>
+      </div>
+      <div class="form-group" *ngIf="!singleDatePicker">
+        <mat-form-field [ngClass]="!valid ? 'error' : ''" >
+          <mat-label>{{endTimeLabel}}</mat-label>
+          <input class="form-control" matInput [(ngModel)]="timeRight" placeholder="" type='text' 
+          [textMask]="getMask()" (keyup)="setTime($event, 'right')" >
+        </mat-form-field>
+      </div>
+    </div> -->
+
+      <!-- <div *ngIf="clearStartEndDates" class="clear-btn-row">
+        <div class="clear-start-end-date">
+          <span (click)="clearStart()">Clear Start</span>
+        </div>
+        <div class="clear-start-end-date">
+          <span (click)="clearEnd()">Clear End</span>
+        </div>
+      </div> -->
+          
+    
+    <div class="buttons" *ngIf="!autoApply && ( !rangesArray.length || (showCalInRanges && !singleDatePicker))">
+      <div class="buttons_input">
+        <a *ngIf="showClearButton" (click)="onClickCearDates()" class="clearDate">{{clearDateLabel}}</a>
+        <a *ngIf="showSwapCalendar" (click)="onClickSwapCalanders()" class="clearDate">Swap to {{swapCalendarLabel}}</a>
+        <!-- <button  *ngIf="showClearButton" class="btn btn-default clear" type="button" (click)="clear()" title="clear the date">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 -5 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+        </button> -->
+        <button [disabled]="false" class="btn btn-default" type="button" (click)="clickCancel($event)">{{locale.cancelLabel}}</button>
+        
+        <button  class="btn"  [disabled]="buttonDisableStatus" type="button" (click)="clickApply($event)">{{locale.applyLabel}}</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>

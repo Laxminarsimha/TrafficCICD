@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Editing record:</h1>
+<div mat-dialog-content>
+    <dynamic-form [columnData]="data.data" [columns]="columnConfig" (submit)="submit($event)"></dynamic-form>
+</div>
+<div mat-dialog-actions style="float:right">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="data.data" color="primary">Save</button>
+</div>

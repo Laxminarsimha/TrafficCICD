@@ -1,0 +1,11 @@
+.ui-dialog-titlebar-close{
+    display: none
+}
+// .ui-dialog-resizable .ui-dialog-content{
+//     overflow: auto !important;
+//     max-height: 100px !important;
+// }
+::ng-deep.ui-dialog .ui-dialog-content{
+    min-height: 250px !important;
+    max-height: 400px !important; 
+}

@@ -1,0 +1,137 @@
+@import '/src/variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700,800,900');
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.xg-form-panel{
+    background-color: $white;
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid $gray;
+    margin: 10px;
+}
+.xg-header-div{
+  border-bottom: 1px solid $gray;
+  margin-bottom: 10px;
+  .xg-main-header{
+      font-size: $font-20;
+      margin: 10px 0 0;
+  }
+  .xg-text-group{
+      margin-bottom: 0;
+  }
+}
+.xg-sub-header{
+    font-size: $font-16;
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+.right-nav {
+    float: right;
+    label {
+        display: block;
+        font-weight: 500;
+    }
+}
+.xg-form-bg{
+    background-color: $smokeWhite;
+    border-radius: 5px;
+    padding: 10px;
+    .ui-dropdown{
+        width: 100% !important;
+    }
+}
+.cursor {
+    cursor: pointer;
+}
+@media screen and (min-width: 40.063em) {
+    .xg-cus-ui-2 {
+        .ui-md-2 {
+            width: 20% !important;
+        }
+    }
+}
+::ng-deep.xg-segmented-button{
+    overflow: hidden;
+    border-radius: 3px;
+    margin: 10px 0;
+    display: inline-block;
+    width: 14.2%;
+    xg-button{
+        float: left;
+        width: 100%;
+        .xg-button{
+            margin: 2px 0 !important;
+            border-radius: 0 !important;
+            // border-width: 1px 1px 1px 0px !important;s
+            border-color: #ddd !important;
+            background-color: #fff;
+            color: #333;
+            min-width: 92px !important;
+            &:before{
+                display: none;
+            }
+            &:hover{
+                background-color: #7a95e4;
+                color: #fff;
+                border-color: #7a95e4 !important;
+            }
+        }
+        
+        &.active .xg-button{
+            background-color: #4169E1;
+            color: #fff;
+            border-color: #4169E1 !important;
+            border-right: 1px solid !important;
+        }
+        button {
+            width: 100%;
+        }
+    }
+    &:first-child xg-button .xg-button{
+        // border-left-width: 1px !important;
+        border-top-left-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+    }
+    &:last-child xg-button .xg-button{
+        border-right-width: 1px !important;
+        border-top-right-radius: 3px !important;
+        border-bottom-right-radius: 3px !important;
+    }
+}
+::ng-deep .xg-cus-error-msg{
+    .xg-alert{
+        bottom: -40px !important;
+    }
+}
+
+::ng-deep.xg-cus-form-mat-stepper{
+    .ui-table-caption{
+        display: none !important;
+    }
+.mat-horizontal-stepper-header{
+    height: 25px;
+    padding: 0;
+    &:first-child{
+        display: none !important;
+    }
+    &:last-child{
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        color: $royalBlue;
+        padding: 5px;
+        .mat-step-label.mat-step-label-active{
+            color: $royalBlue;
+        }
+        }
+    }
+    .mat-stepper-horizontal-line{
+        display: none !important;
+    }
+    .mat-step-icon-state-number.mat-step-icon{
+        display: none !important;
+    }
+}
+
+
+

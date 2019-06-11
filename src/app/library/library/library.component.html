@@ -1,0 +1,173 @@
+<p-toast>
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <p *ngIf="!message.detail" innerHtml="{{detailMessage}}"></p>
+            <p *ngIf="message.detail" innerHtml="{{message.detail}}"></p>
+            <p *ngIf="message.validation" innerHtml="{{message.validation}}"></p>
+        </div>
+    </ng-template>
+</p-toast>
+<div class="xg-form-panel">
+    <div class="ui-g">
+        <div class="ui-g-12 xg-header-div">
+            <h3 class="xg-main-header">Add Library Content</h3>
+            <p>Use this section to add library content to the commercial record.</p>
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-12 xg-form-bg">
+            <mat-card-content>
+                <form  [formGroup]="libraryForm">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-dropdown label="Library Type" keyValue='LibraryId' displayValue='LibraryName'
+                                [options]='libraryTypes' [(ngModel)]='libraryItem.LibraryItemtypeId' name='Library Type'
+                                autoWidth='false' required formControlName="LibraryItemtypeId">
+                            </xg-dropdown>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-multi-select label="Advertiser(s)" keyValue='advertiserId' displayValue='advertiserName'
+                                [options]='advertisers' [(ngModel)]='libraryItem.Advertiserdto' name='advertiser'
+                                showHeader filter placeholder="select" required formControlName="Advertiserdto">
+
+                            </xg-multi-select>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-6 ui-lg-3 xg-cus-error-msg">
+                            <xg-input type="text" labelName="Title" [(ngModel)]='libraryItem.Title' name='Title'
+                                [maxlength]="100" alphaNumeric="true" formControlName="Title"> 
+
+                            </xg-input>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-input type="text" labelName="ISCI/AD ID" [(ngModel)]='libraryItem.IsciAdId'
+                                name='IsciAdId' [maxlength]="100" formControlName="IsciAdId">
+
+                            </xg-input>
+                        </div>
+                    </div> <br />
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-duration labelName="Ordered Length" [(ngModel)]='libraryItem.Length'
+                                name='OrderedLength' timeFrame="false" formControlName="Length" (onValueChange)="libraryItem.Length=$event">
+
+                            </xg-duration>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-duration labelName="Content Duration" [(ngModel)]='libraryItem.ContentDuration'
+                                name='ContentDuration' timeFrame="true" formControlName="ContentDuration" (onValueChange)="libraryItem.ContentDuration=$event">
+
+                            </xg-duration>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3 xg-cus-error-msg">
+                            <xg-input type="text" labelName="Content ID" [(ngModel)]='libraryItem.ContentId'
+                                name='ContentId' alphaNumeric="true" formControlName="ContentId">
+
+                            </xg-input>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3 xg-cus-error-msg">
+                            <xg-input type="text" labelName="Additional ID" [(ngModel)]='libraryItem.ExternalId'
+                                name='ExternalId' [maxlength]="25" alphaNumeric="true" formControlName="ExternalId">
+
+                            </xg-input>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <xg-input-switch label="Allow Variable Length Window"
+                            (onValueChange)="variableLengthToggle($event)" [checked]="libraryItem.IsVariableLength" 
+                            formControlName="IsVariableLength">
+                        </xg-input-switch>
+                    </div>
+                    <div class="ui-g" *ngIf="libraryItem.IsVariableLength">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-duration labelName="Minimum Length" [(ngModel)]='libraryItem.MinimumLength'
+                                name='MinimumLength' timeFrame="true" formControlName="MinimumLength" (onValueChange)="libraryItem.MinimumLength=$event">
+                            </xg-duration>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-duration labelName="Maximum Length" [(ngModel)]='libraryItem.MaximumLength'
+                                name='MaximumLength' timeFrame="true" formControlName="MaximumLength" (onValueChange)="libraryItem.MaximumLength=$event">
+                            </xg-duration>
+                        </div>
+                    </div>
+                    <br /> <br />
+                    
+                    <div class="ui-g">
+                        <h3 class="xg-sub-header">Flight Dates & Times</h3>
+                        
+                    </div> 
+                    <mat-divider></mat-divider><br />
+
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-date-picker [(ngModel)]='libraryItem.StartDate' appendTo="body" label="Start Date"
+                                name='StartDate' formatter="MM/dd/yyyy" [minDate]="minStartDate"
+                                (ngModelChange)="changeDate($event)" required formControlName="minStartDate">
+                            </xg-date-picker>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-date-picker [(ngModel)]='libraryItem.EndDate' appendTo="body" label="End Date"
+                                name='EndDate' formatter="MM/dd/yyyy" (ngModelChange)="changeDate($event)"
+                                [minDate]="libraryItem.StartDate" [maxDate]="libraryItem.ExpirationDate" formControlName="ExpirationDate">
+                            </xg-date-picker>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-date-picker [(ngModel)]='libraryItem.ExpirationDate'
+                                [minDate]="libraryItem.EndDate || libraryItem.StartDate" appendTo="body"
+                                label="Expiration Date" name='ExpirationDate' formatter="MM/dd/yyyy"
+                                (ngModelChange)="changeExpirationDate($event)"  formControlName="StartDate">
+                            </xg-date-picker>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-duration labelName="Start Time" [(ngModel)]='libraryItem.StartTime' name='StartTime'
+                                timeFrame="false" (onValueChange)="onStartEndTimeChange($event)"
+                                [disabled]="libraryItem.EnableSpecificDays" formControlName="StartTime"></xg-duration>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <xg-duration labelName="End Time" [(ngModel)]='libraryItem.EndTime' name='EndTime'
+                                timeFrame="false" (onValueChange)="onStartEndTimeChange($event)"
+                                [disabled]="libraryItem.EnableSpecificDays" formControlName="EndTime">
+                            </xg-duration>
+                        </div>
+                    </div>
+                </form>
+                    <div class="ui-g">
+                        <xg-input-switch label="In Day Time" (onValueChange)="onDayTimeSwitch($event)"
+                            [checked]="libraryItem.EnableSpecificDays" ></xg-input-switch>
+                    </div>
+                    <div class="ui-g ">
+
+                        <div *ngFor="let days of dayNames;let i=index" class="xg-segmented-button">
+                            <div class="ui-g">
+                                <xg-button [label]="days.value" [disabled]="!days.usage.Enabled"
+                                    (onClick)="getDayName(days,i)" [ngClass]="{'active':days.usage.Selected}" >
+                                </xg-button>
+                                <xg-duration labelName="" [(ngModel)]='dayNames[i].usage.StartTime' timeFrame="false"
+                                    name="startDate{{i}}" *ngIf="libraryItem.EnableSpecificDays" class="ui-g-12" [disabled]="!days.usage.Enabled" >
+                                </xg-duration>
+                                <xg-duration labelName="" [(ngModel)]='dayNames[i].usage.EndTime' timeFrame="false"
+                                    name="endDate{{i}}" *ngIf="libraryItem.EnableSpecificDays" class="ui-g-12" [disabled]="!days.usage.Enabled">
+                                </xg-duration>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g xg-pull-right">
+                            <xg-button class="xg-sec-btn" icon="false" type="save" label="Save"
+                                (click)="submitForm($event)">
+                            </xg-button>
+                            <xg-button class="xg-sec-btn" icon="false" type="clear" label="Cancel"
+                                (onClick)="CancelLibrary()">
+                            </xg-button>
+
+                        </div>
+                    </div>
+                
+            </mat-card-content>
+        </div>
+    </div>
+</div>

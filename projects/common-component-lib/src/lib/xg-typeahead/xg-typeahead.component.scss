@@ -1,0 +1,23 @@
+@import '../../../../../src/styles.scss';
+.xg-typehead-multi { 
+    ul.ui-widget{
+        width: 100%;
+        border-radius: 0;
+        min-height: 34px;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .xg-text-box{
+        min-height: 27px;
+        padding: 6px 30px 6px 6px;
+    }
+}
+.xg-full-width{
+    width: 100%;
+}
+.ui-autocomplete-panel{
+    z-index: 99999 !important;
+}
+.ui-autocomplete-token-icon.single{
+    top:42px;
+}

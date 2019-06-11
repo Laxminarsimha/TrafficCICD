@@ -1,0 +1,28 @@
+<div class="container xg-tabs">
+  <div class="xg-tab-label">
+    <ul>
+      <li *ngFor="let tab of tabs" [ngClass]="{'disabled':tab?.disable}">
+        <a [ngClass]="{'active':activeTab === tab.key}" (click)="onTabClick($event,tab)">{{tab.label}}</a>
+      </li>
+    </ul>
+    <div class="xg-clear"></div>
+  </div>
+  <div class="xg-clear"></div>
+  <div class="tab-content">
+    <!-- Story book purpose -->
+    <div *ngIf="!tabContentTemplates.length">
+      <div *ngFor="let tabContent of tabs; let sIndex=index">
+        <div class="tab-pane fade" [ngClass]="{'in active': tabContent.key === activeTab}">
+          <div>{{tabContent.content}}</div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Story book purpose -->
+    <div *ngFor="let tabContent of tabContentTemplates; let sIndex=index">
+      <div class="tab-pane fade" [ngClass]="{'in active': tabContent.getTabContent() === activeTab}">
+        <ng-container *ngTemplateOutlet="tabContent.template; context: {index:sIndex}"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- <p-button [label]="label" [type]="type" [disabled]="disabled" [icon]="icon" [iconPos]="iconPos"
+  (onClick)="onClick($event)" (onFocus)="onFocus($event)" (onBlur)="onBlur($event)"></p-button> -->
+<div *ngIf="!xgButtonDropdown">
+  <button [type]="type" title="{{label}}" [disabled]="disabled" id="dropdownMenuButton"
+    class="xg-bg-{{xgButtonClass}} xg-button" (click)="onClickEvent($event)">
+    <span class="xg-{{iconPos}}">
+      <i *ngIf="icon!=''" class="{{icon}}"></i>
+    </span>
+    {{label}}
+  </button>
+</div>
+
+
+
+<ng-container *ngIf="xgButtonDropdown">
+  <button class="xg-bg-{{xgButtonClass}} xg-button" [disabled]="disabled" type="button" id="dropdownMenuButton"
+    (click)="getDropdown()">
+    {{label}}
+
+    <span>
+      <i class="pi pi-caret-down"></i>
+    </span>
+    <span class="xg-{{iconPos}}">
+      <i *ngIf="icon!=''" class="{{icon}}"></i>
+    </span>
+  </button>
+  <ul class="dropdown-options" id="dropdownMenuButton" *ngIf="showMenu">
+    <li class="item-options  {{opt.optionDisable}}" *ngFor="let opt of buttonOptions" id={{opt.optionId}}
+      title="{{opt['optionValue']}}">
+      <a (click)="opt.optionClick && opt.optionClick($event); $event.stopPropagation()">
+        <span class=""><i class="{{opt.optionIcon}}"></i></span>
+        {{opt['optionValue']}}
+      </a>
+    </li>
+  </ul>
+</ng-container>

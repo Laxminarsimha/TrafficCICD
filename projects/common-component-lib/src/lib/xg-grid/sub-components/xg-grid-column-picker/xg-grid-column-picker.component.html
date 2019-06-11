@@ -1,0 +1,94 @@
+<p-dialog [(visible)]="display" [modal]="false" [responsive]="true" [style]="{'width': width + 'px','min-width': minWidth + 'px'}"
+  [minY]="70" [maximizable]="true" (onShow)="onShow()" (onHide)="onHide()">
+  <p-header class="column-options-header">
+    {{header}}
+  </p-header>
+
+  <mat-slide-toggle [(ngModel)]="advancedMode" *ngIf="allowAdvancedMode">Enable Advanced Mode</mat-slide-toggle>
+
+  <div [ngClass]="advancedMode ? 'column-options-wrapper-advanced' : 'column-options-wrapper'">
+    <div [ngClass]="advancedMode ? 'column-options-section-all-fields-advanced' : 'column-options-section-all-fields'">
+      <div class="column-options-section-title">
+        <i class="fa fa-th"></i> All Fields
+      </div>
+      <div class="options-select-all-section">
+        <mat-checkbox (change)="checkAll($event)">Select All</mat-checkbox>
+      </div>
+      <div id="sourceFields" class="column-options-section">
+        <mat-list [sortablejs]="columns" *ngIf="allowReordering">
+          <mat-list-item *ngFor="let col of columns">
+            <i class="material-icons dragIcon">drag_indicator</i>
+            <mat-checkbox [checked]="showChecked(col)" (change)="onCheckChange($event, col)" pDraggable="cols"
+              (onDragStart)="dragStart($event,col)" (onDragEnd)="dragEnd($event)">{{col.header}}</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+        <mat-list *ngIf="!allowReordering">
+          <mat-list-item *ngFor="let col of columns">
+            <mat-checkbox [checked]="showChecked(col)" (change)="onCheckChange($event, col)" pDraggable="cols"
+              (onDragStart)="dragStart($event,col)" (onDragEnd)="dragEnd($event)">{{col.header}}</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+    <div class="column-options-section-row-fields" *ngIf="advancedMode">
+      <div class="column-options-section-title">
+        <i class="fa fa-grip-horizontal"></i> Row Fields
+      </div>
+      <div id="rowFields" class="column-options-section" pDroppable="cols" (onDragEnter)="onDragEnter($event)" (onDrop)="onDrop($event)">
+        <mat-list>
+          <mat-list-item *ngFor="let col of rowFields">
+            <mat-checkbox [checked]="showChecked(col)" (change)="onCheckChange($event, col)" pDraggable="cols"
+              (onDragStart)="dragStart($event,col)" (onDragEnd)="dragEnd($event)">{{col.header}}</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+    <div class="column-options-section-column-fields" *ngIf="advancedMode">
+      <div class="column-options-section-title">
+        <i class="fa fa-columns"></i> Column Fields
+      </div>
+      <div id="columnFields" class="column-options-section" pDroppable="cols" (onDragEnter)="onDragEnter($event)"
+        (onDrop)="onDrop($event)">
+        <mat-list>
+          <mat-list-item *ngFor="let col of columnFields">
+            <mat-checkbox [checked]="showChecked(col)" (change)="onCheckChange($event, col)" pDraggable="cols"
+              (onDragStart)="dragStart($event,col)" (onDragEnd)="dragEnd($event)">{{col.header}}</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+    <div class="column-options-section-filter-fields" *ngIf="advancedMode">
+      <div class="column-options-section-title">
+        <i class="fa fa-filter"></i> Filter Fields
+      </div>
+      <div id="filterFields" class="column-options-section" pDroppable="cols" (onDragEnter)="onDragEnter($event)"
+        (onDrop)="onDrop($event)">
+        <mat-list>
+          <mat-list-item *ngFor="let col of filterFields">
+            <mat-checkbox [checked]="showChecked(col)" (change)="onCheckChange($event, col)" pDraggable="cols"
+              (onDragStart)="dragStart($event,col)" (onDragEnd)="dragEnd($event)">{{col.header}}</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+    <div class="column-options-section-summary-fields" *ngIf="advancedMode">
+      <div class="column-options-section-title">
+        <i class="fa fa-asterisk"></i> Data Fields
+      </div>
+      <div class="column-options-section" pDroppable="cols" (onDragEnter)="onDragEnter($event)" (onDrop)="onDrop($event)">
+
+      </div>
+    </div>
+
+  </div>
+
+  <p-footer *ngIf="showFooter">
+    Column Picker Footer Works!
+  </p-footer>
+
+
+</p-dialog>

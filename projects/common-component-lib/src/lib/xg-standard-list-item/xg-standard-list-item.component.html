@@ -1,0 +1,11 @@
+<div class="list-item-content">
+  <img class="item-image" *ngIf="iconUrl" [src]="iconUrl">
+  <div class="item-content">
+    <div class="titleDiv">
+      <div class="title" [ngClass]="{'align-right': titleDirection === 'rtl'}">{{title}}</div>
+    </div>
+    <div class="descriptionDiv">
+      <div class="description">{{description}}</div>
+    </div>
+  </div>
+</div>

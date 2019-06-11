@@ -1,0 +1,238 @@
+<div class="container">
+  <xg-grid [loading]="loading" [logEventsToConsole]="logEventsToConsole" [gridConfig]="gridConfig" captionLabel="Cell Template"
+    [data]="data">
+    <!--  pass column field as template content  -->
+    <ng-template xgCustomCellTemplateContent="FirstName" let-data let-rowData="rowData" let-field="field">
+      <button>{{field}}</button>
+    </ng-template>
+    <ng-template xgCustomCellTemplateContent="LastName" let-data let-rowData="rowData" let-field="field">
+      <button>{{field}}</button>
+    </ng-template>
+
+  </xg-grid>
+
+
+
+
+  <xg-grid captionLabel="Toggle Button" [gridConfig]="gridConfig" [logEventsToConsole]="logEventsToConsole" [data]="data" [allowRowSelection]="false"
+    [useCheckBoxSelection]="false" [allowActions]="false" [selectionMode]='' [editMode]="inline" [showCalculationsRow]="false"
+    [showRowHover]="false" [enableGridEdit]="true" [enableActionsColumn]="false" [showFilterLabels]="false" [showFilterColumnHighlighting]='true'
+    [showDetailsRow]='false' [showColumnFilterRow]="true" (onGridDataChange)="onGridDataChange($event)">
+  </xg-grid>
+
+  <!-- <div class="row">
+    <div class="col-sm-4">
+      <xg-input labelName="Text" type="text" name="lastName" required (ngModelChange)="lastName  = $event" [(ngModel)]="lastName">
+      </xg-input>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is</strong> {{lastName}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-input labelName="Number" #inputModel="ngModel" name="phoneNumber" required [(ngModel)]="phoneNumber" type="number">
+      </xg-input>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong> {{phoneNumber}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-input labelName="Email" (ngModelChange)="firstName  = $event" name="firstName" required [(ngModel)]="firstName"
+        type="email">
+      </xg-input>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong> {{firstName}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-input labelName="Password" #inputModel="ngModel" name="password" required [(ngModel)]="password" type="password">
+      </xg-input>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong> {{password}}
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-checkbox labelName="CheckBox" [(ngModel)]="gender"></xg-checkbox>
+      <xg-checkbox labelName="" [(ngModel)]="gender1"></xg-checkbox>
+    </div>
+    <div class="col-sm-6">
+      <strong> Binding Value is </strong> {{gender}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-dropdown label="DropDown" #inputModel="ngModel" name="market" required [options]="marketsArray" [(ngModel)]="market">
+      </xg-dropdown>
+      <xg-dropdown [options]="countries" [(ngModel)]="country"></xg-dropdown>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{market | json}}{{countries | json}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-input-switch [checked]=true readonly disabled label="Input Switch" (onValueChange)="testMethod=$event">
+      </xg-input-switch>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{testMethod}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-textarea labelName="Textarea" rows="4" cols="35" [(ngModel)]="textarea" (ngModelChange)="textarea = $event">
+      </xg-textarea>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{textarea}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-multi-select showHeader filter label="MultiSelect" name="dropdown" displayValue="label" (onUnSelectEvent)="testUnselectValue($event)"
+        keyValue="value" [(ngModel)]="testDropdown" [options]="marketsArray" maxSelectedLabels=2>
+        <ng-template let-r #xgCustomTemplate>
+          <img src="http://lorempixel.com/30/30" style="width:24px;display:inline-block;vertical-align:middle" />
+          <span> {{r.label}} Test</span>
+        </ng-template>
+      </xg-multi-select>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{testDropdown | json}}
+    </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <xg-input label="mjk"></xg-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-list headerText="Products" growing="true" [dataSource]="list" delete>
+        <ng-template let-data #xgCustomTemplate>
+          <xg-standard-list-item iconUrl="http://lorempixel.com/30/30/" [title]="data.title" [description]="data.description"></xg-standard-list-item>
+        </ng-template>
+        <!-- <ng-template xg-standard-list-item  let-data [description]="data.description">
+
+\       </ng-template> -->
+      </xg-list>
+    </div>
+    <div class="col-sm-4">
+      <xg-radio-group [radioOptions]="marketsArray" [(ngModel)]="testRadio" groupName="testRadio">
+        <ng-template let-r #xgRadioTemplate>
+          <!-- <img src="http://lorempixel.com/30/30" style="width:24px;display:inline-block;vertical-align:middle" /> -->
+          <span> {{r.label}}</span>
+        </ng-template>
+      </xg-radio-group>
+      <xg-radio-group [radioOptions]="marketsArray" [(ngModel)]="testRadio2" groupName="testRadio2">
+        <ng-template let-r #xgRadioTemplate>
+          <!-- <img src="http://lorempixel.com/30/30" style="width:24px;display:inline-block;vertical-align:middle" /> -->
+          <span> {{r.label}}</span>
+        </ng-template>
+      </xg-radio-group>
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{testRadio}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-typeahead [suggestions]="marketsArray" displayValue="productName" keyValue="productId" labelName="Typeahead" [(ngModel)]="testTypeahead">
+        <ng-template let-r let-i="index" #xgCustomTemplate>
+          <img src="http://lorempixel.com/30/30" style="width:24px;display:inline-block;vertical-align:middle" />
+          <span> {{r.label}}{{i}}</span>
+        </ng-template>
+      </xg-typeahead>
+      <!-- <xg-typeahead [suggestions]="marketsArray" labelName="Typeahead" [(ngModel)]="testTypeahead2">
+        <ng-template let-r let-i="index" #xgCustomTemplate>
+          <img src="http://lorempixel.com/30/30" style="width:24px;display:inline-block;vertical-align:middle" />
+          <span> {{r.label}}{{i}}</span>
+        </ng-template>
+      </xg-typeahead> -->
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{testTypeahead}}
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <xg-tab [tabs]="['tab1','tab2','tab3']">
+      <ng-template xgTabContent="tab1">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+        from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+        looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites
+        of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
+        1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book
+        is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem
+        ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s
+        is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero
+        are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H.
+        Rackham.
+      </ng-template>
+      <ng-template xgTabContent="tab2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+        layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+        using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web
+        page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web
+        sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose
+        (injected humour and the like).</ng-template>
+      <ng-template xgTabContent="tab3">Tab Working</ng-template>
+    </xg-tab>
+  </div>
+
+  <div>
+    <xg-advertise label="Advertise" required [columns]="columns" [dataSource]="columnsData" [(ngModel)]="advertise" (onValueChange)="emitAdvertiseEvent($event)">
+    </xg-advertise>
+    {{advertise | json}}
+  </div>
+  <div>
+    <xg-button label="TestButton" (onMouseup)="onMouseupEvent($event)"></xg-button>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <xg-date-picker label="DatePicker" [(ngModel)]="testDatepicker"></xg-date-picker>
+    </div>
+    <xg-button type="clear" (onClick)="testDatepicker = ''"></xg-button>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{testDatepicker | json}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <!-- <xg-time-picker label="TimePicker" [(ngModel)]="testTimepicker">
+      </xg-time-picker> -->
+    </div>
+    <div class="col-sm-6 pt-2">
+      <strong> Binding Value is </strong>{{testTimepicker | json}}
+    </div>
+  </div>
+  <div class="row">
+    <xg-popup header="Godfather I" [visible]="display" modal responsive [style]="{width: '350px', minWidth: '200px'}" [minX]="200"
+      [minY]="500" draggable maximizable resizable (onHide)="display=false">
+
+      <div class="body">
+        <xg-typeahead [suggestions]="marketsArray" labelName="Typeahead" [(ngModel)]="testTypeahead">
+          <ng-template let-r let-i="index" #xgCustomTemplate>
+            <img src="http://lorempixel.com/30/30" style="width:24px;display:inline-block;vertical-align:middle" />
+            <span> {{r.label}}{{i}}</span>
+          </ng-template>
+        </xg-typeahead>
+        <span>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His
+          beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+          Through Michael's life the nature of the family business becomes clear. The business of the family is just like
+          the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever
+          anything stands against the good of the family.</span>
+      </div>
+
+      <div class="footer">
+        <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+      </div>
+    </xg-popup>
+    <button type="button" (click)="showTestDialog()" pButton icon="pi pi-info-circle" label="Show"></button>
+  </div>
+</div>

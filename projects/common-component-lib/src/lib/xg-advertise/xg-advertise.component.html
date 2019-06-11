@@ -1,0 +1,16 @@
+<div class="xg-advertise">
+  <xg-typeahead [onSearch]="onSearchFun" [labelName]="label" [maxlength]="maxlength || null" [(ngModel)]="advertiseModel" [disabled]="disabled"
+    [placeholder]="placeholder" [required]="required">
+    <div class="xg-advertise-template">
+      <ng-template let-result #xgAdversiorTemplate>
+        <div *ngIf="result.length">
+          <xg-column-list-item [columnMeta]="columns" [columnData]='result' (onClickEvent)="getSelelctedData($event)">
+          </xg-column-list-item>
+        </div>
+        <div *ngIf="!result.length" style="color:red" class="ui-autocomplete-list-item ui-corner-all">No
+          suggestions are available
+        </div>
+      </ng-template>
+    </div>
+  </xg-typeahead>
+</div>

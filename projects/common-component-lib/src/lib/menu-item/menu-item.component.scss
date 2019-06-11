@@ -1,0 +1,75 @@
+// First level menu
+:host.main-menu-item {
+    > .menu-item {
+        > .navigation-item-link {
+            .text {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.navigation-item-link {
+    color: #8b8b8b;
+    display: block;
+    padding: 11px 25px 11px 45px;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active{
+        color: #fff;
+    }
+
+    .text {
+        font-size: 12px;
+        font-weight: normal;
+        text-overflow: ellipsis;
+    }
+    .pi {
+        position: absolute;
+    }
+    .pi:not(.icon-helper) {
+        top: 11px;
+        left: 10px;
+        font-size: 23px;
+    }
+    .pi-angle-right {
+        top: 15px;
+        right: 15px;
+    }
+    .pi-caret-right {
+        top: 11px;
+        left: 10px;
+        font-size: 23px;
+    }
+}
+
+.menu-item.selected {
+    background-color: #27292a;
+    > .navigation-item-link {
+        color: #fff;
+    }
+}
+
+.menu-item.expanded {
+    > .navigation-item-link {
+        .pi-angle-right {
+            transform: rotate(90deg);
+        }
+    }
+    .slide {
+        height: auto;
+    }
+}
+
+.slide {
+    height: 0;
+    overflow: hidden;
+    .sub-list {
+        padding: 0 0 10px 35px;
+        list-style: none;
+    }
+}

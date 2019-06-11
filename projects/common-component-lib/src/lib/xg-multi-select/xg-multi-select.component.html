@@ -1,0 +1,20 @@
+<div class="xg-text-group xg-multi-select" [ngClass]="{'xg-required' : required}">
+  <label class="xg-text-label" for="multiselectControl" *ngIf="label">{{label}}</label>
+  <p-multiSelect [options]="options" [disabled]="disabled" [readonly]="readonly" [required]="required" [(ngModel)]="multiSelectModelValue"
+    #xgMultiSelectModel="ngModel" [panelStyle]="{minWidth:'12em'}" optionLabel="{{displayValue}}" [showHeader]="showHeader"
+    [filter]="filter" [selectionLimit]="selectionLimit" [maxSelectedLabels]="maxSelectedLabels" [filterPlaceHolder]="filterPlaceHolder"
+    [defaultLabel]="placeholder" (onChange)="onChangeEvent($event)" (onFocus)="onFocusEvent($event)" (onPanelShow)="sError=false"
+    (onPanelHide)="sError=true" (onBlur)="onBlurEvent($event)">
+
+    <ng-template *ngIf="xgCustomTemplate" let-data pTemplate="item">
+      <ng-container *ngTemplateOutlet="xgCustomTemplate; context: {$implicit: data} "></ng-container>
+    </ng-template>
+  </p-multiSelect>
+
+  <div *ngIf=" xgMultiSelectModel.invalid && (xgMultiSelectModel.dirty || xgMultiSelectModel.touched) && sError" class="xg-alert xg-alert-danger">
+    <div *ngIf="xgMultiSelectModel.errors.required">
+      {{label || 'This field'}} is
+      <span class="xg-font-bold">required.</span>
+    </div>
+  </div>
+</div>

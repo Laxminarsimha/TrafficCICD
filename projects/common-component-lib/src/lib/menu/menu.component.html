@@ -1,0 +1,15 @@
+<ul *ngIf="items?.length > 0" class="navigation-list">
+    <li
+        *ngFor="let item of items"
+        class="navigation-item"
+    >
+        <img-lib-menu-item *ngIf="item && !item.isHidden"
+                           class="main-menu-item"
+                           [menuItem]="item"
+                           [showSubLevels]="showSubLevels"
+                           [activeItems]="activeItems"
+                           [collapseOnSelect]="collapseOnSelect"
+                           (selectedItem)='selectedListItem($event)'>
+        </img-lib-menu-item>
+    </li>
+</ul>

@@ -1,0 +1,45 @@
+@import '../../../../../src/styles.scss';
+.xg-breadcrumb{
+    background-color: transparent;
+    padding: 10px 0;
+    margin-bottom: 0;
+     li {
+    display: inline;
+     }
+     li.disable{
+        cursor: not-allowed;
+        a{
+            pointer-events: none
+        }
+     }
+   li+li:before {
+     content: "\f054"; 
+     font-family: "FontAwesome";
+     color: #8d9aa8;
+     font-size: 14px;
+  }
+
+   a{
+    font-size: 15px;
+    color: #929faa;
+    font-size: 24px;
+  }
+  .xg-breadcrumb-item.active a{
+    color: #282d31;
+    font-weight: 600;
+  }
+  a:focus, a:hover{
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+  
+@media screen and (max-width: 767px) {
+    .breadcrumb{
+        padding: 10px 0;
+    }
+    .breadcrumb a{
+        font-size: 14px;
+    }
+}
+  

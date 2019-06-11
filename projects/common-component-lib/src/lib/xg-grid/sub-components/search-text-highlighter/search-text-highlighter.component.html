@@ -1,0 +1,16 @@
+<span
+  *ngIf="showHighlighting && column.dataType != 'number' && column.dataType != 'checkbox' && column.dataType != 'switch'">
+  {{preUnmatched}}<mark *ngIf="matched">{{matched}}</mark>{{unmatched}}
+</span>
+<span *ngIf="!showHighlighting && column.dataType == 'checkbox'">
+  <p-tableCheckbox (click)="removeBtnClicked()"></p-tableCheckbox>
+</span>
+<span *ngIf="!showHighlighting && column.dataType == 'switch'">
+  switch
+</span>
+<span *ngIf="(!showHighlighting || column.dataType == 'number') &&  !column.numberFormat">
+  {{value}}
+</span>
+<span *ngIf="(!showHighlighting || column.dataType == 'number') && column.numberFormat">
+  {{value | number}}
+</span>

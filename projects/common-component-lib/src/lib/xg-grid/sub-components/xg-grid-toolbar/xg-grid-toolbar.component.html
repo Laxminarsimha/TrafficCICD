@@ -1,0 +1,41 @@
+<div class="actions">
+  <xg-grid-actions [dataItems]="actionData" [matColor]="matColor" [visible]="showActions"
+    (_editBtnClick)="onActionsEvent($event)" (_copyBtnClick)="onActionsEvent($event)"
+    (_deleteBtnClick)="onActionsEvent($event)" (_cancelBtnClick)="onActionsEvent($event)"
+    (_saveBtnClick)="onActionsEvent($event)" (_removeBtnClick)="onActionsEvent($event)" [customActionIcons]="customIconsConfig">
+  </xg-grid-actions>
+</div>
+
+<div class="toolbar">
+  <div #gridToolbarArea *ngIf="showToolbar" class="toolbarButtons">
+
+    <ng-container *ngIf="showExport">
+      <button mat-icon-button [color]="matColor" type="button" (click)="onExportClicked()" matTooltip="Export"
+        matTooltipShowDelay="1000">
+        <mat-icon aria-label="Export To Excel">assessment</mat-icon>
+      </button>
+    </ng-container>
+
+    <button mat-icon-button [color]="matColor" type="button" (click)="showColumnPicker=true" matTooltip="Column Picker"
+      matTooltipShowDelay="1000">
+      <mat-icon aria-label="Column Picker">view_column</mat-icon>
+    </button>
+
+    <xg-grid-column-picker [dataKey]="gridConfig.uniqueIdName" [(display)]="showColumnPicker"
+      (onClosed)="onColumnPickerClosed($event)" [showFooter]="false" (onColumnChanged)="onColumnChanged($event)"
+      [(columns)]="gridConfig.columns" [header]="'Field Chooser'" [width]="890" [allowReordering]="allowReordering">
+    </xg-grid-column-picker>
+
+    <button mat-icon-button [color]="matColor" type="button" (click)="toggleDevOptions($event)" *ngIf="devMode">
+      <mat-icon aria-label="Development Settings">settings</mat-icon>
+    </button>
+
+  </div>
+
+<div *ngIf="enableGlobalFilter" class="globalFilter">
+  <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+  <input type="text" pInputText size="50" placeholder="Global Filter" (input)="globalFilter($event)" style="width:auto">
+</div>
+
+</div>
+
